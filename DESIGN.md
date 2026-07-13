@@ -15,13 +15,13 @@ colors:
   focus: "#735F56"
 typography:
   display:
-    fontFamily: "Roboto Slab, Georgia, serif"
+    fontFamily: "Telegraf, Arial, sans-serif"
     fontSize: "clamp(2.75rem, 5.4vw, 5.6rem)"
     fontWeight: 400
     lineHeight: 1.04
     letterSpacing: "-0.04em"
   headline:
-    fontFamily: "Roboto Slab, Georgia, serif"
+    fontFamily: "Telegraf, Arial, sans-serif"
     fontSize: "clamp(2rem, 3.8vw, 3.6rem)"
     fontWeight: 400
     lineHeight: 1.12
@@ -84,7 +84,7 @@ O sistema traduz uma consulta dermatológica bem conduzida: claro, silencioso, o
 
 **Características principais:**
 
-- Hierarquia tipográfica serena com Roboto Slab e Roboto.
+- Hierarquia tipográfica precisa com Telegraf e Roboto.
 - Base branca e grafite, com taupe e blush como acentos contidos.
 - Fotografia realista, natural, respeitosa e clinicamente plausível.
 - Layout amplo no desktop e reordenação de coluna única no celular.
@@ -118,10 +118,10 @@ A paleta combina neutralidade clínica com calor controlado; o taupe orienta e o
 
 ## Typography
 
-**Display Font:** Roboto Slab, com Georgia como fallback.  
+**Display Font:** Telegraf, com Arial como fallback.  
 **Body Font:** Roboto, com Arial e Helvetica como fallbacks.
 
-**Caráter:** a Slab adiciona presença e autoridade sem parecer cerimonial; a Roboto mantém leitura médica clara em telas pequenas e textos longos.
+**Caráter:** a Telegraf adiciona precisão contemporânea e personalidade à marca; a Roboto mantém leitura médica clara em telas pequenas e textos longos.
 
 ### Hierarchy
 
@@ -186,7 +186,7 @@ O sistema é plano por padrão. Profundidade vem de contraste tonal, fotografia,
 
 ### Do:
 
-- **Do** preservar `#404041`, `#A28A7F`, `#FDE6DC`, Roboto e Roboto Slab como identidade central.
+- **Do** preservar `#404041`, `#A28A7F`, `#FDE6DC`, Telegraf e Roboto como identidade central.
 - **Do** usar fotografias reais ou geradas em WebP, clinicamente plausíveis, dignas e não gráficas.
 - **Do** manter alvos de toque de pelo menos 44 × 44 px e foco visível de 3 px.
 - **Do** definir dimensões intrínsecas, `sizes`, prioridade para LCP e lazy loading fora da primeira dobra.

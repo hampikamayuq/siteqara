@@ -91,7 +91,7 @@ Conhecimento que cuida e presença que transforma. A QARA combina precisão diag
 - Evitar estética genérica de spa, excesso de bege, dourado ostensivo, neon, gradientes decorativos e glassmorphism.
 - Não usar imagens gráficas, constrangedoras ou que exponham pacientes desnecessariamente.
 - Não inventar credenciais, revisores, referências ou depoimentos.
-- Preservar a paleta, Roboto/Roboto Slab e o caráter visual já aprovado.
+- Preservar a paleta, Telegraf/Roboto e o caráter visual já aprovado.
 
 ## Critérios de sucesso
 
