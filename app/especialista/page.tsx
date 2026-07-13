@@ -6,7 +6,7 @@ export default function SpecialistPage() {
   return (
     <>
       <Header />
-      <main>
+      <main id="conteudo">
         <Breadcrumb>Equipe / Dr. Diego Gálvez</Breadcrumb>
         <section className="profile-hero shell">
           <div className="profile-photo"><img src="/images/dr-diego.webp" width={1351} height={1672} fetchPriority="high" alt="Dr. Diego Gálvez, dermatologista e cirurgião dermatológico" /></div>
