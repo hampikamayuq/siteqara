@@ -30,7 +30,7 @@ function LineIcon({ type }: { type: string }) {
 export default function Home() {
   return <>
     <Header />
-    <main>
+    <main id="conteudo">
       <section className="craft-hero">
         <div className="shell craft-hero-inner">
           <div className="craft-hero-copy">
