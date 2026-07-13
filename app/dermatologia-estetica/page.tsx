@@ -1,0 +1,2 @@
+import type {Metadata} from "next"; import {SpecialtyTemplate} from "../specialty-template"; import {specialties} from "../specialties-data";
+export const metadata:Metadata={title:"Dermatologia Estética em Copacabana | Clínica QARA",description:"Planejamento dermatológico individualizado para qualidade da pele, manchas, cicatrizes, toxina botulínica e preenchimentos."}; export default function Page(){return <SpecialtyTemplate data={specialties["dermatologia-estetica"]}/>}

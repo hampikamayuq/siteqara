@@ -1,0 +1,17 @@
+import type { ReactNode } from "react";
+/* eslint-disable @next/next/no-img-element */
+import { CtaBand, Footer, Header } from "./ui";
+
+export type Specialty = { eyebrow:string; title:string; lead:string; introTitle:string; intro:string[]; topics:[string,string][]; process:[string,string][]; doctor:string; credential:string; doctorText:string; doctorImage:string; faq:[string,string][]; related:[string,string][] };
+
+export function SpecialtyTemplate({data, children}:{data:Specialty; children?:ReactNode}) { return <><Header/><main>
+  <section className="specialty-hero"><div className="shell specialty-hero-grid"><div><p className="kicker">{data.eyebrow}</p><h1>{data.title}</h1><p className="lead">{data.lead}</p><div className="actions"><a className="button craft-primary" href={`https://wa.me/5521992189718?text=${encodeURIComponent(`Olá, gostaria de agendar uma avaliação sobre ${data.eyebrow}.`)}`}>Agendar avaliação</a><a className="quiet-link" href="#atendimentos">Como podemos ajudar ↓</a></div></div><div className={`specialty-portrait portrait-${data.doctor.split(" ")[1].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()}`}><img src={data.doctorImage} width={1000} height={1400} fetchPriority="high" alt={`${data.doctor}, dermatologista da Clínica QARA`}/></div></div></section>
+  <section className="section shell intro-split"><div><p className="kicker">Cuidado especializado</p><h2>{data.introTitle}</h2></div><div>{data.intro.map(p=><p key={p}>{p}</p>)}</div></section>
+  <section className="specialty-soft" id="atendimentos"><div className="shell section"><div className="editorial-heading"><div><p className="kicker">Áreas de atendimento</p><h2>Condições avaliadas.</h2></div><p>A indicação de exames e tratamentos depende da avaliação clínica e das características de cada paciente.</p></div><div className="procedure-list">{data.topics.map(([t,p],i)=><article key={t}><span>{String(i+1).padStart(2,"0")}</span><div><h3>{t}</h3><p>{p}</p></div></article>)}</div></div></section>
+  <section className="section shell care-process"><div><p className="kicker">Como funciona</p><h2>Uma avaliação organizada por etapas.</h2></div><ol>{data.process.map(([t,p],i)=><li key={t}><b>{String(i+1).padStart(2,"0")}</b><div><h3>{t}</h3><p>{p}</p></div></li>)}</ol></section>
+  <section className="doctor-band"><div className="shell doctor-band-grid"><div className={`doctor-band-photo portrait-${data.doctor.split(" ")[1].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()}`}><img src={data.doctorImage} width={1000} height={1400} alt={data.doctor} loading="lazy" decoding="async"/></div><div><p className="kicker light">Especialista relacionado</p><h2>{data.doctor}</h2><p className="credential-light">{data.credential}</p><p>{data.doctorText}</p><a href="https://wa.me/5521992189718">Agendar consulta →</a></div></div></section>
+  {children}
+  <section className="section shell specialty-faq"><div><p className="kicker">Perguntas frequentes</p><h2>Informação para decidir com segurança.</h2></div><div className="practical-list">{data.faq.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+  <section className="related-reading shell"><p className="kicker">Conteúdos relacionados</p><h2>Continue se informando.</h2><div>{data.related.map(([t,u])=><a href={u} key={u}>{t}<span>→</span></a>)}</div></section>
+  <CtaBand/>
+  </main><Footer/></> }

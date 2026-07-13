@@ -1,0 +1,2 @@
+import type {Metadata} from "next"; import {SpecialtyTemplate} from "../specialty-template"; import {specialties} from "../specialties-data";
+export const metadata:Metadata={title:"Psoríase, Dermatite Atópica e Hidradenite | QARA",description:"Atendimento especializado em psoríase, dermatite atópica, hidradenite e doenças inflamatórias da pele no Rio de Janeiro."}; export default function Page(){return <SpecialtyTemplate data={specialties["doencas-inflamatorias"]}/>}
