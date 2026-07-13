@@ -141,6 +141,8 @@ blockquote footer { color: var(--qara-gray-600); font-size: .75rem; }
 
 .profile-hero { grid-template-columns: .78fr 1.22fr; }
 .profile-hero .profile-photo { max-width: 480px; }
+.profile-photo { aspect-ratio: 4/5; background: var(--qara-gray-050); overflow: hidden; }
+.profile-photo img { display: block; height: 100%; object-fit: cover; object-position: center 18%; width: 100%; }
 .focus-grid { display: grid; gap: 18px; grid-template-columns: repeat(2, 1fr); }
 .focus-grid article { background: white; border-radius: var(--radius); padding: 33px; }
 .focus-grid p { color: #666668; }

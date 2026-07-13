@@ -1,31 +1,33 @@
-import { Breadcrumb, CtaBand, Footer, Header, PhotoPlaceholder, SectionHeading } from "../ui";
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import { Breadcrumb, CtaBand, Footer, Header, SectionHeading } from "../ui";
 
-export default function SpecialistWireframe() {
+export default function SpecialistPage() {
   return (
     <>
       <Header />
       <main>
         <Breadcrumb>Equipe / Dr. Diego Gálvez</Breadcrumb>
         <section className="profile-hero shell">
-          <PhotoPlaceholder label="Retrato profissional do Dr. Diego" variant="profile-photo" />
+          <div className="profile-photo"><img src="/images/dr-diego.webp" width={1351} height={1672} fetchPriority="high" alt="Dr. Diego Gálvez, dermatologista e cirurgião dermatológico" /></div>
           <div>
             <p className="eyebrow">Dermatologista e cirurgião dermatológico</p>
             <h1>Dr. Diego Gálvez</h1>
             <p className="credential">CRM-RJ 52-0112387-4 · RQE 57517</p>
             <p className="lead">Atuação em dermatologia clínica e cirurgia dermatológica, com foco em diagnóstico preciso, planejamento seguro e acompanhamento próximo.</p>
-            <div className="actions"><a className="button button-primary" href="#agendar">Agendar consulta</a><a className="button button-secondary" href="#atuacao">Áreas de atuação</a></div>
+            <div className="actions"><a className="button button-primary" href="https://wa.me/5521992189718?text=Olá%2C%20gostaria%20de%20consultar%20horários%20com%20o%20Dr.%20Diego.">Consultar horários</a><a className="button button-secondary" href="#atuacao">Ver áreas de atuação</a></div>
             <ul className="profile-facts"><li>Português, espanhol e inglês</li><li>Atendimento presencial e telemedicina</li><li>Fundador da Clínica QARA</li></ul>
           </div>
         </section>
 
         <section className="soft-section" id="atuacao">
           <div className="section shell">
-            <SectionHeading eyebrow="Áreas de atuação" title="Atendimento clínico e cirúrgico individualizado." text="Os cartões direcionam para páginas completas e para mensagens de agendamento específicas." />
+            <SectionHeading eyebrow="Áreas de atuação" title="Dermatologia clínica e cirurgia da pele." text="Veja em quais situações o Dr. Diego atua e acesse a página com informações completas sobre cada atendimento." />
             <div className="focus-grid">
-              <article><h3>Cirurgia dermatológica</h3><p>Excisão de lesões, reconstruções, retalhos, enxertos e acompanhamento pós-operatório.</p><a href="/servico">Conhecer atendimento →</a></article>
-              <article><h3>Câncer de pele</h3><p>Avaliação, biópsia, planejamento cirúrgico e controle de margens quando indicado.</p><a href="/servico">Conhecer atendimento →</a></article>
-              <article><h3>Biópsias</h3><p>Investigação de doenças da pele, das unhas e do couro cabeludo.</p><a href="/servico">Conhecer atendimento →</a></article>
-              <article><h3>Dermatologia clínica</h3><p>Avaliação integral da pele, cabelos e unhas, com dermatoscopia quando necessária.</p><a href="/servico">Conhecer atendimento →</a></article>
+              <article><h3>Cirurgia dermatológica</h3><p>Retirada de lesões, reconstruções, retalhos, enxertos e acompanhamento pós-operatório.</p><Link href="/cirurgiadermatologica">Ver cirurgia dermatológica →</Link></article>
+              <article><h3>Câncer da pele</h3><p>Avaliação, biópsia, planejamento cirúrgico e controle de margens quando indicado.</p><Link href="/cirurgiadermatologica">Ver tratamento cirúrgico →</Link></article>
+              <article><h3>Biópsias</h3><p>Coleta de amostras da pele, das unhas ou do couro cabeludo para esclarecer o diagnóstico.</p><Link href="/blog/biopsia-de-pele-quando-e-indicada">Entender quando a biópsia é indicada →</Link></article>
+              <article><h3>Dermatologia clínica</h3><p>Avaliação de sintomas e lesões da pele, com dermatoscopia quando necessária.</p><Link href="/dermatologia-clinica">Ver dermatologia clínica →</Link></article>
             </div>
           </div>
         </section>
@@ -36,8 +38,8 @@ export default function SpecialistWireframe() {
         </section>
 
         <section className="section shell proof-grid">
-          <div><p className="eyebrow">Avaliações verificadas</p><h2>Experiência relatada pelos pacientes.</h2></div>
-          <blockquote><p>“Espaço reservado para depoimento verificado, preservando a linguagem original e identificando a plataforma de origem.”</p><footer>Paciente verificado · Doctoralia</footer></blockquote>
+          <div><p className="eyebrow">Como é o atendimento</p><h2>Informação antes de qualquer decisão.</h2></div>
+          <blockquote><p>Na consulta, você recebe explicações sobre as hipóteses diagnósticas, os exames necessários, as opções de tratamento e o acompanhamento esperado.</p><footer>Clínica QARA · Atendimento individualizado</footer></blockquote>
         </section>
         <CtaBand />
       </main>

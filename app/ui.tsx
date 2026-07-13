@@ -1,29 +1,14 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
-export function PreviewNav({ current }: { current: "home" | "service" | "specialist" }) {
-  return (
-    <div className="preview-nav">
-      <div className="shell preview-inner">
-        <span>Wireframe navegável · QARA</span>
-        <nav aria-label="Alternar wireframe">
-          <Link className={current === "home" ? "active" : ""} href="/">Homepage</Link>
-          <Link className={current === "service" ? "active" : ""} href="/servico">Serviço</Link>
-          <Link className={current === "specialist" ? "active" : ""} href="/especialista">Especialista</Link>
-        </nav>
-      </div>
-    </div>
-  );
-}
-
 export function Header() {
   const links = [
-    ["Como podemos ajudar", "/#cuidados"],
+    ["Especialidades", "/#cuidados"],
     ["Cirurgia dermatológica", "/cirurgiadermatologica"],
     ["Cabelos", "/cabelo"],
     ["Blog", "/blog"],
     ["Especialistas", "/#especialistas"],
-    ["A clínica", "/#contato"],
+    ["Localização e contato", "/#contato"],
   ] as const;
   return (
     <header className="site-header">
@@ -52,7 +37,7 @@ export function Footer() {
         <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p></div>
         <div><strong>Endereço</strong><p>Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</p></div>
         <div><strong>Contato</strong><p>WhatsApp: (21) 99218-9718<br />Atendimento com hora marcada</p></div>
-        <div><strong>Informações</strong><p>CRM da clínica e direção técnica<br />Política de privacidade</p></div>
+        <div><strong>Registro</strong><p>Clínica QARA · CRM-RJ 1285041<br />Direção técnica médica</p></div>
       </div>
     </footer>
   );
@@ -67,16 +52,12 @@ export function SectionHeading({ eyebrow, title, text }: { eyebrow: string; titl
   );
 }
 
-export function PhotoPlaceholder({ label, variant }: { label: string; variant: string }) {
-  return <div className={`photo-placeholder ${variant}`} role="img" aria-label={label}><span>{label}</span></div>;
-}
-
 export function CtaBand() {
   return (
     <section className="cta-band" id="agendar">
       <div className="shell cta-inner">
-        <div><p className="eyebrow">Vamos cuidar de você?</p><h2>Converse com nossa equipe e encontre o melhor horário para sua consulta.</h2></div>
-        <div className="actions"><a className="button button-light" href="https://wa.me/5521992189718">Agendar pelo WhatsApp</a><a className="button button-outline-light" href="#contato">Ver localização</a></div>
+        <div><p className="eyebrow">Agende sua avaliação</p><h2>Conte o que precisa. Nossa equipe indica o especialista adequado e apresenta os horários disponíveis.</h2></div>
+        <div className="actions"><a className="button button-light" href="https://wa.me/5521992189718">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div>
       </div>
     </section>
   );
