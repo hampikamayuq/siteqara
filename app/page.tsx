@@ -1,9 +1,15 @@
 import { CtaBand, Footer, Header } from "./ui";
+import Link from "next/link";
+import { articles } from "./blog/articles";
 
 const services = [
-  ["○", "Dermatologia clínica", "Pele"],
-  ["⌁", "Cirurgia dermatológica", "Procedimentos"],
-  ["∿", "Cabelos e unhas", "Tricologia e onicologia"],
+  ["Dermatologia clínica", "Acne, rosácea, manchas, alergias e avaliação de pintas.", "/dermatologia-clinica"],
+  ["Cirurgia dermatológica", "Biópsias, retirada de lesões e reconstruções da pele.", "/cirurgiadermatologica"],
+  ["Cabelos e couro cabeludo", "Queda capilar, alopecias, doenças do couro cabeludo e transplante.", "/cabelo"],
+  ["Doenças das unhas", "Micose, unha encravada, inflamações, tumores e cirurgia ungueal.", "/unhas"],
+  ["Doenças inflamatórias", "Psoríase, dermatite atópica, hidradenite e doenças autoimunes.", "/doencas-inflamatorias"],
+  ["Dermatopediatria", "Avaliação dermatológica para bebês, crianças e adolescentes.", "/dermatopediatria"],
+  ["Dermatologia estética", "Planejamento individualizado para saúde, textura e qualidade da pele.", "/dermatologia-estetica"],
 ];
 
 const careTopics = [
@@ -48,12 +54,14 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="assurance-bar" aria-label="Informações essenciais"><div className="shell"><p><strong>Copacabana</strong><span>Rua Santa Clara, próximo ao metrô</span></p><p><strong>Atendimento particular</strong><span>Nota fiscal e documentação para reembolso</span></p><p><strong>Português, espanhol e inglês</strong><span>Conforme disponibilidade do profissional</span></p></div></section>
+
+      <section className="journey-section" id="jornada"><div className="shell journey-grid"><div><p className="kicker light">Da queixa ao plano de cuidado</p><h2>Uma consulta organizada para compreender antes de tratar.</h2><p>A avaliação relaciona sintomas, histórico, exame dermatológico e, quando necessário, exames complementares.</p></div><ol><li><b>1</b><div><h3>Escuta e avaliação</h3><p>Você conta o que percebe, há quanto tempo e o que já tentou. O médico examina a pele, os cabelos ou as unhas.</p></div></li><li><b>2</b><div><h3>Diagnóstico e investigação</h3><p>As hipóteses são explicadas. Dermatoscopia, tricoscopia, exames laboratoriais ou biópsia podem ser indicados.</p></div></li><li><b>3</b><div><h3>Plano e acompanhamento</h3><p>Benefícios, limites, riscos e alternativas orientam uma decisão compartilhada e o acompanhamento da evolução.</p></div></li></ol></div></section>
+
       <section className="care-strip" id="cuidados">
         <div className="shell care-grid">
-          <div><h2>Nossas<br />especialidades</h2></div>
-          {services.map(([,title,text], index) => <a className="care-item" href={["/servico","/cirurgiadermatologica","/cabelo"][index]} key={title}>
-            <LineIcon type={["skin","surgery","hair"][index]} /><small>{text}</small><h3>{title}</h3><b aria-hidden="true">→</b>
-          </a>)}
+          <div className="care-intro"><p className="kicker">Cuidado especializado</p><h2>Encontre a área adequada para sua necessidade.</h2><p>Se houver dúvida, conte brevemente sua queixa pelo WhatsApp e nossa equipe orienta a escolha do profissional.</p></div>
+          <div className="care-list">{services.map(([title,text,href], index) => <Link className="care-item" href={href} key={title}><span>{String(index+1).padStart(2,"0")}</span><div><h3>{title}</h3><p>{text}</p></div><b aria-hidden="true">→</b></Link>)}</div>
         </div>
       </section>
 
@@ -79,7 +87,7 @@ export default function Home() {
         </div></div>
       </section>
 
-      <section className="clinic-story">
+      <section className="clinic-story" id="clinica">
         <div className="shell clinic-story-grid">
           <div><p className="kicker light">Nossa clínica</p><h2>Atendimento em Copacabana.</h2><span className="light-rule" /><p>Consultórios preparados para consultas dermatológicas e procedimentos com hora marcada.</p><a href="#contato">Ver endereço e contato <span>→</span></a></div>
           <div className="clinic-main"><img src="/images/miguel.webp" alt="Recepção da Clínica QARA em Copacabana" width={1920} height={1282} loading="lazy" decoding="async" /></div>
@@ -89,8 +97,10 @@ export default function Home() {
 
       <section className="information-section shell">
         <div className="information-intro"><p className="kicker">Encontre o especialista</p><h2>Comece pelo que você precisa avaliar.</h2><p>Conte sua principal queixa pelo WhatsApp. A equipe indica o dermatologista com atuação mais adequada.</p></div>
-        <div className="topic-list">{careTopics.map(([title,text],i) => <article key={title}><span>{String(i+1).padStart(2,"0")}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+        <div className="topic-list">{careTopics.map(([title,text]) => <article key={title}><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
       </section>
+
+      <section className="home-journal"><div className="shell journal-heading"><div><p className="kicker">Conteúdo médico</p><h2>Informação para entender sinais e decisões.</h2></div><p>Artigos escritos por dermatologistas da Clínica QARA, com autoria médica e referências específicas.</p></div><div className="shell journal-list">{articles.slice(0,3).map((article,index)=><article key={article.slug}><Link className="journal-image" href={`/blog/${article.slug}`}><img src={article.image} alt={article.title} width={1400} height={788} loading="lazy" decoding="async"/></Link><div><span>{article.category} · {article.readTime}</span><h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3><p>{article.description}</p><Link href={`/blog/${article.slug}`}>Ler artigo →</Link></div><b>{String(index+1).padStart(2,"0")}</b></article>)}</div><div className="shell journal-all"><Link className="button button-secondary" href="/blog">Ver todos os artigos</Link></div></section>
 
       <section className="quote-section"><div className="shell"><blockquote><span>“</span><p>Uma boa indicação começa por entender os sintomas, o histórico e o que você espera do tratamento.</p><footer>Clínica QARA · Dermatologia especializada</footer></blockquote></div></section>
       <section className="practical-section shell"><div><p className="kicker">Antes de agendar</p><h2>Informações práticas.</h2></div><div className="practical-list"><details><summary>Como escolher o especialista?</summary><p>Conte brevemente sua queixa pelo WhatsApp. Nossa equipe indicará o profissional com a área de atuação mais adequada.</p></details><details><summary>A clínica atende planos de saúde?</summary><p>O atendimento é particular. Emitimos nota fiscal e documentos médicos para solicitação de reembolso, conforme as regras do seu plano.</p></details><details><summary>Há atendimento por telemedicina?</summary><p>Alguns casos podem ser avaliados por telemedicina em todo o Brasil. Procedimentos e exames físicos exigem atendimento presencial.</p></details><details><summary>Quais idiomas estão disponíveis?</summary><p>A equipe oferece atendimento em português, espanhol e inglês, conforme disponibilidade do profissional.</p></details></div></section>
