@@ -2,26 +2,46 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 export function Header() {
-  const links = [
-    ["Especialidades", "/#cuidados"],
-    ["Cirurgia dermatológica", "/cirurgiadermatologica"],
-    ["Cabelos", "/cabelo"],
-    ["Blog", "/blog"],
-    ["Especialistas", "/#especialistas"],
-    ["Localização e contato", "/#contato"],
+  const specialties = [
+    ["Dermatologia clínica", "/dermatologia-clinica", "Acne, rosácea, manchas e pintas"],
+    ["Cirurgia dermatológica", "/cirurgiadermatologica", "Biópsias, lesões e reconstruções"],
+    ["Cabelos e couro cabeludo", "/cabelo", "Queda, alopecias e transplante"],
+    ["Doenças das unhas", "/unhas", "Micose, inflamações e cirurgia ungueal"],
+    ["Doenças inflamatórias", "/doencas-inflamatorias", "Psoríase, dermatite e hidradenite"],
+    ["Dermatopediatria", "/dermatopediatria", "Pele de bebês, crianças e adolescentes"],
+    ["Dermatologia estética", "/dermatologia-estetica", "Pele, cicatrizes e envelhecimento"],
   ] as const;
+  const needs = [
+    ["Acne, rosácea e manchas", "/dermatologia-clinica"],
+    ["Pintas e câncer da pele", "/blog/cancer-da-pele-sinais-de-alerta"],
+    ["Queda de cabelo", "/cabelo"],
+    ["Alterações das unhas", "/unhas"],
+    ["Psoríase e dermatite", "/doencas-inflamatorias"],
+  ] as const;
+  const clinic = [["Corpo clínico", "/#especialistas"], ["A Clínica QARA", "/#clinica"], ["Como funciona a consulta", "/#jornada"], ["Localização e contato", "/#contato"], ["Conteúdo médico", "/blog"]] as const;
   return (
     <header className="site-header">
       <div className="shell header-inner">
         <Link className="wordmark" href="/" aria-label="Clínica QARA — Início">QARA<span>clínica dermatológica</span></Link>
         <nav className="desktop-nav" aria-label="Navegação principal">
-          {links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
+          <details className="mega-menu">
+            <summary>Especialidades <span aria-hidden="true">⌄</span></summary>
+            <div className="mega-panel">
+              <div className="mega-guide"><p>Comece pela sua necessidade.</p><span>Se ainda não sabe qual especialista procurar, nossa equipe pode orientar.</span><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">Pedir orientação →</a></div>
+              <div className="mega-group mega-specialties"><strong>Especialidades</strong>{specialties.map(([label,href,text])=><Link href={href} key={href}><span>{label}</span><small>{text}</small></Link>)}</div>
+              <div className="mega-group"><strong>Queixas frequentes</strong>{needs.map(([label,href])=><Link href={href} key={label}>{label}<span aria-hidden="true">→</span></Link>)}</div>
+              <div className="mega-group"><strong>Clínica e conteúdo</strong>{clinic.map(([label,href])=><Link href={href} key={label}>{label}<span aria-hidden="true">→</span></Link>)}</div>
+            </div>
+          </details>
+          <Link href="/#especialistas">Equipe</Link><Link href="/#clinica">Clínica</Link><Link href="/blog">Conteúdo</Link>
         </nav>
         <a className="header-cta" href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)">Agendar pelo WhatsApp</a>
         <details className="mobile-menu">
           <summary aria-label="Abrir menu de navegação"><span>Menu</span><i aria-hidden="true" /></summary>
           <nav aria-label="Navegação móvel">
-            {links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
+            <details className="mobile-menu-group"><summary>Especialidades</summary><div>{specialties.map(([label,href])=><Link href={href} key={href}>{label}</Link>)}</div></details>
+            <details className="mobile-menu-group"><summary>Encontre seu cuidado</summary><div>{needs.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</div></details>
+            {clinic.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}
             <a className="mobile-menu-cta" href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)">Agendar pelo WhatsApp</a>
           </nav>
         </details>
