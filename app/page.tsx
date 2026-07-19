@@ -12,15 +12,6 @@ const services = [
   ["Dermatologia estética", "Planejamento individualizado para saúde, textura e qualidade da pele.", "/dermatologia-estetica"],
 ];
 
-const careTopics = [
-  ["Pele e doenças inflamatórias", "Acne, rosácea, manchas, dermatite atópica, psoríase e hidradenite."],
-  ["Lesões e câncer da pele", "Dermatoscopia, investigação de pintas e acompanhamento de lesões suspeitas."],
-  ["Biópsias e cirurgias", "Biópsias de pele, cabelo e unhas; retirada de nevos, cistos, lipomas e tumores."],
-  ["Cabelos e couro cabeludo", "Investigação da queda capilar, alopecias, doenças do couro cabeludo e transplante."],
-  ["Unhas", "Alterações de cor e formato, micose, unha encravada e doenças inflamatórias."],
-  ["Dermatologia estética", "Planejamento individualizado com foco em equilíbrio e resultados naturais."],
-];
-
 const specialists = [
   ["Dr. Miguel Ceccarelli", "Unhas e dermatologia estética", "miguel", "/images/dr-miguel.webp"],
   ["Dr. Diego Gálvez", "Dermatologia e cirurgia dermatológica", "diego", "/images/dr-diego.webp"],
@@ -67,7 +58,7 @@ export default function Home() {
             <span className="hero-rule" aria-hidden="true" />
             <p className="lead">Dermatologia clínica e cirúrgica com precisão técnica e sensibilidade humana para cuidar do que há de mais autêntico em você.</p>
             <div className="actions">
-              <a className="button craft-primary" href="https://wa.me/5521992189718">Agendar pelo WhatsApp</a>
+              <a className="button craft-primary" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA.">Agendar pelo WhatsApp</a>
               <a className="quiet-link" href="#cuidados">Ver especialidades <span>↓</span></a>
             </div>
           </div>
@@ -78,18 +69,18 @@ export default function Home() {
 
       <section className="assurance-bar" aria-label="Informações essenciais"><div className="shell"><p><strong>Copacabana</strong><span>Rua Santa Clara, próximo ao metrô</span></p><p><strong>Atendimento particular</strong><span>Nota fiscal e documentação para reembolso</span></p><p><strong>Português, espanhol e inglês</strong><span>Conforme disponibilidade do profissional</span></p></div></section>
 
-      <section className="journey-section" id="jornada"><div className="shell journey-grid"><div><p className="kicker light">Da queixa ao plano de cuidado</p><h2>Uma consulta organizada para compreender antes de tratar.</h2><p>A avaliação relaciona sintomas, histórico, exame dermatológico e, quando necessário, exames complementares.</p></div><ol><li><b>1</b><div><h3>Escuta e avaliação</h3><p>Você conta o que percebe, há quanto tempo e o que já tentou. O médico examina a pele, os cabelos ou as unhas.</p></div></li><li><b>2</b><div><h3>Diagnóstico e investigação</h3><p>As hipóteses são explicadas. Dermatoscopia, tricoscopia, exames laboratoriais ou biópsia podem ser indicados.</p></div></li><li><b>3</b><div><h3>Plano e acompanhamento</h3><p>Benefícios, limites, riscos e alternativas orientam uma decisão compartilhada e o acompanhamento da evolução.</p></div></li></ol></div></section>
+      <section className="journey-section" id="jornada"><div className="shell journey-grid"><div><h2>Uma consulta organizada para compreender antes de tratar.</h2><p>A avaliação relaciona sintomas, histórico, exame dermatológico e, quando necessário, exames complementares.</p></div><ol><li><b>1</b><div><h3>Escuta e avaliação</h3><p>Você conta o que percebe, há quanto tempo e o que já tentou. O médico examina a pele, os cabelos ou as unhas.</p></div></li><li><b>2</b><div><h3>Diagnóstico e investigação</h3><p>As hipóteses são explicadas. Dermatoscopia, tricoscopia, exames laboratoriais ou biópsia podem ser indicados.</p></div></li><li><b>3</b><div><h3>Plano e acompanhamento</h3><p>Benefícios, limites, riscos e alternativas orientam uma decisão compartilhada e o acompanhamento da evolução.</p></div></li></ol></div></section>
 
       <section className="care-strip" id="cuidados">
         <div className="shell care-grid">
-          <div className="care-intro"><p className="kicker">Cuidado especializado</p><h2>Encontre a área adequada para sua necessidade.</h2><p>Se houver dúvida, conte brevemente sua queixa pelo WhatsApp e nossa equipe orienta a escolha do profissional.</p></div>
-          <div className="care-list">{services.map(([title,text,href], index) => <Link className="care-item" href={href} key={title}><span>{String(index+1).padStart(2,"0")}</span><div><h3>{title}</h3><p>{text}</p></div><b aria-hidden="true">→</b></Link>)}</div>
+          <div className="care-intro"><h2>Encontre a área adequada para sua necessidade.</h2><p>Se houver dúvida, conte brevemente sua queixa pelo WhatsApp e nossa equipe orienta a escolha do profissional.</p></div>
+          <div className="care-list">{services.map(([title,text,href]) => <Link className="care-item" href={href} key={title}><div><h3>{title}</h3><p>{text}</p></div><b aria-hidden="true">→</b></Link>)}</div>
         </div>
       </section>
 
       <section className="precision-section">
         <div className="shell precision-grid">
-          <div className="precision-intro"><p className="kicker light">Nossa forma de cuidar</p><h2>Precisão técnica.<br />Cuidado integral.<br />Decisões seguras.</h2><span className="dark-rule" /><p>Ciência, tecnologia e experiência para oferecer tratamentos individualizados, sempre com ética, segurança e naturalidade.</p></div>
+          <div className="precision-intro"><h2>Precisão técnica.<br />Cuidado integral.<br />Decisões seguras.</h2><span className="dark-rule" /><p>Ciência, tecnologia e experiência para oferecer tratamentos individualizados, sempre com ética, segurança e naturalidade.</p></div>
           <div className="principles">
             <article><LineIcon type="skin" /><h3>Abordagem individualizada</h3><p>Cada pele, história e objetivo são únicos.</p></article>
             <article><LineIcon type="surgery" /><h3>Atualização científica</h3><p>Condutas baseadas em evidências e avaliação cuidadosa.</p></article>
@@ -100,33 +91,29 @@ export default function Home() {
       </section>
 
       <section className="section shell" id="especialistas">
-        <div className="specialist-lead"><div><p className="kicker">Corpo clínico</p><h2>Nossos<br />especialistas</h2><p>Conheça a formação e a principal área de atuação de cada dermatologista.</p><a href="#especialistas">Ver especialistas <span>→</span></a></div>
+        <div className="specialist-lead"><div><p className="kicker">Corpo clínico</p><h2>Nossos<br />especialistas</h2><p>Conheça a formação e a principal área de atuação de cada dermatologista.</p></div>
         <div className="craft-specialists">
           {specialists.map(([name,area,key,src]) => <article key={name}>
             <div className={`doctor-image doctor-${key}`}><img src={src} alt={`Retrato profissional de ${name}`} width={1000} height={1300} loading="lazy" decoding="async" /></div>
-            <h3>{name}</h3><p>{area}</p><a href={key === "diego" ? "/especialista" : `https://wa.me/5521992189718?text=${encodeURIComponent(`Olá, gostaria de agendar uma consulta com ${name}.`)}`}>{key === "diego" ? "Conheça o especialista" : "Agendar com o especialista"} <span>→</span></a>
+            <h3>{name}</h3><p>{area}</p><a href={key === "diego" ? "/especialista" : `https://wa.me/5521992189718?text=${encodeURIComponent(`Olá, gostaria de agendar uma consulta com ${name}.`)}`}>{key === "diego" ? "Conheça o especialista" : "Agendar pelo WhatsApp"} <span>→</span></a>
           </article>)}
         </div></div>
       </section>
 
       <section className="clinic-story" id="clinica">
         <div className="shell clinic-story-grid">
-          <div><p className="kicker light">Nossa clínica</p><h2>Atendimento em Copacabana.</h2><span className="light-rule" /><p>Consultórios preparados para consultas dermatológicas e procedimentos com hora marcada.</p><a href="#contato">Ver endereço e contato <span>→</span></a></div>
+          <div><h2>Atendimento em Copacabana.</h2><span className="light-rule" /><p>Consultórios preparados para consultas dermatológicas e procedimentos com hora marcada.</p><a href="#contato">Ver endereço e contato <span>→</span></a></div>
           <div className="clinic-main"><img src="/images/miguel.webp" srcSet="/images/miguel-640.webp 640w, /images/miguel-1024.webp 1024w, /images/miguel.webp 1920w" sizes="(max-width: 620px) 100vw, (max-width: 900px) 100vw, 60vw" alt="Recepção da Clínica QARA em Copacabana" width={1920} height={1282} loading="lazy" decoding="async" /></div>
           <div className="clinic-detail" aria-hidden="true"><span className="organic-mark" /></div>
         </div>
       </section>
 
-      <section className="information-section shell">
-        <div className="information-intro"><p className="kicker">Encontre o especialista</p><h2>Comece pelo que você precisa avaliar.</h2><p>Conte sua principal queixa pelo WhatsApp. A equipe indica o dermatologista com atuação mais adequada.</p></div>
-        <div className="topic-list">{careTopics.map(([title,text]) => <article key={title}><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
-      </section>
 
-      <section className="home-journal"><div className="shell journal-heading"><div><p className="kicker">Conteúdo médico</p><h2>Informação para entender sinais e decisões.</h2></div><p>Artigos escritos por dermatologistas da Clínica QARA, com autoria médica e referências específicas.</p></div><div className="shell journal-list">{articles.slice(0,3).map((article,index)=><article key={article.slug}><Link className="journal-image" href={`/blog/${article.slug}`}><img src={article.image} alt={article.title} width={1400} height={788} loading="lazy" decoding="async"/></Link><div><span>{article.category} · {article.readTime}</span><h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3><p>{article.description}</p><Link href={`/blog/${article.slug}`}>Ler artigo →</Link></div><b>{String(index+1).padStart(2,"0")}</b></article>)}</div><div className="shell journal-all"><Link className="button button-secondary" href="/blog">Ver todos os artigos</Link></div></section>
+      <section className="home-journal"><div className="shell journal-heading"><div><h2>Informação para entender sinais e decisões.</h2></div><p>Artigos escritos por dermatologistas da Clínica QARA, com autoria médica e referências específicas.</p></div><div className="shell journal-list">{articles.slice(0,3).map(article=><article key={article.slug}><Link className="journal-image" href={`/blog/${article.slug}`}><img src={article.image} alt={article.title} width={1400} height={788} loading="lazy" decoding="async"/></Link><div><span>{article.category} · {article.readTime}</span><h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3><p>{article.description}</p><Link href={`/blog/${article.slug}`}>Ler artigo →</Link></div></article>)}</div><div className="shell journal-all"><Link className="button button-secondary" href="/blog">Ver todos os artigos</Link></div></section>
 
       <section className="quote-section"><div className="shell"><blockquote><span>“</span><p>Uma boa indicação começa por entender os sintomas, o histórico e o que você espera do tratamento.</p><footer>Clínica QARA · Dermatologia especializada</footer></blockquote></div></section>
-      <section className="practical-section shell"><div><p className="kicker">Antes de agendar</p><h2>Informações práticas.</h2></div><div className="practical-list"><details><summary>Como escolher o especialista?</summary><p>Conte brevemente sua queixa pelo WhatsApp. Nossa equipe indicará o profissional com a área de atuação mais adequada.</p></details><details><summary>A clínica atende planos de saúde?</summary><p>O atendimento é particular. Emitimos nota fiscal e documentos médicos para solicitação de reembolso, conforme as regras do seu plano.</p></details><details><summary>Há atendimento por telemedicina?</summary><p>Alguns casos podem ser avaliados por telemedicina em todo o Brasil. Procedimentos e exames físicos exigem atendimento presencial.</p></details><details><summary>Quais idiomas estão disponíveis?</summary><p>A equipe oferece atendimento em português, espanhol e inglês, conforme disponibilidade do profissional.</p></details></div></section>
-      <section className="location-section"><div className="shell location-grid"><div><p className="kicker">Onde estamos</p><h2>Copacabana,<br />Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span>QARA</span><b>Rua Santa Clara, 50</b></a></div></section>
+      <section className="practical-section shell"><div><h2>Informações práticas.</h2></div><div className="practical-list"><details><summary>Como escolher o especialista?</summary><p>Conte brevemente sua queixa pelo WhatsApp. Nossa equipe indicará o profissional com a área de atuação mais adequada.</p></details><details><summary>A clínica atende planos de saúde?</summary><p>O atendimento é particular. Emitimos nota fiscal e documentos médicos para solicitação de reembolso, conforme as regras do seu plano.</p></details><details><summary>Há atendimento por telemedicina?</summary><p>Alguns casos podem ser avaliados por telemedicina em todo o Brasil. Procedimentos e exames físicos exigem atendimento presencial.</p></details><details><summary>Quais idiomas estão disponíveis?</summary><p>A equipe oferece atendimento em português, espanhol e inglês, conforme disponibilidade do profissional.</p></details></div></section>
+      <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana,<br />Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span>QARA</span><b>Rua Santa Clara, 50</b></a></div></section>
       <CtaBand />
     </main>
     <Footer />
