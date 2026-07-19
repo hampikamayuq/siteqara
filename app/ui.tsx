@@ -21,6 +21,7 @@ export function Header() {
   const clinic = [["Corpo clínico", "/#especialistas"], ["A Clínica QARA", "/#clinica"], ["Como funciona a consulta", "/#jornada"], ["Localização e contato", "/#contato"], ["Conteúdo médico", "/blog"]] as const;
   return (
     <header className="site-header">
+      <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <div className="shell header-inner">
         <Link className="wordmark" href="/" aria-label="Clínica QARA — Início">QARA<span>clínica dermatológica</span></Link>
         <nav className="desktop-nav" aria-label="Navegação principal">
