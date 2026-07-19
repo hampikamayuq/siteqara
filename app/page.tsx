@@ -19,6 +19,8 @@ const specialists = [
   ["Dra. Manuela Pedretti", "Psoríase e doenças inflamatórias", "manuela", "/images/dra-manuela.webp"],
 ];
 
+const slugs: Record<string, string> = { miguel: "dr-miguel-ceccarelli", diego: "dr-diego-galvez", diana: "dra-diana-stohmann", manuela: "dra-manuela-pedretti" };
+
 function LineIcon({ type }: { type: string }) {
   const paths: Record<string, string> = { skin: "M12 3c-4 2-6 6-5 10s5 7 5 7 4-3 5-7-3-7-9-7Z", book: "M12 6c-2-1.4-5-1.4-8 0v12c3-1.4 6-1.4 8 0 2-1.4 5-1.4 8 0V6c-3-1.4-6-1.4-8 0v12", heart: "M12 20c-5-3.5-8-6.5-8-10a4.5 4.5 0 0 1 8-2.6A4.5 4.5 0 0 1 20 10c0 3.5-3 6.5-8 10Z", shield: "M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6Z" };
   return <svg className="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={paths[type]} /></svg>;
@@ -95,7 +97,7 @@ export default function Home() {
         <div className="craft-specialists">
           {specialists.map(([name,area,key,src]) => <article key={name}>
             <div className={`doctor-image doctor-${key}`}><img src={src} alt={`Retrato profissional de ${name}`} width={1000} height={1300} loading="lazy" decoding="async" /></div>
-            <h3>{name}</h3><p>{area}</p><a href={key === "diego" ? "/especialista" : `https://wa.me/5521992189718?text=${encodeURIComponent(`Olá, gostaria de agendar uma consulta com ${name}.`)}`}>{key === "diego" ? "Conheça o especialista" : "Agendar pelo WhatsApp"} <span>→</span></a>
+            <h3>{name}</h3><p>{area}</p><a href={`/equipe/${slugs[key]}`}>Conheça o especialista <span>→</span></a>
           </article>)}
         </div></div>
       </section>
