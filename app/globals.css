@@ -582,8 +582,144 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
   .blog-grid article > div > a, .related-reading > div a, .mega-guide a { align-items: center; display: inline-flex; min-height: 44px; }
 }
 
+/* Progressive motion enhancement: content remains visible until JS adds .motion-ready. */
+:root {
+  --motion-duration-fast: 350ms;
+  --motion-duration-base: 560ms;
+  --motion-duration-slow: 700ms;
+  --motion-ease: cubic-bezier(.22, 1, .36, 1);
+  --motion-distance: 22px;
+  --hero-shift: 0px;
+}
+
+.motion-ready .motion-item {
+  transition:
+    opacity var(--motion-duration-base) var(--motion-ease),
+    transform var(--motion-duration-slow) var(--motion-ease);
+  transition-delay: calc(var(--motion-index, 0) * 72ms);
+}
+
+.motion-ready .motion-item:not(.is-visible) { opacity: 0; }
+.motion-ready .motion-up:not(.is-visible) { transform: translate3d(0, var(--motion-distance), 0); }
+.motion-ready .motion-left:not(.is-visible) { transform: translate3d(calc(var(--motion-distance) * -1), 0, 0); }
+.motion-ready .motion-right:not(.is-visible) { transform: translate3d(var(--motion-distance), 0, 0); }
+.motion-ready .motion-item.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
+
+.hero-image img,
+.hero-visual img,
+.hero-media img,
+.specialty-portrait img {
+  transform: translate3d(0, var(--hero-shift), 0) scale(1.025);
+  transition: transform 120ms linear;
+}
+
+.button,
+.header-cta,
+.craft-primary,
+.mobile-menu-cta {
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-ease),
+    border-color var(--motion-duration-fast) var(--motion-ease),
+    color var(--motion-duration-fast) var(--motion-ease),
+    transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.button:hover,
+.header-cta:hover,
+.craft-primary:hover,
+.mobile-menu-cta:hover { transform: translate3d(0, -2px, 0); }
+.button:active,
+.header-cta:active,
+.craft-primary:active,
+.mobile-menu-cta:active { transform: translate3d(0, 0, 0) scale(.985); }
+
+.service-card,
+.specialist-card,
+.craft-specialists article,
+.blog-grid article,
+.journal-list article,
+.profile-card {
+  transition: transform var(--motion-duration-base) var(--motion-ease);
+}
+
+.service-card:hover,
+.specialist-card:hover,
+.craft-specialists article:hover,
+.blog-grid article:hover,
+.journal-list article:hover,
+.profile-card:hover { transform: translate3d(0, -4px, 0); }
+
+.journal-image img,
+.blog-grid article img,
+.specialist-card img,
+.craft-specialists img,
+.profile-card img,
+.treatment-photo img,
+.doctor-band-photo img {
+  transition: transform var(--motion-duration-slow) var(--motion-ease);
+}
+
+.journal-image:hover img,
+.blog-grid article:hover img,
+.specialist-card:hover img,
+.craft-specialists article:hover img,
+.profile-card:hover img,
+.treatment-photo:hover img,
+.doctor-band-photo:hover img { transform: scale(1.025); }
+
+.mega-panel {
+  animation: qara-menu-in var(--motion-duration-fast) var(--motion-ease) both;
+  transform-origin: top center;
+}
+
+.mobile-menu[open] > nav {
+  animation: qara-menu-in var(--motion-duration-fast) var(--motion-ease) both;
+  transform-origin: top center;
+}
+
+.mega-group a span:last-child,
+.text-link span,
+.quiet-link span,
+.related-reading a span {
+  display: inline-block;
+  transition: transform var(--motion-duration-fast) var(--motion-ease);
+}
+
+.mega-group a:hover span:last-child,
+.text-link:hover span,
+.quiet-link:hover span,
+.related-reading a:hover span { transform: translate3d(4px, 0, 0); }
+
+@keyframes qara-menu-in {
+  from { opacity: 0; transform: translate3d(0, -10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@media (max-width: 860px) {
+  :root { --motion-distance: 14px; --hero-shift: 0px; }
+  .hero-image img,
+  .hero-visual img,
+  .hero-media img,
+  .specialty-portrait img { transform: scale(1.015); transition-duration: var(--motion-duration-base); }
+  .service-card:hover,
+  .specialist-card:hover,
+  .craft-specialists article:hover,
+  .blog-grid article:hover,
+  .journal-list article:hover,
+  .profile-card:hover { transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
   .mobile-menu summary i, .mobile-menu summary i::before, .mobile-menu summary i::after { transition: none; }
+  .motion-ready .motion-item,
+  .motion-ready .motion-item:not(.is-visible),
+  .motion-ready .motion-up:not(.is-visible),
+  .motion-ready .motion-left:not(.is-visible),
+  .motion-ready .motion-right:not(.is-visible),
+  .hero-image img,
+  .hero-visual img,
+  .hero-media img,
+  .specialty-portrait img { opacity: 1 !important; transform: none !important; }
 }
