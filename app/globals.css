@@ -33,6 +33,7 @@
   --space-xl: 72px;
   --space-2xl: 96px;
   --space-section: 112px;
+  --z-scrim: 9;
   --z-dropdown: 20;
 }
 
@@ -334,10 +335,14 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .mega-menu { align-items: stretch; display: flex; }
 .mega-menu > summary { align-items: center; cursor: pointer; display: flex; gap: 8px; list-style: none; min-height: 44px; }
 .mega-menu > summary::-webkit-details-marker { display: none; }
+.mega-menu > summary span { display: inline-block; transition: transform var(--motion-duration-fast) var(--motion-ease); }
 .mega-menu[open] > summary { color: var(--qara-focus); }
+.mega-menu[open] > summary span { transform: rotate(180deg); }
 .desktop-nav a[aria-current], .mega-group a[aria-current], .mobile-menu nav a[aria-current] { color: var(--qara-focus); font-weight: 600; }
-.mega-menu[open]::before { background: rgba(41,41,42,.28); content: ""; inset: 0; pointer-events: none; position: fixed; }
-.mega-panel { background: white; border-bottom: 1px solid var(--qara-gray-200); border-top: 1px solid var(--qara-gray-200); display: grid; grid-template-columns: .72fr 1.35fr 1fr 1fr; left: 0; min-height: 390px; position: fixed; right: 0; top: 82px; z-index: var(--z-dropdown); }
+/* Scrim lives on body: backdrop-filter on .site-header traps fixed descendants inside the header box. */
+body:has(.mega-menu[open])::before, body:has(.mobile-menu[open])::before { animation: qara-fade-in var(--motion-duration-fast) var(--motion-ease) both; background: rgba(41,41,42,.28); content: ""; inset: 0; pointer-events: none; position: fixed; z-index: var(--z-scrim); }
+@keyframes qara-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.mega-panel { background: white; border-bottom: 1px solid var(--qara-gray-200); border-top: 1px solid var(--qara-gray-200); display: grid; grid-template-columns: .72fr 1.35fr 1fr 1fr; left: 0; max-height: calc(100dvh - 82px); min-height: 390px; overflow-y: auto; position: fixed; right: 0; top: 82px; z-index: var(--z-dropdown); }
 .mega-guide { background: var(--qara-ink); color: rgba(255,255,255,.78); display: flex; flex-direction: column; justify-content: center; padding: var(--space-lg) max(var(--space-md), calc((100vw - 1180px)/2)); padding-right: var(--space-lg); }
 .mega-guide p { color: white; font-family: "Telegraf", Arial, sans-serif; font-size: clamp(1.5rem,2vw,2rem); line-height: 1.2; margin-bottom: var(--space-sm); }
 .mega-guide span { font-size: .9375rem; line-height: 1.55; max-width: 28ch; }
@@ -345,9 +350,10 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .mega-group { min-width: 0; padding: 42px clamp(24px,3vw,48px); }
 .mega-group + .mega-group { border-left: 1px solid var(--qara-gray-200); }
 .mega-group > strong { color: var(--qara-focus); display: block; font-size: .8rem; letter-spacing: .08em; margin-bottom: 18px; text-transform: uppercase; }
-.mega-group > a { align-items: center; color: var(--qara-ink); display: flex; font-family: "Telegraf", Arial, sans-serif; font-size: 1rem; justify-content: space-between; min-height: 49px; }
-.mega-group > a:hover { color: var(--qara-focus); }
-.mega-specialties > a { align-items: start; flex-direction: column; gap: 2px; justify-content: center; }
+.mega-group > a { align-items: center; color: var(--qara-ink); display: flex; font-family: "Telegraf", Arial, sans-serif; font-size: 1rem; justify-content: space-between; margin-inline: -14px; min-height: 49px; padding-inline: 14px; transition: background-color .2s ease-out, color .2s ease-out; }
+.mega-group > a + a { border-top: 1px solid var(--qara-line-soft); }
+.mega-group > a:hover { background: var(--qara-blush-soft); color: var(--qara-focus); }
+.mega-specialties > a { align-items: start; flex-direction: column; gap: 2px; justify-content: center; padding-block: 11px; }
 .mega-specialties small { color: var(--qara-copy); font-family: Roboto,Arial,sans-serif; font-size: .875rem; line-height: 1.45; }
 
 .journey-section { background: var(--qara-ink); color: rgba(255,255,255,.76); padding-block: clamp(76px,8vw,108px); }
@@ -481,7 +487,6 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
   .mobile-menu[open] summary i { background: transparent; }
   .mobile-menu[open] summary i::before { top: 0; transform: rotate(45deg); }
   .mobile-menu[open] summary i::after { top: 0; transform: rotate(-45deg); }
-  .mobile-menu[open]::before { background: rgba(41,41,42,.32); content: ""; inset: 0; pointer-events: none; position: fixed; }
   .mobile-menu nav { background: var(--qara-white); border-bottom: 1px solid var(--qara-line); display: flex; flex-direction: column; left: 50%; padding: 16px max(24px, env(safe-area-inset-right)) 24px; position: fixed; right: 0; top: 82px; }
   .mobile-menu nav a { align-items: center; border-bottom: 1px solid var(--qara-gray-200); display: flex; font-size: 1rem; min-height: 52px; }
   .mobile-menu nav .mobile-menu-cta { background: var(--qara-graphite); border: 0; border-radius: 999px; color: white; justify-content: center; margin-top: 18px; min-height: 48px; padding-inline: 20px; }
