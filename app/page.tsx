@@ -71,7 +71,7 @@ export default function Home() {
               <a className="quiet-link" href="#cuidados">Ver especialidades <span>↓</span></a>
             </div>
           </div>
-          <div className="hero-image"><img src="/images/qara-atendimento.webp" alt="Atendimento dermatológico na Clínica QARA" width={1920} height={1280} fetchPriority="high" /></div>
+          <div className="hero-image"><img src="/images/qara-atendimento.webp" srcSet="/images/qara-atendimento-640.webp 640w, /images/qara-atendimento-1024.webp 1024w, /images/qara-atendimento.webp 1920w" sizes="(max-width: 900px) 100vw, 55vw" alt="Atendimento dermatológico na Clínica QARA" width={1920} height={1280} fetchPriority="high" /></div>
           <svg className="contour" viewBox="0 0 240 520" aria-hidden="true"><path d="M168 0c-48 52-39 107-11 137 29 31 1 67-41 93-74 47-82 118-36 150 53 36 86 72 53 140" /></svg>
         </div>
       </section>
@@ -112,7 +112,7 @@ export default function Home() {
       <section className="clinic-story" id="clinica">
         <div className="shell clinic-story-grid">
           <div><p className="kicker light">Nossa clínica</p><h2>Atendimento em Copacabana.</h2><span className="light-rule" /><p>Consultórios preparados para consultas dermatológicas e procedimentos com hora marcada.</p><a href="#contato">Ver endereço e contato <span>→</span></a></div>
-          <div className="clinic-main"><img src="/images/miguel.webp" alt="Recepção da Clínica QARA em Copacabana" width={1920} height={1282} loading="lazy" decoding="async" /></div>
+          <div className="clinic-main"><img src="/images/miguel.webp" srcSet="/images/miguel-640.webp 640w, /images/miguel-1024.webp 1024w, /images/miguel.webp 1920w" sizes="(max-width: 620px) 100vw, (max-width: 900px) 100vw, 60vw" alt="Recepção da Clínica QARA em Copacabana" width={1920} height={1282} loading="lazy" decoding="async" /></div>
           <div className="clinic-detail" aria-hidden="true"><span className="organic-mark" /></div>
         </div>
       </section>
