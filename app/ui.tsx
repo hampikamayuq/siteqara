@@ -57,7 +57,7 @@ export function Footer() {
       <div className="shell footer-grid">
         <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p></div>
         <div><strong>Endereço</strong><p>Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</p></div>
-        <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br />Atendimento com hora marcada</p></div>
+        <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br /><a href="tel:+5521992189718">Ligar: (21) 99218-9718</a><br />Atendimento com hora marcada</p></div>
         <div><strong>Registro</strong><p>Clínica QARA · CRM-RJ 1285041<br />Direção técnica médica</p></div>
       </div>
     </footer>

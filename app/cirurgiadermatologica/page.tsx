@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CtaBand, Footer, Header } from "../ui";
+import { Breadcrumb, CtaBand, Footer, Header } from "../ui";
 
 export const metadata: Metadata = {
   title: "Cirurgia Dermatológica em Copacabana | Clínica QARA",
@@ -20,7 +20,7 @@ const schema={"@context":"https://schema.org","@type":"MedicalWebPage",name:"Cir
 
 export default function SurgeryPage() {
   return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/><Header /><main id="conteudo">
-    <section className="specialty-hero specialty-hero-dark"><div className="shell specialty-hero-grid"><div><p className="kicker light">Cirurgia dermatológica · Copacabana</p><h1>Avaliação, retirada de lesões e reconstrução da pele.</h1><p className="lead">Biópsias e cirurgias da pele, do couro cabeludo e das unhas, com planejamento e acompanhamento da cicatrização.</p><div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Olá%2C%20gostaria%20de%20consultar%20horários%20para%20uma%20avaliação%20de%20cirurgia%20dermatológica.">Consultar horários</a><a className="button button-outline-light" href="#procedimentos">Ver procedimentos realizados</a></div></div><div className="specialty-portrait"><img src="/images/dr-diego.webp" alt="Dr. Diego Gálvez, dermatologista e cirurgião dermatológico" width={1351} height={1672} fetchPriority="high" /></div></div></section>
+    <section className="specialty-hero specialty-hero-dark"><Breadcrumb>Cirurgia dermatológica</Breadcrumb><div className="shell specialty-hero-grid"><div><p className="kicker light">Cirurgia dermatológica · Copacabana</p><h1>Avaliação, retirada de lesões e reconstrução da pele.</h1><p className="lead">Biópsias e cirurgias da pele, do couro cabeludo e das unhas, com planejamento e acompanhamento da cicatrização.</p><div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Olá%2C%20gostaria%20de%20consultar%20horários%20para%20uma%20avaliação%20de%20cirurgia%20dermatológica.">Consultar horários</a><a className="button button-outline-light" href="#procedimentos">Ver procedimentos realizados</a></div></div><div className="specialty-portrait"><img src="/images/dr-diego.webp" alt="Dr. Diego Gálvez, dermatologista e cirurgião dermatológico" width={1351} height={1672} fetchPriority="high" /></div></div></section>
 
     <section className="section shell intro-split"><div><p className="kicker">Cirurgia da pele</p><h2>Do diagnóstico ao tratamento, com acompanhamento próximo.</h2></div><div><p>A cirurgia dermatológica abrange procedimentos realizados na pele e no tecido subcutâneo. Pode ser indicada para esclarecer diagnósticos, tratar lesões benignas ou malignas e reconstruir a área operada.</p><p>A técnica depende do diagnóstico, localização, tamanho da lesão e condições clínicas. Por isso, a consulta e o planejamento individual são etapas essenciais.</p></div></section>
 

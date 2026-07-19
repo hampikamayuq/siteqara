@@ -20,7 +20,7 @@ const specialists = [
 ];
 
 function LineIcon({ type }: { type: string }) {
-  const paths: Record<string, string> = { skin: "M12 3c-4 2-6 6-5 10s5 7 5 7 4-3 5-7-3-7-9-7Z", surgery: "m5 19 14-14m-3-2 5 5M3 16l5 5", hair: "M7 20c0-8 2-15 5-17 3 4 5 9 5 17M9 8h6" };
+  const paths: Record<string, string> = { skin: "M12 3c-4 2-6 6-5 10s5 7 5 7 4-3 5-7-3-7-9-7Z", surgery: "m5 19 14-14m-3-2 5 5M3 16l5 5", hair: "M7 20c0-8 2-15 5-17 3 4 5 9 5 17M9 8h6", shield: "M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6Z" };
   return <svg className="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={paths[type]} /></svg>;
 }
 
@@ -85,13 +85,13 @@ export default function Home() {
             <article><LineIcon type="skin" /><h3>Abordagem individualizada</h3><p>Cada pele, história e objetivo são únicos.</p></article>
             <article><LineIcon type="surgery" /><h3>Atualização científica</h3><p>Condutas baseadas em evidências e avaliação cuidadosa.</p></article>
             <article><LineIcon type="hair" /><h3>Cuidado que acolhe</h3><p>Escuta ativa e presença em todas as etapas.</p></article>
-            <article><LineIcon type="skin" /><h3>Segurança em primeiro lugar</h3><p>Estrutura e protocolos para consultas e procedimentos.</p></article>
+            <article><LineIcon type="shield" /><h3>Segurança em primeiro lugar</h3><p>Estrutura e protocolos para consultas e procedimentos.</p></article>
           </div>
         </div>
       </section>
 
       <section className="section shell" id="especialistas">
-        <div className="specialist-lead"><div><p className="kicker">Corpo clínico</p><h2>Nossos<br />especialistas</h2><p>Conheça a formação e a principal área de atuação de cada dermatologista.</p></div>
+        <div className="specialist-lead"><div><p className="kicker">Corpo clínico</p><h2>Nossos especialistas</h2><p>Conheça a formação e a principal área de atuação de cada dermatologista.</p></div>
         <div className="craft-specialists">
           {specialists.map(([name,area,key,src]) => <article key={name}>
             <div className={`doctor-image doctor-${key}`}><img src={src} alt={`Retrato profissional de ${name}`} width={1000} height={1300} loading="lazy" decoding="async" /></div>
@@ -111,9 +111,9 @@ export default function Home() {
 
       <section className="home-journal"><div className="shell journal-heading"><div><h2>Informação para entender sinais e decisões.</h2></div><p>Artigos escritos por dermatologistas da Clínica QARA, com autoria médica e referências específicas.</p></div><div className="shell journal-list">{articles.slice(0,3).map(article=><article key={article.slug}><Link className="journal-image" href={`/blog/${article.slug}`}><img src={article.image} alt={article.title} width={1400} height={788} loading="lazy" decoding="async"/></Link><div><span>{article.category} · {article.readTime}</span><h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3><p>{article.description}</p><Link href={`/blog/${article.slug}`}>Ler artigo →</Link></div></article>)}</div><div className="shell journal-all"><Link className="button button-secondary" href="/blog">Ver todos os artigos</Link></div></section>
 
-      <section className="quote-section"><div className="shell"><blockquote><span>“</span><p>Uma boa indicação começa por entender os sintomas, o histórico e o que você espera do tratamento.</p><footer>Clínica QARA · Dermatologia especializada</footer></blockquote></div></section>
+      <section className="quote-section"><div className="shell"><blockquote><span>“</span><p>Uma boa indicação começa por entender os sintomas, o histórico e o que você espera do tratamento.</p><footer>Dr. Diego Gálvez · Fundador da Clínica QARA · CRM-RJ 52-0112387-4</footer></blockquote></div></section>
       <section className="practical-section shell"><div><h2>Informações práticas.</h2></div><div className="practical-list"><details><summary>Como escolher o especialista?</summary><p>Conte brevemente sua queixa pelo WhatsApp. Nossa equipe indicará o profissional com a área de atuação mais adequada.</p></details><details><summary>A clínica atende planos de saúde?</summary><p>O atendimento é particular. Emitimos nota fiscal e documentos médicos para solicitação de reembolso, conforme as regras do seu plano.</p></details><details><summary>Há atendimento por telemedicina?</summary><p>Alguns casos podem ser avaliados por telemedicina em todo o Brasil. Procedimentos e exames físicos exigem atendimento presencial.</p></details><details><summary>Quais idiomas estão disponíveis?</summary><p>A equipe oferece atendimento em português, espanhol e inglês, conforme disponibilidade do profissional.</p></details></div></section>
-      <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana,<br />Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span>QARA</span><b>Rua Santa Clara, 50</b></a></div></section>
+      <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana, Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span>QARA</span><b>Rua Santa Clara, 50</b></a></div></section>
       <CtaBand />
     </main>
     <Footer />
