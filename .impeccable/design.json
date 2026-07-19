@@ -1,69 +1,217 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-12T21:15:00-03:00",
+  "generatedAt": "2026-07-19T00:00:00-03:00",
   "title": "Design System: Clínica QARA",
   "extensions": {
     "colorMeta": {
-      "graphite": {"role":"primary","displayName":"Grafite clínico","canonical":"#404041","tonalRamp":["#F1F1F2","#D0D2D3","#A4A4A5","#7A7A7A","#5F5F61","#404041","#29292A","#181819"]},
-      "taupe": {"role":"secondary","displayName":"Taupe humano","canonical":"#A28A7F","tonalRamp":["#FAF6F4","#F0E7E2","#DDCAC1","#C2A99E","#A28A7F","#806B62","#5E4D45","#3D312C"]},
-      "blush": {"role":"secondary","displayName":"Blush de cuidado","canonical":"#FDE6DC","tonalRamp":["#FFF9F6","#FFF1EB","#FDE6DC","#F7CDBB","#EFAE93","#D8896A","#A95F45","#713A29"]},
-      "white": {"role":"neutral","displayName":"Branco clínico","canonical":"#FFFFFF","tonalRamp":["#FFFFFF","#FAFAFA","#F1F1F2","#D0D2D3","#A4A4A5","#7A7A7A","#404041","#29292A"]}
+      "graphite": {
+        "role": "primary",
+        "displayName": "Grafite clínico",
+        "canonical": "#404041",
+        "tonalRamp": [
+          "#F1F1F2",
+          "#D0D2D3",
+          "#A4A4A5",
+          "#7A7A7A",
+          "#5F5F61",
+          "#404041",
+          "#29292A",
+          "#181819"
+        ]
+      },
+      "taupe": {
+        "role": "secondary",
+        "displayName": "Taupe humano",
+        "canonical": "#A28A7F",
+        "tonalRamp": [
+          "#FAF6F4",
+          "#F0E7E2",
+          "#DDCAC1",
+          "#C2A99E",
+          "#A28A7F",
+          "#806B62",
+          "#5E4D45",
+          "#3D312C"
+        ]
+      },
+      "blush": {
+        "role": "secondary",
+        "displayName": "Blush de cuidado",
+        "canonical": "#FDE6DC",
+        "tonalRamp": [
+          "#FFF9F6",
+          "#FFF1EB",
+          "#FDE6DC",
+          "#F7CDBB",
+          "#EFAE93",
+          "#D8896A",
+          "#A95F45",
+          "#713A29"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Branco clínico",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#FFFFFF",
+          "#FAFAFA",
+          "#F1F1F2",
+          "#D0D2D3",
+          "#A4A4A5",
+          "#7A7A7A",
+          "#404041",
+          "#29292A"
+        ]
+      },
+      "taupe-deep": {
+        "role": "secondary",
+        "displayName": "Taupe profundo",
+        "canonical": "#796960",
+        "tonalRamp": [
+          "#F0E7E2",
+          "#C2A99E",
+          "#A28A7F",
+          "#796960",
+          "#735F56",
+          "#5E4D45",
+          "#3D312C",
+          "#2A211D"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": {"displayName":"Display","purpose":"Títulos hero e mensagens dominantes."},
-      "headline": {"displayName":"Headline","purpose":"Títulos de seção e chamadas editoriais."},
-      "body": {"displayName":"Body","purpose":"Leitura clínica e institucional prolongada."},
-      "label": {"displayName":"Label","purpose":"Credenciais, metadados e marcadores curtos."}
+      "display": {
+        "displayName": "Display",
+        "purpose": "Títulos hero e mensagens dominantes."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção e chamadas editoriais."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Leitura clínica e institucional prolongada."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Credenciais, metadados e marcadores curtos."
+      }
     },
     "shadows": [
-      {"name":"ambient-discreta","value":"0 20px 55px rgba(64, 64, 65, .08)","purpose":"Elevação rara em estados interativos."}
+      {
+        "name": "ambient-discreta",
+        "value": "0 20px 55px rgba(64, 64, 65, .08)",
+        "purpose": "Elevação rara em estados interativos."
+      }
     ],
     "motion": [
-      {"name":"state-fast","value":"200ms ease-out","purpose":"Estados de menu, links e controles."},
-      {"name":"image-hover","value":"350ms ease-out","purpose":"Ampliação discreta de imagens editoriais em ponteiros com hover."}
+      {
+        "name": "state-fast",
+        "value": "200ms ease-out",
+        "purpose": "Estados de menu, links e controles."
+      },
+      {
+        "name": "image-hover",
+        "value": "350ms ease-out",
+        "purpose": "Ampliação discreta de imagens editoriais em ponteiros com hover."
+      }
     ],
     "breakpoints": [
-      {"name":"phone","value":"620px"},
-      {"name":"tablet-and-menu","value":"900px"}
+      {
+        "name": "phone",
+        "value": "620px"
+      },
+      {
+        "name": "tablet-and-menu",
+        "value": "900px"
+      }
     ]
   },
   "components": [
     {
-      "name":"Primary Button","kind":"button","refersTo":"button-primary","description":"Ação principal de agendamento.",
-      "html":"<a class=\"ds-btn-primary\" href=\"#\">Agendar pelo WhatsApp</a>",
-      "css":".ds-btn-primary{align-items:center;background:#404041;border-radius:999px;color:#fff;display:inline-flex;font-family:Roboto,Arial,sans-serif;font-size:.86rem;font-weight:600;justify-content:center;min-height:44px;padding:15px 24px;text-decoration:none}.ds-btn-primary:hover{background:#29292a}.ds-btn-primary:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal de agendamento.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Agendar pelo WhatsApp</a>",
+      "css": ".ds-btn-primary{align-items:center;background:#404041;border-radius:999px;color:#fff;display:inline-flex;font-family:Roboto,Arial,sans-serif;font-size:.86rem;font-weight:600;justify-content:center;min-height:44px;padding:15px 24px;text-decoration:none}.ds-btn-primary:hover{background:#29292a}.ds-btn-primary:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
     },
     {
-      "name":"Secondary Button","kind":"button","refersTo":"button-secondary","description":"Ação secundária sem competir com o agendamento.",
-      "html":"<a class=\"ds-btn-secondary\" href=\"#\">Ver localização</a>",
-      "css":".ds-btn-secondary{align-items:center;background:#fff;border:1px solid #d0d2d3;border-radius:999px;color:#29292a;display:inline-flex;font-family:Roboto,Arial,sans-serif;font-size:.86rem;font-weight:600;justify-content:center;min-height:44px;padding:15px 24px;text-decoration:none}.ds-btn-secondary:hover{border-color:#a28a7f}.ds-btn-secondary:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ação secundária sem competir com o agendamento.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver localização</a>",
+      "css": ".ds-btn-secondary{align-items:center;background:#fff;border:1px solid #d0d2d3;border-radius:999px;color:#29292a;display:inline-flex;font-family:Roboto,Arial,sans-serif;font-size:.86rem;font-weight:600;justify-content:center;min-height:44px;padding:15px 24px;text-decoration:none}.ds-btn-secondary:hover{border-color:#a28a7f}.ds-btn-secondary:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
     },
     {
-      "name":"Site Navigation","kind":"nav","description":"Cabeçalho sticky com navegação clínica e CTA.",
-      "html":"<nav class=\"ds-nav\"><strong>QARA</strong><a href=\"#\">Especialidades</a><a href=\"#\">Blog</a><a class=\"ds-nav-cta\" href=\"#\">Agendar</a></nav>",
-      "css":".ds-nav{align-items:center;background:#fff;border-bottom:1px solid rgba(162,138,127,.2);color:#29292a;display:flex;font-family:Roboto,Arial,sans-serif;gap:24px;min-height:72px;padding:0 24px}.ds-nav strong{font-family:'Roboto Slab',Georgia,serif;letter-spacing:.13em;margin-right:auto}.ds-nav a{color:inherit;min-height:44px;display:inline-flex;align-items:center;text-decoration:none}.ds-nav a:hover{color:#a28a7f}.ds-nav-cta{border:1px solid #a28a7f;border-radius:999px;padding:0 18px}.ds-nav a:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
+      "name": "Site Navigation",
+      "kind": "nav",
+      "description": "Cabeçalho sticky com navegação clínica e CTA.",
+      "html": "<nav class=\"ds-nav\"><strong>QARA</strong><a href=\"#\">Especialidades</a><a href=\"#\">Blog</a><a class=\"ds-nav-cta\" href=\"#\">Agendar</a></nav>",
+      "css": ".ds-nav{align-items:center;background:#fff;border-bottom:1px solid rgba(162,138,127,.2);color:#29292a;display:flex;font-family:Roboto,Arial,sans-serif;gap:24px;min-height:72px;padding:0 24px}.ds-nav strong{font-family:Telegraf,Arial,sans-serif;letter-spacing:.13em;margin-right:auto}.ds-nav a{color:inherit;min-height:44px;display:inline-flex;align-items:center;text-decoration:none}.ds-nav a:hover{color:#a28a7f}.ds-nav-cta{border:1px solid #a28a7f;border-radius:999px;padding:0 18px}.ds-nav a:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
     },
     {
-      "name":"Clinical Article Card","kind":"card","refersTo":"card","description":"Entrada editorial baseada em fotografia e hierarquia tipográfica.",
-      "html":"<article class=\"ds-article\"><div class=\"ds-article-image\"></div><small>DERMATOLOGIA · 6 MIN</small><h3>Câncer da pele: sinais de alerta</h3><p>Informação clara para reconhecer quando procurar avaliação.</p><a href=\"#\">Ler artigo →</a></article>",
-      "css":".ds-article{color:#404041;font-family:Roboto,Arial,sans-serif;max-width:340px}.ds-article-image{aspect-ratio:16/10;background:#f1f1f2;margin-bottom:18px}.ds-article small{color:#a28a7f;font-size:.78rem;font-weight:600}.ds-article h3{color:#29292a;font-family:'Roboto Slab',Georgia,serif;font-size:1.6rem;font-weight:400;line-height:1.15;margin:12px 0}.ds-article p{color:#5f5f61;line-height:1.7}.ds-article a{color:#735f56;font-weight:600;min-height:44px;display:inline-flex;align-items:center;text-decoration:none}.ds-article a:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
+      "name": "Clinical Article Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Entrada editorial baseada em fotografia e hierarquia tipográfica.",
+      "html": "<article class=\"ds-article\"><div class=\"ds-article-image\"></div><small>DERMATOLOGIA · 6 MIN</small><h3>Câncer da pele: sinais de alerta</h3><p>Informação clara para reconhecer quando procurar avaliação.</p><a href=\"#\">Ler artigo →</a></article>",
+      "css": ".ds-article{color:#404041;font-family:Roboto,Arial,sans-serif;max-width:340px}.ds-article-image{aspect-ratio:16/10;background:#f1f1f2;margin-bottom:18px}.ds-article small{color:#735f56;font-size:.78rem;font-weight:600}.ds-article h3{color:#29292a;font-family:Telegraf,Arial,sans-serif;font-size:1.6rem;font-weight:400;line-height:1.15;margin:12px 0}.ds-article p{color:#5f5f61;line-height:1.7}.ds-article a{color:#735f56;font-weight:600;min-height:44px;display:inline-flex;align-items:center;text-decoration:none}.ds-article a:focus-visible{outline:3px solid #735f56;outline-offset:4px}"
     },
     {
-      "name":"Medical Author Box","kind":"custom","description":"Identifica autoria e credenciais sem simular revisão.",
-      "html":"<div class=\"ds-author\"><span>Autoria médica</span><strong>Dr. Nome do Médico</strong><p>CRM-RJ 00-0000000-0 · RQE 00000</p></div>",
-      "css":".ds-author{background:#fff1eb;color:#404041;font-family:Roboto,Arial,sans-serif;padding:24px}.ds-author span{color:#a28a7f;display:block;font-size:.8rem;font-weight:600;margin-bottom:8px}.ds-author strong{color:#29292a;font-family:'Roboto Slab',Georgia,serif;font-size:1.25rem;font-weight:400}.ds-author p{color:#5f5f61;font-size:.86rem;margin:8px 0 0}"
+      "name": "Medical Author Box",
+      "kind": "custom",
+      "description": "Identifica autoria e credenciais sem simular revisão.",
+      "html": "<div class=\"ds-author\"><span>Autoria médica</span><strong>Dr. Nome do Médico</strong><p>CRM-RJ 00-0000000-0 · RQE 00000</p></div>",
+      "css": ".ds-author{background:#fff1eb;color:#404041;font-family:Roboto,Arial,sans-serif;padding:24px}.ds-author span{color:#735f56;display:block;font-size:.8rem;font-weight:600;margin-bottom:8px}.ds-author strong{color:#29292a;font-family:Telegraf,Arial,sans-serif;font-size:1.25rem;font-weight:400}.ds-author p{color:#5f5f61;font-size:.86rem;margin:8px 0 0}"
     }
   ],
   "narrative": {
-    "northStar":"Precisão que acolhe",
-    "overview":"Um sistema clínico contemporâneo no qual hierarquia e evidência comunicam precisão, enquanto fotografia, espaço e tons suaves comunicam presença humana.",
-    "keyCharacteristics":["Sereno e preciso","Fotográfico e humano","Responsivo e acessível","Conversão sem pressão"],
-    "rules":[
-      {"name":"Calor contido","body":"Taupe e blush apoiam a experiência sem transformar a clínica em spa.","section":"colors"},
-      {"name":"Voz médica","body":"Títulos têm presença; textos permanecem claros, responsáveis e legíveis.","section":"typography"},
-      {"name":"Plano por padrão","body":"Sombras são raras e respondem a estado, não decoram toda superfície.","section":"elevation"}
+    "northStar": "Precisão que acolhe",
+    "overview": "Um sistema clínico contemporâneo no qual hierarquia e evidência comunicam precisão, enquanto fotografia, espaço e tons suaves comunicam presença humana.",
+    "keyCharacteristics": [
+      "Sereno e preciso",
+      "Fotográfico e humano",
+      "Responsivo e acessível",
+      "Conversão sem pressão"
     ],
-    "dos":["Preservar a paleta e as famílias tipográficas.","Manter toque mínimo de 44 px e foco visível.","Usar imagens WebP realistas e não gráficas.","Vincular conteúdo médico a autoria e referências verificáveis."],
-    "donts":["Não usar sensacionalismo médico nem prometer resultados.","Não criar grids intermináveis de cartões idênticos.","Não usar estética genérica de spa, dourado ostensivo, neon, gradientes decorativos ou glassmorphism.","Não inventar credenciais, revisores, referências ou depoimentos.","Não bloquear zoom nem depender de hover."]
+    "rules": [
+      {
+        "name": "Calor contido",
+        "body": "Taupe e blush apoiam a experiência sem transformar a clínica em spa.",
+        "section": "colors"
+      },
+      {
+        "name": "Voz médica",
+        "body": "Títulos têm presença; textos permanecem claros, responsáveis e legíveis.",
+        "section": "typography"
+      },
+      {
+        "name": "Plano por padrão",
+        "body": "Sombras são raras e respondem a estado, não decoram toda superfície.",
+        "section": "elevation"
+      },
+      {
+        "name": "Contraste AA",
+        "body": "Texto pequeno da marca (eyebrows, credenciais, links) usa taupe profundo #735F56 (~6:1 sobre branco); o taupe claro #A28A7F fica restrito a bordas e decoração; bandas taupe com texto branco usam #796960.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Preservar a paleta e as famílias tipográficas.",
+      "Manter toque mínimo de 44 px e foco visível.",
+      "Usar imagens WebP realistas e não gráficas.",
+      "Vincular conteúdo médico a autoria e referências verificáveis.",
+      "Manter contraste WCAG AA: texto pequeno com pelo menos 4.5:1 sobre o fundo."
+    ],
+    "donts": [
+      "Não usar sensacionalismo médico nem prometer resultados.",
+      "Não criar grids intermináveis de cartões idênticos.",
+      "Não usar estética genérica de spa, dourado ostensivo, neon, gradientes decorativos ou glassmorphism.",
+      "Não inventar credenciais, revisores, referências ou depoimentos.",
+      "Não bloquear zoom nem depender de hover."
+    ]
   }
 }
