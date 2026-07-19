@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vinext dev",
+    "dev": "vite",
     "build": "scripts/build-verified.sh",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "start": "vinext start",
