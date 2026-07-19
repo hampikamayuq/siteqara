@@ -58,7 +58,7 @@ export function Footer() {
       <div className="shell footer-grid">
         <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p></div>
         <div><strong>Endereço</strong><p>Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</p></div>
-        <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br /><a href="tel:+5521992189718">Ligar: (21) 99218-9718</a><br />Seg. a sex., horário comercial<br />Atendimento com hora marcada</p></div>
+        <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br /><a href="tel:+5521992189718">Ligar: (21) 99218-9718</a><br /><a href="mailto:contato@clinicaqara.com.br">contato@clinicaqara.com.br</a><br />Seg. a sex., 8h–21h · Sáb., 8h–13h<br />Atendimento com hora marcada</p></div>
         <div><strong>Registro</strong><p>Clínica QARA · CRM-RJ 1285041<br />Direção técnica médica</p></div>
       </div>
     </footer>
@@ -79,7 +79,7 @@ export function CtaBand() {
     <section className="cta-band" id="agendar">
       <div className="shell cta-inner">
         <div><p className="eyebrow">Agende sua avaliação</p><h2>Conte o que precisa. Nossa equipe indica o especialista adequado e apresenta os horários disponíveis.</h2></div>
-        <div><div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Mensagens fora do horário comercial são respondidas no próximo dia útil.</p></div>
+        <div><div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Atendimento de seg. a sex., 8h–21h, e sáb., 8h–13h. Mensagens fora desse horário são respondidas no próximo período.</p></div>
       </div>
     </section>
   );
