@@ -1,0 +1,31 @@
+<!-- @dsCard group="Foundations" name="Elevation" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · Elevation</title>
+<style>
+  :root{--qara-ink:#29292a;--qara-taupe:#a28a7f;--qara-muted:#6d6d6f;--qara-copy:#5f5f61;--qara-gray-050:#f1f1f2;--qara-gray-200:#d0d2d3;--qara-white:#fff;--radius:24px;--shadow:0 20px 55px rgba(64,64,65,.08);--body:"Roboto",Arial,Helvetica,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;padding:40px;background:var(--qara-white);color:var(--qara-ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  h1{font-family:"Telegraf",Arial,sans-serif;font-size:1.6rem;font-weight:400;letter-spacing:-.02em;margin:0 0 4px}
+  .sub{color:var(--qara-muted);font-size:.85rem;margin:0 0 30px;max-width:60ch}
+  .stage{display:grid;gap:28px;grid-template-columns:1fr 1fr}
+  .cell{background:var(--qara-gray-050);border-radius:16px;padding:40px;display:flex;align-items:center;justify-content:center}
+  .card{background:#fff;border-radius:var(--radius);padding:28px;width:100%}
+  .flat{border:1px solid var(--qara-gray-200)}
+  .raised{box-shadow:var(--shadow)}
+  .card strong{display:block;font-size:.95rem}
+  .card small{display:block;color:var(--qara-muted);font-family:ui-monospace,Menlo,monospace;font-size:.7rem;margin-top:8px;line-height:1.5}
+</style>
+</head>
+<body>
+  <h1>Elevação</h1>
+  <p class="sub">Plano por padrão. Profundidade vem de contraste tonal e linhas finas; a sombra ambiente é reservada a estados interativos — nunca aplicada em série.</p>
+  <div class="stage">
+    <div class="cell"><div class="card flat"><strong>Plano por padrão</strong><small>border: 1px solid #D0D2D3</small></div></div>
+    <div class="cell"><div class="card raised"><strong>Sombra ambiente</strong><small>0 20px 55px rgba(64,64,65,.08)<br>hover de elementos que elevam</small></div></div>
+  </div>
+</body>
+</html>

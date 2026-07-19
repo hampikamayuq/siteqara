@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" name="Buttons" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · Buttons</title>
+<style>
+  :root{--qara-graphite:#404041;--qara-ink:#29292a;--qara-taupe:#a28a7f;--qara-gray-200:#d0d2d3;--qara-muted:#6d6d6f;--qara-white:#fff;--body:"Roboto",Arial,Helvetica,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;padding:40px;background:var(--qara-white);color:var(--qara-ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  h1{font-family:"Telegraf",Arial,sans-serif;font-size:1.6rem;font-weight:400;letter-spacing:-.02em;margin:0 0 4px}
+  .sub{color:var(--qara-muted);font-size:.85rem;margin:0 0 28px;max-width:60ch}
+  .caption{color:var(--qara-taupe);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin:0 0 14px}
+  .stage{display:flex;flex-wrap:wrap;gap:12px;padding:32px;border-radius:16px;margin-bottom:24px}
+  .light-bg{background:#fff;border:1px solid var(--qara-gray-200)}
+  .dark-bg{background:var(--qara-graphite)}
+  .button{align-items:center;border:1px solid transparent;border-radius:999px;display:inline-flex;font-size:.86rem;font-weight:600;justify-content:center;min-height:48px;padding:13px 24px;text-align:center;cursor:pointer}
+  .button-primary{background:var(--qara-graphite);color:#fff}
+  .button-secondary{border-color:var(--qara-gray-200);color:var(--qara-ink);background:#fff}
+  .button-light{background:#fff;color:var(--qara-ink)}
+  .button-outline-light{border-color:rgba(255,255,255,.52);color:#fff}
+  .note{color:var(--qara-muted);font-size:.78rem;margin-top:6px}
+</style>
+</head>
+<body>
+  <h1>Botões</h1>
+  <p class="sub">Formato pill para ações, nunca em cartões. Altura interativa mínima de 48px e foco visível de 3px sólido.</p>
+
+  <p class="caption">Sobre fundo claro</p>
+  <div class="stage light-bg">
+    <span class="button button-primary">Agendar pelo WhatsApp</span>
+    <span class="button button-secondary">Conhecer especialidade</span>
+  </div>
+
+  <p class="caption">Sobre grafite</p>
+  <div class="stage dark-bg">
+    <span class="button button-light">Consultar horários</span>
+    <span class="button button-outline-light">Ver endereço</span>
+  </div>
+  <p class="note">Foco: outline 3px solid #735F56, offset 4px · Alvo de toque ≥ 44px</p>
+</body>
+</html>

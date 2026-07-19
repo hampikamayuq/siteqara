@@ -1,0 +1,31 @@
+<!-- @dsCard group="Components" name="CTA band" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · CTA band</title>
+<style>
+  :root{--qara-graphite:#404041;--qara-ink:#29292a;--qara-blush:#fde6dc;--qara-gray-200:#d0d2d3;--qara-white:#fff;--display:"Telegraf",Arial,sans-serif;--body:"Roboto",Arial,Helvetica,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;padding:40px;background:#fff;font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .cta-band{background:var(--qara-graphite);color:#fff;border-radius:16px;overflow:hidden}
+  .cta-inner{display:grid;gap:60px;grid-template-columns:1fr auto;align-items:center;padding:64px 56px}
+  .eyebrow{color:var(--qara-blush);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+  .cta-inner h2{color:#fff;font-family:var(--display);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:400;letter-spacing:-.02em;line-height:1.15;margin:0;max-width:20ch}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .button{align-items:center;border:1px solid transparent;border-radius:999px;display:inline-flex;font-size:.86rem;font-weight:600;justify-content:center;min-height:48px;padding:13px 24px}
+  .button-light{background:#fff;color:var(--qara-ink)}
+  .button-outline-light{border-color:rgba(255,255,255,.52);color:#fff}
+  @media(max-width:720px){.cta-inner{grid-template-columns:1fr;gap:32px;padding:48px 32px}}
+</style>
+</head>
+<body>
+  <section class="cta-band">
+    <div class="cta-inner">
+      <div><p class="eyebrow">Agende sua avaliação</p><h2>Conte o que precisa. Nossa equipe indica o especialista adequado e apresenta os horários.</h2></div>
+      <div class="actions"><span class="button button-light">Consultar horários no WhatsApp</span><span class="button button-outline-light">Ver endereço da clínica</span></div>
+    </div>
+  </section>
+</body>
+</html>
