@@ -1,12 +1,10 @@
 @import "tailwindcss";
 
-@font-face { font-family: "Roboto"; src: url('/fonts/roboto-400-latin.ttf') format('truetype'); font-display: swap; font-weight: 400; }
-@font-face { font-family: "Roboto"; src: url('/fonts/roboto-500-latin.ttf') format('truetype'); font-display: swap; font-weight: 500; }
-@font-face { font-family: "Roboto"; src: url('/fonts/roboto-600-latin.ttf') format('truetype'); font-display: swap; font-weight: 600; }
-@font-face { font-family: "Roboto Slab"; src: url('/fonts/roboto-slab-400-latin.ttf') format('truetype'); font-display: swap; font-weight: 400; }
-@font-face { font-family: "Roboto Slab"; src: url('/fonts/roboto-slab-500-latin.ttf') format('truetype'); font-display: swap; font-weight: 500; }
-@font-face { font-family: "Telegraf"; src: url('/fonts/Telegraf-Regular.otf') format('opentype'); font-display: swap; font-style: normal; font-weight: 400; }
-@font-face { font-family: "Telegraf"; src: url('/fonts/Telegraf-UltraBold.otf') format('opentype'); font-display: swap; font-style: normal; font-weight: 800; }
+@font-face { font-family: "Roboto"; src: url('/fonts/roboto-400-latin.woff2') format('woff2'); font-display: swap; font-weight: 400; }
+@font-face { font-family: "Roboto"; src: url('/fonts/roboto-500-latin.woff2') format('woff2'); font-display: swap; font-weight: 500; }
+@font-face { font-family: "Roboto"; src: url('/fonts/roboto-600-latin.woff2') format('woff2'); font-display: swap; font-weight: 600; }
+@font-face { font-family: "Telegraf"; src: url('/fonts/Telegraf-Regular.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 400; }
+@font-face { font-family: "Telegraf"; src: url('/fonts/Telegraf-UltraBold.woff2') format('woff2'); font-display: swap; font-style: normal; font-weight: 800; }
 
 :root {
   --qara-graphite: #404041;
