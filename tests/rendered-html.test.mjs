@@ -92,3 +92,19 @@ test("ships the responsive premium consultation hero", async () => {
   assert.match(html, /class="hero-image" aria-hidden="true"/);
   assert.match(html, /alt=""/);
 });
+
+test("lists all five available clinic languages", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("language-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const html = await response.text();
+
+  assert.match(html, /Português, espanhol, inglês, francês e alemão/);
+  assert.match(html, /português, espanhol, inglês, francês e alemão/);
+  assert.match(html, /"availableLanguage":\["pt-BR","es","en","fr","de"\]/);
+});
