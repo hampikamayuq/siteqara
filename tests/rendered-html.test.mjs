@@ -88,5 +88,7 @@ test("ships the responsive premium consultation hero", async () => {
   assert.match(html, /qara-hero-consulta-640\.webp 640w/);
   assert.match(html, /qara-hero-consulta-1024\.webp 1024w/);
   assert.match(html, /fetchpriority="high"/i);
-  assert.match(html, /alt="Dermatologista examina a pele facial de uma paciente com dermatoscópio"/);
+  assert.match(html, /sizes="100vw"/);
+  assert.match(html, /class="hero-image" aria-hidden="true"/);
+  assert.match(html, /alt=""/);
 });

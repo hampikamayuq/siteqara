@@ -241,9 +241,10 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 
 /* Homepage craft direction — Precisão Orgânica */
 .kicker.light { color: #d7bcb0; }
-.craft-hero { background: var(--qara-blush-soft); overflow: hidden; }
-.craft-hero-inner { display: grid; grid-template-columns: .9fr 1.1fr; min-height: 710px; position: relative; }
-.craft-hero-copy { align-self: center; padding: 72px 60px 72px 0; position: relative; z-index: 2; }
+.craft-hero { background: var(--qara-blush-soft); min-height: 710px; overflow: hidden; position: relative; }
+.craft-hero::after { background: linear-gradient(90deg, rgba(247,242,238,.98) 0%, rgba(247,242,238,.91) 34%, rgba(247,242,238,.45) 57%, rgba(247,242,238,.08) 76%); content: ""; inset: 0; pointer-events: none; position: absolute; z-index: 1; }
+.craft-hero-inner { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); min-height: 710px; position: relative; z-index: 2; }
+.craft-hero-copy { align-self: center; grid-column: 1; padding: 72px 0; position: relative; z-index: 2; }
 .craft-hero h1 { font-size: clamp(3.2rem, 5vw, 5.15rem); max-width: 660px; }
 .craft-hero .lead { max-width: 580px; }
 .hero-rule, .dark-rule, .light-rule { display: block; height: 2px; margin: 28px 0; width: 55px; }
@@ -255,10 +256,10 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .quiet-link { align-items: center; border-bottom: 1px solid var(--qara-line-strong); display: inline-flex; font-size: .86rem; gap: 24px; padding: 15px 2px 10px; transition: border-color .2s ease-out, color .2s ease-out; }
 .quiet-link:hover { border-color: var(--qara-focus); color: var(--qara-focus); }
 .hero-image, .doctor-image, .clinic-main, .clinic-detail { align-items: center; background-color: #ead8ce; display: flex; justify-content: center; overflow: hidden; position: relative; }
-.hero-image { min-height: 710px; }
+.craft-hero > .hero-image { inset: 0; min-height: 710px; position: absolute; z-index: 0; }
 .hero-image img, .doctor-image img, .clinic-main img { height: 100%; object-fit: cover; width: 100%; }
 .doctor-manuela img { object-fit: contain; object-position: center bottom; }
-.hero-image img { object-position: 55% center; }
+.craft-hero > .hero-image img { object-position: center 44%; }
 .hero-image span, .doctor-image span, .clinic-main span, .clinic-detail span { background: rgba(255,255,255,.8); color: var(--qara-focus); font-size: .68rem; opacity: 0; padding: 8px 12px; }
 .contour { bottom: -80px; height: 520px; left: 38%; position: absolute; width: 240px; z-index: 3; }
 .contour path { fill: none; stroke: var(--qara-taupe); stroke-width: 1.2; }
@@ -492,9 +493,9 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
   .specialty-portrait { min-height: 560px; }
   .doctor-band-grid > div:last-child { padding-bottom: 70px; }
   .doctor-band-photo { min-height: 520px; }
-  .craft-hero-inner { grid-template-columns: 1fr; }
+  .craft-hero-inner { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
   .craft-hero-copy { padding-right: 0; }
-  .hero-image { min-height: 580px; }
+  .craft-hero > .hero-image { min-height: 580px; }
   .assurance-bar > div { grid-template-columns: 1fr; }
   .assurance-bar p, .assurance-bar p:last-child { border: 0; border-top: 1px solid var(--qara-gray-200); padding-inline: 0; }
   .precision-grid, .editorial-heading, .specialist-lead, .location-grid, .practical-section { gap: 55px; grid-template-columns: 1fr; }
@@ -552,9 +553,13 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
   .procedure-list { grid-template-columns: 1fr; }
   .procedure-list article, .procedure-list article:nth-child(even) { border-left: 0; min-height: auto; padding: 26px 0; }
   .doctor-band-photo { min-height: 450px; }
-  .craft-hero-copy { padding-block: 62px; }
+  .craft-hero { min-height: 650px; }
+  .craft-hero::after { background: linear-gradient(180deg, rgba(247,242,238,.96) 0%, rgba(247,242,238,.88) 48%, rgba(247,242,238,.32) 76%, rgba(247,242,238,.12) 100%); }
+  .craft-hero-inner { display: block; min-height: 650px; }
+  .craft-hero-copy { max-width: 34rem; padding-block: 62px; }
   .craft-hero h1 { font-size: 2.7rem; }
-  .hero-image { min-height: 430px; }
+  .craft-hero > .hero-image { min-height: 650px; }
+  .craft-hero > .hero-image img { object-position: 64% center; }
   .contour { display: none; }
   .principles, .craft-specialists { grid-template-columns: 1fr; }
   .precision-section { padding-block: 76px; }
