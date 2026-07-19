@@ -104,7 +104,7 @@ test("lists all five available clinic languages", async () => {
   );
   const html = await response.text();
 
-  assert.match(html, /Português, espanhol, inglês, francês e alemão/);
-  assert.match(html, /português, espanhol, inglês, francês e alemão/);
-  assert.match(html, /"availableLanguage":\["pt-BR","es","en","fr","de"\]/);
+  assert.match(html, /Português, inglês e espanhol/);
+  assert.match(html, /Alemão e francês conforme o especialista/);
+  assert.match(html, /"availableLanguage":\["pt-BR","en","es","de","fr"\]/);
 });
