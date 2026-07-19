@@ -38,7 +38,7 @@ export default function SpecialistPage() {
       <main id="conteudo">
         <Breadcrumb>Equipe / Dr. Diego Gálvez</Breadcrumb>
         <section className="profile-hero shell">
-          <div className="profile-photo"><img src="/images/dr-diego.webp" width={1351} height={1672} fetchPriority="high" alt="Dr. Diego Gálvez, dermatologista e cirurgião dermatológico" /></div>
+          <div className="profile-photo"><img src="/images/dr-diego.webp" srcSet="/images/dr-diego-640.webp 640w, /images/dr-diego-1024.webp 1024w, /images/dr-diego.webp 1351w" sizes="(max-width: 900px) 100vw, 40vw" width={1351} height={1672} fetchPriority="high" alt="Dr. Diego Gálvez, dermatologista e cirurgião dermatológico" /></div>
           <div>
             <p className="eyebrow">Dermatologista e cirurgião dermatológico</p>
             <h1>Dr. Diego Gálvez</h1>

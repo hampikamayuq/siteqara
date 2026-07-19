@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     title: "Clínica QARA | Dermatologia em Copacabana",
     description: "Dermatologia clínica e cirúrgica, cabelos, unhas e doenças inflamatórias com atendimento especializado em Copacabana.",
-    images: [{ url: "/images/qara-atendimento.webp", width: 1920, height: 1280, alt: "Atendimento na Clínica QARA" }],
+    images: [{ url: "/images/qara-atendimento.webp", width: 1460, height: 973, alt: "Atendimento na Clínica QARA" }],
   },
   other: { "codex-preview": "development" },
 };
