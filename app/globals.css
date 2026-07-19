@@ -114,7 +114,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .cta-inner { align-items: center; display: grid; gap: 60px; grid-template-columns: 1fr auto; padding-block: 75px; }
 .cta-inner h2 { color: white; font-size: clamp(1.8rem, 3vw, 3rem); margin: 0; max-width: 720px; }
 .cta-inner .eyebrow { color: var(--qara-blush); }
-.cta-note { color: rgba(255,255,255,.66); font-size: .8rem; margin: 14px 0 0; max-width: 52ch; }
+.cta-note { color: rgba(255,255,255,.8); font-size: .8rem; margin: 14px 0 0; max-width: 52ch; }
 .site-footer { background: var(--qara-ink); color: rgba(255,255,255,.7); padding-block: 72px; }
 .footer-grid { display: grid; gap: 45px; grid-template-columns: 1.5fr repeat(3, 1fr); }
 .wordmark.inverse { color: white; }
@@ -247,7 +247,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .dark-rule { background: #d7bcb0; }
 .light-rule { background: rgba(255,255,255,.65); }
 .craft-primary { background: var(--qara-taupe-deep); color: white; }
-.craft-primary:hover { background: var(--qara-focus); }
+.craft-primary:hover { background: var(--qara-ink); }
 .quiet-link { align-items: center; border-bottom: 1px solid var(--qara-line-strong); display: inline-flex; font-size: .86rem; gap: 24px; padding: 15px 2px 10px; transition: border-color .2s ease-out, color .2s ease-out; }
 .quiet-link:hover { border-color: var(--qara-focus); color: var(--qara-focus); }
 .hero-image, .doctor-image, .clinic-main, .clinic-detail { align-items: center; background-color: #ead8ce; display: flex; justify-content: center; overflow: hidden; position: relative; }
@@ -306,7 +306,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .location-grid a { color: var(--qara-focus); font-size: .9rem; font-weight: 600; }
 .map-art { align-items: center; background-color: #dedbd8; background-image: linear-gradient(35deg,transparent 49%,rgba(255,255,255,.8) 50%,transparent 52%),linear-gradient(120deg,transparent 48%,rgba(162,138,127,.25) 49%,transparent 51%); background-size: 90px 90px,130px 130px; display: flex; flex-direction: column; justify-content: center; }
 .map-art span { align-items: center; background: var(--qara-taupe); border-radius: 50% 50% 50% 0; color: white; display: flex; font-family: "Telegraf", Arial, sans-serif; height: 68px; justify-content: center; transform: rotate(-45deg); width: 68px; }
-.map-art span::first-letter { transform: rotate(45deg); }
+.map-art span em { font-style: normal; transform: rotate(45deg); }
 .map-art b { background: rgba(255,255,255,.85); font-size: .72rem; margin-top: 18px; padding: 8px 12px; }
 .practical-section { display: grid; gap: 90px; grid-template-columns: .75fr 1.25fr; padding-block: 105px; }
 .practical-list details { border-top: 1px solid var(--qara-gray-200); padding-block: 23px; }
@@ -521,6 +521,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
   .preview-inner nav { margin-left: -10px; overflow-x: auto; width: calc(100% + 20px); }
   .preview-inner nav a { padding-inline: 10px; white-space: nowrap; }
   .header-inner { min-height: 70px; }
+  .blog-index > nav { top: 70px; }
   .header-cta { font-size: .78rem; padding: 9px 14px; }
   .cta-full { display: none; }
   .cta-short { display: inline; }
@@ -554,7 +555,8 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
   .principles, .craft-specialists { grid-template-columns: 1fr; }
   .precision-section { padding-block: 76px; }
   .clinic-story-grid { grid-template-columns: 1fr; }
-  .clinic-main, .clinic-detail { min-height: 360px; }
+  .clinic-main { min-height: 360px; }
+  .clinic-detail { display: none; }
   .location-grid > div:first-child { padding-right: 0; }
   .map-art { min-height: 340px; }
   .journey-grid { gap: var(--space-lg); }

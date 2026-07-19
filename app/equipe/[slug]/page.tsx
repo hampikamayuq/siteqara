@@ -121,7 +121,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main id="conteudo">
-        <Breadcrumb><Link href="/#especialistas">Equipe</Link><span>/</span>{p.name}</Breadcrumb>
+        <Breadcrumb><Link href="/equipe">Equipe</Link><span>/</span>{p.name}</Breadcrumb>
         <section className="profile-hero shell">
           <div className="profile-photo"><img src={p.image} width={p.imageW} height={p.imageH} fetchPriority="high" alt={`${p.name}, ${p.role.toLowerCase()}`} /></div>
           <div>
