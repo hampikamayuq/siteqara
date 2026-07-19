@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     title: "Clínica QARA | Dermatologia em Copacabana",
     description: "Dermatologia clínica e cirúrgica, cabelos, unhas e doenças inflamatórias com atendimento especializado em Copacabana.",
-    images: [{ url: "/images/qara-atendimento.webp", width: 1920, height: 1280, alt: "Atendimento na Clínica QARA" }],
+    images: [{ url: "/images/qara-atendimento.webp", width: 1460, height: 973, alt: "Atendimento na Clínica QARA" }],
   },
   other: { "codex-preview": "development" },
 };
@@ -25,7 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         {children}
-        <script dangerouslySetInnerHTML={{ __html: `addEventListener("keydown",function(e){if(e.key!=="Escape")return;var d=e.target&&e.target.closest?e.target.closest("details[open]"):null;d=d||document.querySelector(".mega-menu[open],.mobile-menu[open]");if(d){d.removeAttribute("open");var s=d.querySelector("summary");s&&s.focus()}});addEventListener("click",function(e){document.querySelectorAll(".mega-menu[open],.mobile-menu[open]").forEach(function(d){d.contains(e.target)||d.removeAttribute("open")});var f=e.target&&e.target.closest?e.target.closest(".blog-index nav a"):null;if(f){f.closest("nav").querySelectorAll("a").forEach(function(x){x.removeAttribute("aria-current")});f.setAttribute("aria-current","true")}});(function(){var p=location.pathname.replace(/\\/$/,"")||"/";document.querySelectorAll(".desktop-nav a[href],.mega-group a[href],.mobile-menu nav a[href]").forEach(function(a){var h=(a.getAttribute("href")||"").split("#")[0].replace(/\\/$/,"")||"/";if(h===p&&h!=="/")a.setAttribute("aria-current","page")})})();` }} />
+        <script dangerouslySetInnerHTML={{ __html: `addEventListener("keydown",function(e){if(e.key!=="Escape")return;var d=e.target&&e.target.closest?e.target.closest("details[open]"):null;d=d||document.querySelector(".mega-menu[open],.mobile-menu[open]");if(d){d.removeAttribute("open");var s=d.querySelector("summary");s&&s.focus()}});addEventListener("click",function(e){var l=e.target&&e.target.closest?e.target.closest(".mega-menu[open] a,.mobile-menu[open] a"):null;if(l){var dd=l.closest("details[open]");while(dd){dd.removeAttribute("open");dd=dd.parentElement?dd.parentElement.closest("details[open]"):null}}document.querySelectorAll(".mega-menu[open],.mobile-menu[open]").forEach(function(d){d.contains(e.target)||d.removeAttribute("open")});var f=e.target&&e.target.closest?e.target.closest(".blog-index nav a"):null;if(f){f.closest("nav").querySelectorAll("a").forEach(function(x){x.removeAttribute("aria-current")});f.setAttribute("aria-current","true")}});` }} />
       </body>
     </html>
   );

@@ -63,7 +63,7 @@ export const specialties: Record<string, Specialty> = {
     ],
     process,
     doctor: "Dr. Miguel Ceccarelli",
-    credential: "CRM-RJ 52-1092456 · RQE 34414",
+    credential: "CRM-RJ 52-0109245-6 · RQE 34414",
     doctorText: "Dermatologista com atuação dedicada às doenças das unhas, o Dr. Miguel conduz a investigação diagnóstica e realiza os procedimentos da unidade ungueal quando indicados.",
     doctorImage: "/images/dr-miguel.webp",
     faq: [
@@ -169,7 +169,7 @@ export const specialties: Record<string, Specialty> = {
     ],
     process,
     doctor: "Dr. Miguel Ceccarelli",
-    credential: "CRM-RJ 52-1092456 · RQE 34414",
+    credential: "CRM-RJ 52-0109245-6 · RQE 34414",
     doctorText: "Dermatologista com atuação em dermatologia estética, o Dr. Miguel conduz cada indicação a partir de um planejamento individualizado, alinhado à anatomia e aos objetivos do paciente.",
     doctorImage: "/images/dr-miguel.webp",
     faq: [
