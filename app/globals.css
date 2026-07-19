@@ -77,6 +77,7 @@ h3 { font-size: 1.08rem; line-height: 1.35; }
 .desktop-nav { display: flex; gap: clamp(16px, 2vw, 31px); font-size: .86rem; }
 .desktop-nav a, .header-cta { align-items: center; display: inline-flex; min-height: 44px; }
 .desktop-nav a:hover { color: var(--qara-taupe); }
+.lang-link { color: var(--qara-muted); font-size: .78rem; font-weight: 600; letter-spacing: .04em; }
 .header-cta { border: 1px solid var(--qara-taupe); border-radius: 999px; color: var(--qara-ink); font-size: .84rem; font-weight: 600; padding: 12px 22px; transition: border-color .2s ease-out, background-color .2s ease-out; }
 .header-cta:hover { background: var(--qara-blush-soft); border-color: var(--qara-focus); }
 .cta-short { display: none; }
@@ -246,6 +247,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .craft-hero-copy { align-self: center; padding: 72px 60px 72px 0; position: relative; z-index: 2; }
 .craft-hero h1 { font-size: clamp(3.2rem, 5vw, 5.15rem); max-width: 660px; }
 .craft-hero .lead { max-width: 580px; }
+.intl-note { color: var(--qara-muted); font-size: .8rem; margin-top: 18px; max-width: 52ch; }
 .hero-rule, .dark-rule, .light-rule { display: block; height: 2px; margin: 28px 0; width: 55px; }
 .hero-rule { background: var(--qara-taupe); }
 .dark-rule { background: #d7bcb0; }
@@ -291,6 +293,8 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .doctor-manuela img { object-fit: contain; object-position: center bottom; }
 .craft-specialists h3 { font-family: "Telegraf", Arial, sans-serif; font-weight: 400; margin: 20px 0 5px; }
 .craft-specialists p { color: var(--qara-muted); font-size: .875rem; min-height: 45px; }
+.lang-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 2px; }
+.lang-tags span { border: 1px solid var(--qara-gray-200); border-radius: 999px; color: var(--qara-copy); font-size: .66rem; font-weight: 600; letter-spacing: .06em; padding: 3px 9px; }
 .craft-specialists a, .clinic-story a { color: var(--qara-focus); font-size: .875rem; font-weight: 600; }
 .clinic-story { background: var(--qara-taupe-deep); color: white; }
 .clinic-story-grid { display: grid; grid-template-columns: .72fr 1.35fr .55fr; min-height: 520px; }

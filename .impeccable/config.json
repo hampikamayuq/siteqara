@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "roboto",
+        "createdAt": "2026-07-19T15:04:17.329Z",
+        "reason": "Roboto é a fonte corporal documentada no DESIGN.md ('preservar Telegraf e Roboto como identidade central') — confirmada como escolha de marca em 4 rodadas de crítica"
+      }
+    ]
+  }
+}

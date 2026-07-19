@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-19T00:00:00-03:00",
+  "generatedAt": "2026-07-19T12:30:00-03:00",
   "title": "Design System: Clínica QARA",
   "extensions": {
     "colorMeta": {
@@ -96,6 +96,10 @@
       "label": {
         "displayName": "Label",
         "purpose": "Credenciais, metadados e marcadores curtos."
+      },
+      "utility": {
+        "displayName": "Utility steps",
+        "purpose": "Degraus intermediários sancionados: 0.66–0.78 metadados, 0.84–0.9375 apoio, 1.05–1.45 leads, 1.65–2.15 títulos editoriais, fallbacks responsivos 2–2.75rem."
       }
     },
     "shadows": [
@@ -197,6 +201,11 @@
         "name": "Contraste AA",
         "body": "Texto pequeno da marca (eyebrows, credenciais, links) usa taupe profundo #735F56 (~6:1 sobre branco); o taupe claro #A28A7F fica restrito a bordas e decoração; bandas taupe com texto branco usam #796960.",
         "section": "colors"
+      },
+      {
+        "name": "Ordem clínica",
+        "body": "Nas listas de especialidades, a dermatologia médica vem primeiro e a estética por último — decisão de posicionamento, não acidente de ordenação.",
+        "section": "narrative"
       }
     ],
     "dos": [

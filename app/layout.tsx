@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://clinicaqara.com.br"),
   title: "Clínica QARA | Dermatologia em Copacabana",
   description: "Dermatologia clínica e cirúrgica, cabelos, unhas e doenças inflamatórias com atendimento especializado em Copacabana.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { "pt-BR": "/", en: "/en", es: "/es", "x-default": "/" } },
   openGraph: {
     type: "website",
     siteName: "Clínica QARA",

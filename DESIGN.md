@@ -116,6 +116,8 @@ A paleta combina neutralidade clínica com calor controlado; o taupe orienta e o
 - **Cinza auxiliar** (`#7A7A7A`): metadados não essenciais.
 - **Foco taupe profundo** (`#735F56`): foco visível, eyebrows, kickers, credenciais e links — a cor de texto pequeno da marca (≈6:1 sobre branco).
 
+**Tints derivados sancionados.** Tons derivados da paleta para superfícies específicas: `#D7BCB0` (taupe claro sobre fundos escuros), `#EAD8CE`/`#EEE8E5` (fundos de imagem), `#E9DAD2`/`#BBA69A`/`#DEDBD8` (gradientes de placeholder e mapa), `#E7C9BC` (links sobre ink). Verde `#3F6B52` e vermelho `#8A4B46` são exclusivos dos marcadores do/don't do viewer interno.
+
 **Regra do calor contido.** Taupe e blush apoiam a experiência; não converter toda a interface em bege, rosado ou “estética de spa”.
 
 ## Typography
@@ -132,6 +134,8 @@ A paleta combina neutralidade clínica com calor controlado; o taupe orienta e o
 - **Title** (600, `1.08rem`, 1.35): cartões, perguntas e subtítulos compactos.
 - **Body** (400, `1rem`, 1.7): texto corrido, limitado preferencialmente a 65–75 caracteres por linha.
 - **Label** (600, `0.8rem`, `0.14em`): kicker pontual, credenciais e metadados curtos.
+
+**Degraus utilitários sancionados.** Além da escala principal, o sistema usa degraus intermediários intencionais: metadados finos (`0.66–0.78rem`), texto de apoio e cartões (`0.84–0.9375rem`), leads e ênfases (`1.05–1.45rem`), títulos editoriais intermediários (`1.65–2.15rem`) e os fallbacks responsivos dos `clamp()` (`2–2.75rem` em telas pequenas). O glifo decorativo da citação usa `4rem`. Monoespaçada de sistema (Menlo/SFMono) é sancionada apenas para rótulos de código/tokens no viewer interno do design system (`.ds-*`).
 
 **Regra da voz médica.** Títulos podem ser expressivos; parágrafos devem permanecer simples, objetivos e confortáveis em zoom ampliado.
 
