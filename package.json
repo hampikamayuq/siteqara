@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "scripts/build-verified.sh",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "start": "vinext start",
     "install:ci": "scripts/install-ci.sh",
     "validate:artifact": "scripts/validate-artifact.sh",
