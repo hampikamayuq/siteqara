@@ -35,6 +35,11 @@ const profiles: Record<string, Profile> = {
     ],
     memberOf: ["Sociedade Brasileira de Dermatologia", "Sociedade Brasileira de Cirurgia Dermatológica"],
     languages: ["pt-BR", "es", "en"],
+    quotes: [
+      ["Dr Diego Galvez é um excelente profissional, minha cicatriz ficou imperceptível!", "Marcus Vinícius · Avaliação pública no Google"],
+      ["O Dr. Diego fez um excelente trabalho. A blefaroplastia do meu tio ficou incrível. A equipe toda é maravilhosa. Muito feliz por ter eles no Rio de Janeiro!", "Fabiola Chavez · Avaliação pública no Google"],
+      ["Gostei bastante do atendimento. O resultado foi maravilhoso 🙏.", "Wallace Tavares · Avaliação pública no Google"],
+    ],
   },
   "dra-diana-stohmann": {
     name: "Dra. Diana Stohmann", role: "Dermatologista · Tricologia e transplante capilar",
@@ -53,6 +58,13 @@ const profiles: Record<string, Profile> = {
       ["Atuação", "Clínica QARA", "Doenças dos cabelos e transplante capilar pela técnica FUE, em Copacabana."],
     ],
     languages: ["pt-BR", "fr"],
+    quotes: [
+      ["Muito profissional, atenciosa e extremamente dedicada. Explica tudo nos mín detalhes, transmite segurança e passa uma tranquilidade que faz toda a diferença.", "Cristiane Taverna · Avaliação pública no Doctoralia"],
+      ["Cuidadosa com o paciente e detalhista nas explicações, passando confiança na sua especialidade.", "José Francisco · Avaliação pública no Doctoralia"],
+      ["Excelente profissional, saímos satisfeitos da consulta, confiantes no tratamento!", "Luis Lopes · Avaliação pública no Doctoralia"],
+      ["Excelente consulta com atendimento humanizado! Interesse e foco no paciente.", "M.A.C · Avaliação pública no Doctoralia"],
+      ["Muito anteciosa! Me sentir bem a vontade em falar.", "Katia · Avaliação pública no Doctoralia"],
+    ],
   },
   "dr-miguel-ceccarelli": {
     name: "Dr. Miguel Ceccarelli", role: "Dermatologista · Unhas e dermatologia estética",
@@ -76,9 +88,9 @@ const profiles: Record<string, Profile> = {
     memberOf: ["Sociedade Brasileira de Dermatologia", "European Academy of Dermatology and Venereology", "European Nail Society"],
     languages: ["pt-BR", "es", "en"],
     quotes: [
-      ["O atendimento foi excelente, Dr. Miguel é solícito e explicou tudo com calma e cuidado. Fiquei surpresa com a riqueza de informações sobre unhas que eu desconhecia, foi muito esclarecedor.", "Josie M."],
-      ["Fui muito bem atendida. Dr. Miguel foi muito didático ao me explicar tudo sobre o que eu tinha e me deu toda orientação.", "Dalva Maria do Bomfim Lopes"],
-      ["Dermatologista com especialidade difícil de encontrar, no meu caso doença de unha. Fui muito bem atendida logo na recepção, o que me deu segurança de estar no lugar certo para o meu problema.", "Consuelo Siqueira"],
+      ["O atendimento foi excelente, Dr. Miguel é solícito e explicou tudo com calma e cuidado. Fiquei surpresa com a riqueza de informações sobre unhas que eu desconhecia, foi muito esclarecedor.", "Josie M. · Avaliação pública no Google"],
+      ["Fui muito bem atendida. Dr. Miguel foi muito didático ao me explicar tudo sobre o que eu tinha e me deu toda orientação.", "Dalva Maria do Bomfim Lopes · Avaliação pública no Google"],
+      ["Dermatologista com especialidade difícil de encontrar, no meu caso doença de unha. Fui muito bem atendida logo na recepção, o que me deu segurança de estar no lugar certo para o meu problema.", "Consuelo Siqueira · Avaliação pública no Google"],
     ],
   },
   "dra-manuela-pedretti": {
@@ -98,6 +110,11 @@ const profiles: Record<string, Profile> = {
       ["Atuação", "Clínica QARA", "Doenças inflamatórias e dermatopediatria, acompanhando pacientes e famílias em Copacabana."],
     ],
     languages: ["pt-BR", "de"],
+    quotes: [
+      ["A Dra. Manuela Pedretti é uma dermatologista fantástica! Tenho psoríase e ela tem sido incrível no manejo do meu tratamento. Sempre oferece soluções eficazes e explicações claras. Além disso, ela é super atenciosa e faz você se sentir realmente cuidado. Recomendo muito!", "Renato Alves dos Santos"],
+      ["A Dra. Manuela tem sido incrível no tratamento da minha dermatite atópica. Ela é muito atenciosa e sabe exatamente como cuidar da minha pele. Com suas orientações, consegui controlar melhor as crises e melhorar a qualidade da minha pele. Recomendo demais!", "Luzia dos Reis Silva"],
+      ["Impressionante o nível de cuidado e atenção que recebi! A equipe é extremamente profissional e dedicada, tornando toda a experiência muito positiva. Minha pele nunca esteve tão bem, e o acompanhamento contínuo tem sido fantástico. Recomendo fortemente para quem busca um atendimento dermatológico de alto padrão.", "Maria Gonçalves de Melo"],
+    ],
   },
 };
 
@@ -172,10 +189,10 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
           <div className="section shell">
             <div className="section-heading">
               <div><h2>O que dizem os pacientes.</h2></div>
-              <p>Depoimentos públicos de pacientes no Google. Experiências individuais não substituem avaliação médica.</p>
+              <p>Depoimentos de pacientes publicados no Google e nos canais da clínica. Experiências individuais não substituem avaliação médica.</p>
             </div>
             <div className="quotes-grid">
-              {p.quotes.map(([text, author]) => <blockquote key={author}><p>{text}</p><footer>{author} · Avaliação pública no Google</footer></blockquote>)}
+              {p.quotes.map(([text, author]) => <blockquote key={author}><p>{text}</p><footer>{author}</footer></blockquote>)}
             </div>
           </div>
         </section>}
