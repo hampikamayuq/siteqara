@@ -12,7 +12,11 @@ export function SpecialtyTemplate({data, path, children}:{data:Specialty; path?:
     about:{"@type":"MedicalSpecialty",name:data.eyebrow},
     author:{"@type":"Physician",name:data.doctor,medicalSpecialty:"Dermatology",identifier:data.credential.split(" · "),worksFor:{"@type":"MedicalClinic",name:"Clínica QARA",url:"https://clinicaqara.com.br"}},
   } : null;
-  return <>{schema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/>}<Header/><main id="conteudo">
+  const faqSchema = path ? {
+    "@context":"https://schema.org","@type":"FAQPage",
+    mainEntity:data.faq.map(([q,a])=>({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:a}})),
+  } : null;
+  return <>{schema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema)}}/>}{faqSchema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/>}<Header/><main id="conteudo">
   <section className="specialty-hero"><Breadcrumb>{data.eyebrow}</Breadcrumb><div className="shell specialty-hero-grid"><div><p className="kicker">{data.eyebrow}</p><h1>{data.title}</h1><p className="lead">{data.lead}</p><div className="actions"><a className="button craft-primary" href={`https://wa.me/5521992189718?text=${encodeURIComponent(`Olá, gostaria de consultar horários para uma avaliação de ${data.eyebrow}.`)}`}>Consultar horários</a><a className="quiet-link" href="#atendimentos">Ver condições atendidas ↓</a></div></div><div className={`specialty-portrait portrait-${data.doctor.split(" ")[1].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()}`}><img src={data.doctorImage} width={1000} height={1400} fetchPriority="high" alt={`${data.doctor}, dermatologista da Clínica QARA`}/></div></div></section>
   <section className="section shell intro-split"><div><p className="kicker">Cuidado especializado</p><h2>{data.introTitle}</h2></div><div>{data.intro.map(p=><p key={p}>{p}</p>)}</div></section>
   <section className="specialty-soft" id="atendimentos"><div className="shell section"><div className="editorial-heading"><div><p className="kicker">O que avaliamos</p><h2>Condições atendidas nesta especialidade.</h2></div><p>Exames e tratamentos são indicados somente após a consulta e variam conforme o diagnóstico, a saúde e os objetivos de cada paciente.</p></div><div className="procedure-list">{data.topics.map(([t,p])=><article key={t}><div><h3>{t}</h3><p>{p}</p></div></article>)}</div></div></section>
