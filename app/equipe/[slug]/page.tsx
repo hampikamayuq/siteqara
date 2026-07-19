@@ -37,7 +37,7 @@ const profiles: Record<string, Profile> = {
   },
   "dra-diana-stohmann": {
     name: "Dra. Diana Stohmann", role: "Dermatologista · Tricologia e transplante capilar",
-    credential: "CRM-RJ 52.1305301 · RQE 57357",
+    credential: "CRM-RJ 52-1305301 · RQE 57357",
     lead: "Atuação dedicada às doenças dos cabelos e do couro cabeludo, da investigação da queda ao transplante capilar pela técnica FUE.",
     image: "/images/dra-diana.webp", imageW: 1200, imageH: 1423,
     facts: ["Atendimento também em francês", "Tricoscopia na avaliação capilar", "Transplante capilar pela técnica FUE"],

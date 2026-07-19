@@ -148,7 +148,8 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .blog-hero { background: var(--qara-blush-soft); padding-block: 120px; }
 .blog-hero h1 { max-width: 900px; }
 .blog-index { padding-block: 80px 120px; }
-.blog-index > nav { border-bottom: 1px solid var(--qara-gray-200); background: var(--qara-white); display: flex; position: sticky; top: 82px; z-index: 5; gap: 28px; overflow-x: auto; padding-bottom: 18px; }
+.blog-index > nav { border-bottom: 1px solid var(--qara-gray-200); background: var(--qara-white); display: flex; position: sticky; top: 82px; z-index: 5; gap: 28px; overflow-x: auto; padding-bottom: 18px; scrollbar-width: none; }
+.blog-index > nav::-webkit-scrollbar { display: none; }
 .blog-index > nav a { color: var(--qara-copy); font-size: .86rem; white-space: nowrap; }
 .blog-index > nav a[aria-current] { border-bottom: 2px solid var(--qara-focus); color: var(--qara-focus); font-weight: 600; }
 .blog-grid { display: grid; gap: 60px 24px; grid-template-columns: repeat(3,1fr); padding-top: 55px; }
@@ -525,7 +526,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
   .section { padding-block: 76px; }
   h1 { font-size: 2.65rem; }
   h2 { font-size: 2rem; }
-  h1, h2, h3 { hyphens: auto; }
+  h2, h3 { hyphens: auto; }
   .preview-inner { align-items: flex-start; flex-direction: column; padding-top: 9px; }
   .preview-inner nav { margin-left: -10px; overflow-x: auto; width: calc(100% + 20px); }
   .preview-inner nav a { padding-inline: 10px; white-space: nowrap; }

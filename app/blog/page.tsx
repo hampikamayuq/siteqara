@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import type {Metadata} from "next"; import Link from "next/link"; import {Breadcrumb,Footer,Header} from "../ui"; import {articles} from "./articles";
+import type {Metadata} from "next"; import Link from "next/link"; import {Breadcrumb,Footer,Header} from "../ui"; import {articles} from "./articles"; import {BlogNavSpy} from "./nav-spy";
 export const metadata:Metadata={title:"Blog de Dermatologia | Clínica QARA",description:"Informação médica revisada sobre pele, cabelos, unhas, câncer da pele e doenças inflamatórias.",alternates:{canonical:"/blog"}};
 const slugify=(c:string)=>c.toLowerCase().replaceAll(" ","-");
 function Card({a,featured=false,eager=false}:{a:(typeof articles)[number];featured?:boolean;eager?:boolean}){
@@ -21,5 +21,5 @@ export default function Blog(){
         </div>;
       })}
     </section>
-  </main><Footer/></>;
+  </main><BlogNavSpy/><Footer/></>;
 }
