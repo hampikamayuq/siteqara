@@ -18,10 +18,11 @@ const primary: Swatch[] = [
 ];
 
 const accents: Swatch[] = [
-  { name: "Taupe humano", token: "--qara-taupe", hex: "#A28A7F", role: "Marca, credenciais, links e divisores", dark: true },
+  { name: "Taupe humano", token: "--qara-taupe", hex: "#A28A7F", role: "Bordas, divisores e detalhes decorativos (não usar em texto pequeno)", dark: true },
+  { name: "Taupe profundo", token: "--qara-taupe-deep", hex: "#796960", role: "Fundos de bandas com texto branco (AA)", dark: true },
   { name: "Blush de cuidado", token: "--qara-blush", hex: "#FDE6DC", role: "Acento suave em áreas selecionadas" },
   { name: "Blush ambiente", token: "--qara-blush-soft", hex: "#FFF1EB", role: "Fundos editoriais e seções de respiro" },
-  { name: "Foco taupe", token: "--qara-focus", hex: "#735F56", role: "Foco visível e links de maior contraste", dark: true },
+  { name: "Foco taupe", token: "--qara-focus", hex: "#735F56", role: "Texto pequeno da marca: eyebrows, kickers, credenciais, links e foco (≈6:1)", dark: true },
 ];
 
 const neutrals: Swatch[] = [
