@@ -1,0 +1,32 @@
+<!-- @dsCard group="Components" name="Service card" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · Service card</title>
+<style>
+  :root{--qara-ink:#29292a;--qara-taupe:#a28a7f;--qara-copy:#5f5f61;--qara-muted:#6d6d6f;--qara-gray-200:#d0d2d3;--qara-white:#fff;--radius:24px;--shadow:0 20px 55px rgba(64,64,65,.08);--display:"Telegraf",Arial,sans-serif;--body:"Roboto",Arial,Helvetica,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;padding:40px;background:#fff;color:var(--qara-ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  h1{font-family:var(--display);font-size:1.6rem;font-weight:400;letter-spacing:-.02em;margin:0 0 4px}
+  .sub{color:var(--qara-muted);font-size:.85rem;margin:0 0 28px;max-width:60ch}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .service-card{border:1px solid var(--qara-gray-200);border-radius:var(--radius);min-height:250px;padding:27px;transition:.2s ease}
+  .service-card:hover{border-color:var(--qara-taupe);transform:translateY(-3px);box-shadow:var(--shadow)}
+  .card-number{color:var(--qara-taupe);display:block;font-family:var(--display);font-size:.86rem;margin-bottom:42px}
+  .service-card h3{font-size:1.08rem;line-height:1.35;margin:0 0 8px}
+  .service-card p{color:#68686a;font-size:.91rem;line-height:1.6;margin:0 0 18px}
+  .service-card a{color:var(--qara-taupe);font-size:.81rem;font-weight:600;text-decoration:none}
+</style>
+</head>
+<body>
+  <h1>Cartão de especialidade</h1>
+  <p class="sub">Plano por padrão, borda fina de 1px, raio surface. Sombra só aparece como resposta de hover. Nunca empilhar cartões dentro de cartões.</p>
+  <div class="grid">
+    <div class="service-card"><span class="card-number">01</span><h3>Dermatologia clínica</h3><p>Acne, rosácea, manchas e acompanhamento de pintas com diagnóstico preciso.</p><a href="#">Conhecer especialidade →</a></div>
+    <div class="service-card"><span class="card-number">02</span><h3>Cirurgia dermatológica</h3><p>Biópsias, remoção de lesões e reconstruções com segurança.</p><a href="#">Conhecer especialidade →</a></div>
+    <div class="service-card"><span class="card-number">03</span><h3>Cabelos e couro cabeludo</h3><p>Queda, alopecias e avaliação de transplante capilar.</p><a href="#">Conhecer especialidade →</a></div>
+  </div>
+</body>
+</html>

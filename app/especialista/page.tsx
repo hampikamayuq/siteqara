@@ -1,10 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, CtaBand, Footer, Header, SectionHeading } from "../ui";
+
+export const metadata: Metadata = {
+  title: "Dr. Diego Gálvez — Dermatologista e Cirurgião Dermatológico | Clínica QARA",
+  description: "Dermatologista e cirurgião dermatológico em Copacabana. Formação no Instituto Azulay, pós-graduação em Cirurgia Dermatológica. CRM-RJ 52-0112387-4 · RQE 57517.",
+  alternates: { canonical: "/especialista" },
+  openGraph: {
+    title: "Dr. Diego Gálvez — Dermatologista e Cirurgião Dermatológico",
+    description: "Dermatologia clínica e cirurgia dermatológica em Copacabana, Rio de Janeiro.",
+    images: [{ url: "/images/dr-diego.webp", width: 1351, height: 1672, alt: "Dr. Diego Gálvez" }],
+  },
+};
+
+const physicianSchema = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: "Dr. Diego Gálvez",
+  medicalSpecialty: ["Dermatology", "Dermatologic Surgery"],
+  identifier: ["CRM-RJ 52-0112387-4", "RQE 57517"],
+  url: "https://clinicaqara.com.br/especialista",
+  image: "https://clinicaqara.com.br/images/dr-diego.webp",
+  knowsLanguage: ["pt-BR", "es", "en"],
+  worksFor: {
+    "@type": "MedicalClinic",
+    name: "Clínica QARA",
+    url: "https://clinicaqara.com.br",
+  },
+};
 
 export default function SpecialistPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianSchema) }} />
       <Header />
       <main id="conteudo">
         <Breadcrumb>Equipe / Dr. Diego Gálvez</Breadcrumb>
@@ -22,10 +51,10 @@ export default function SpecialistPage() {
 
         <section className="soft-section" id="atuacao">
           <div className="section shell">
-            <SectionHeading eyebrow="Áreas de atuação" title="Dermatologia clínica e cirurgia da pele." text="Veja em quais situações o Dr. Diego atua e acesse a página com informações completas sobre cada atendimento." />
+            <SectionHeading title="Dermatologia clínica e cirurgia da pele." text="Veja em quais situações o Dr. Diego atua e acesse a página com informações completas sobre cada atendimento." />
             <div className="focus-grid">
-              <article><h3>Cirurgia dermatológica</h3><p>Retirada de lesões, reconstruções, retalhos, enxertos e acompanhamento pós-operatório.</p><Link href="/cirurgiadermatologica">Ver cirurgia dermatológica →</Link></article>
-              <article><h3>Câncer da pele</h3><p>Avaliação, biópsia, planejamento cirúrgico e controle de margens quando indicado.</p><Link href="/cirurgiadermatologica">Ver tratamento cirúrgico →</Link></article>
+              <article><h3>Cirurgia dermatológica</h3><p>Retirada de lesões, reconstruções, retalhos, enxertos e acompanhamento pós-operatório.</p><Link href="/cirurgia-dermatologica">Ver cirurgia dermatológica →</Link></article>
+              <article><h3>Câncer da pele</h3><p>Avaliação, biópsia, planejamento cirúrgico e controle de margens quando indicado.</p><Link href="/cirurgia-dermatologica">Ver tratamento cirúrgico →</Link></article>
               <article><h3>Biópsias</h3><p>Coleta de amostras da pele, das unhas ou do couro cabeludo para esclarecer o diagnóstico.</p><Link href="/blog/biopsia-de-pele-quando-e-indicada">Entender quando a biópsia é indicada →</Link></article>
               <article><h3>Dermatologia clínica</h3><p>Avaliação de sintomas e lesões da pele, com dermatoscopia quando necessária.</p><Link href="/dermatologia-clinica">Ver dermatologia clínica →</Link></article>
             </div>
@@ -33,12 +62,12 @@ export default function SpecialistPage() {
         </section>
 
         <section className="section shell biography-grid">
-          <div><p className="eyebrow">Formação e experiência</p><h2>Trajetória dedicada à dermatologia e à cirurgia da pele.</h2></div>
+          <div><h2>Trajetória dedicada à dermatologia e à cirurgia da pele.</h2></div>
           <div className="timeline"><article><span>Formação</span><h3>Dermatologia</h3><p>Instituto Professor Rubem David Azulay.</p></article><article><span>Aperfeiçoamento</span><h3>Cirurgia Dermatológica</h3><p>Santa Casa do Rio de Janeiro.</p></article><article><span>Atuação</span><h3>Clínica QARA</h3><p>Fundador e integrante da equipe médica em Copacabana.</p></article></div>
         </section>
 
         <section className="section shell proof-grid">
-          <div><p className="eyebrow">Como é o atendimento</p><h2>Informação antes de qualquer decisão.</h2></div>
+          <div><h2>Informação antes de qualquer decisão.</h2></div>
           <blockquote><p>Na consulta, você recebe explicações sobre as hipóteses diagnósticas, os exames necessários, as opções de tratamento e o acompanhamento esperado.</p><footer>Clínica QARA · Atendimento individualizado</footer></blockquote>
         </section>
         <CtaBand />

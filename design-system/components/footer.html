@@ -1,0 +1,32 @@
+<!-- @dsCard group="Components" name="Footer" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · Footer</title>
+<style>
+  :root{--qara-ink:#29292a;--qara-white:#fff;--display:"Telegraf",Arial,sans-serif;--body:"Roboto",Arial,Helvetica,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;padding:40px;background:#fff;font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .site-footer{background:var(--qara-ink);color:rgba(255,255,255,.7);padding:56px 40px;border-radius:14px}
+  .footer-grid{display:grid;gap:40px;grid-template-columns:1.5fr repeat(3,1fr)}
+  .wordmark{color:#fff;font-family:var(--display);font-size:1.5rem;letter-spacing:.13em;line-height:.85}
+  .wordmark span{display:block;font-family:var(--body);font-size:.4rem;font-weight:600;letter-spacing:.18em;margin-top:9px;text-transform:uppercase}
+  .footer-grid strong{color:#fff;font-size:.82rem;display:block;margin-bottom:8px}
+  .footer-grid p{font-size:.875rem;line-height:1.6;margin:8px 0 0}
+  .footer-grid a{color:rgba(255,255,255,.7);text-decoration:none}
+  @media(max-width:720px){.footer-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div><div class="wordmark">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p></div>
+      <div><strong>Endereço</strong><p>Rua Santa Clara, 50 · salas 521/522<br>Copacabana · Rio de Janeiro</p></div>
+      <div><strong>Contato</strong><p><a href="#">WhatsApp: (21) 99218-9718</a><br>Atendimento com hora marcada</p></div>
+      <div><strong>Registro</strong><p>Clínica QARA · CRM-RJ 1285041<br>Direção técnica médica</p></div>
+    </div>
+  </footer>
+</body>
+</html>

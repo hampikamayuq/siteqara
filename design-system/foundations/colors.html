@@ -1,0 +1,59 @@
+<!-- @dsCard group="Foundations" name="Colors" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · Colors</title>
+<style>
+  :root{
+    --qara-graphite:#404041;--qara-ink:#29292a;--qara-taupe:#a28a7f;
+    --qara-blush:#fde6dc;--qara-blush-soft:#fff1eb;--qara-gray-050:#f1f1f2;
+    --qara-gray-200:#d0d2d3;--qara-gray-600:#7a7a7a;--qara-copy:#5f5f61;
+    --qara-muted:#6d6d6f;--qara-white:#fff;--qara-focus:#735f56;
+    --body:"Roboto",Arial,Helvetica,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:40px;background:var(--qara-white);color:var(--qara-ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  h1{font-family:"Telegraf",Arial,sans-serif;font-size:1.6rem;font-weight:400;letter-spacing:-.02em;margin:0 0 4px}
+  .sub{color:var(--qara-muted);font-size:.85rem;margin:0 0 32px}
+  .eyebrow{color:var(--qara-taupe);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:28px 0 14px}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+  .swatch{border:1px solid var(--qara-gray-200);border-radius:12px;overflow:hidden}
+  .chip{height:96px}
+  dl{margin:0;padding:13px 15px 15px}
+  dt{font-size:.85rem;font-weight:600}
+  dd{margin:2px 0 0;color:var(--qara-muted);font-family:ui-monospace,Menlo,monospace;font-size:.72rem;text-transform:uppercase}
+  dd.role{color:var(--qara-copy);font-family:var(--body);font-size:.76rem;text-transform:none;margin-top:5px}
+</style>
+</head>
+<body>
+  <h1>Cores</h1>
+  <p class="sub">Neutralidade clínica com calor controlado. Regra do calor contido: taupe e blush apoiam, nunca dominam.</p>
+
+  <p class="eyebrow">Primárias</p>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#404041"></div><dl><dt>Grafite clínico</dt><dd>#404041</dd><dd class="role">CTA principal, superfícies escuras, rodapé</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#29292a"></div><dl><dt>Tinta profunda</dt><dd>#29292A</dd><dd class="role">Títulos e texto de maior ênfase</dd></dl></div>
+  </div>
+
+  <p class="eyebrow">Acentos</p>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#a28a7f"></div><dl><dt>Taupe humano</dt><dd>#A28A7F</dd><dd class="role">Bordas, divisores e decoração — não usar em texto pequeno</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#796960"></div><dl><dt>Taupe profundo</dt><dd>#796960</dd><dd class="role">Fundos de bandas com texto branco (AA)</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#fde6dc"></div><dl><dt>Blush de cuidado</dt><dd>#FDE6DC</dd><dd class="role">Acento suave em áreas selecionadas</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#fff1eb;border-bottom:1px solid #d0d2d3"></div><dl><dt>Blush ambiente</dt><dd>#FFF1EB</dd><dd class="role">Fundos editoriais e de respiro</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#735f56"></div><dl><dt>Foco taupe</dt><dd>#735F56</dd><dd class="role">Texto pequeno da marca: eyebrows, credenciais, links e foco</dd></dl></div>
+  </div>
+
+  <p class="eyebrow">Neutros</p>
+  <div class="grid">
+    <div class="swatch"><div class="chip" style="background:#ffffff;border-bottom:1px solid #d0d2d3"></div><dl><dt>Branco clínico</dt><dd>#FFFFFF</dd><dd class="role">Fundo principal e superfícies</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#f1f1f2;border-bottom:1px solid #d0d2d3"></div><dl><dt>Névoa neutra</dt><dd>#F1F1F2</dd><dd class="role">Fundos de apoio</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#d0d2d3"></div><dl><dt>Linha suave</dt><dd>#D0D2D3</dd><dd class="role">Bordas e separadores</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#5f5f61"></div><dl><dt>Texto corrente</dt><dd>#5F5F61</dd><dd class="role">Parágrafos e descrições</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#7a7a7a"></div><dl><dt>Cinza auxiliar</dt><dd>#7A7A7A</dd><dd class="role">Metadados não essenciais</dd></dl></div>
+    <div class="swatch"><div class="chip" style="background:#6d6d6f"></div><dl><dt>Névoa muted</dt><dd>#6D6D6F</dd><dd class="role">Legendas e metadados discretos</dd></dl></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- @dsCard group="Foundations" name="Typography" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · Typography</title>
+<style>
+  :root{
+    --qara-ink:#29292a;--qara-taupe:#a28a7f;--qara-copy:#5f5f61;--qara-muted:#6d6d6f;
+    --qara-gray-200:#d0d2d3;--qara-white:#fff;
+    --display:"Telegraf",Arial,sans-serif;--body:"Roboto",Arial,Helvetica,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:40px;background:var(--qara-white);color:var(--qara-ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  h1{font-family:var(--display);font-size:1.6rem;font-weight:400;letter-spacing:-.02em;margin:0 0 4px}
+  .sub{color:var(--qara-muted);font-size:.85rem;margin:0 0 28px;max-width:60ch}
+  .row{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:baseline;border-top:1px solid var(--qara-gray-200);padding:22px 0}
+  .row:last-child{border-bottom:1px solid var(--qara-gray-200)}
+  .meta span{display:block;color:var(--qara-taupe);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
+  .meta small{display:block;color:var(--qara-muted);font-family:ui-monospace,Menlo,monospace;font-size:.7rem;line-height:1.5}
+  .s{margin:0;color:var(--qara-ink)}
+  .display{font-family:var(--display);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:400;letter-spacing:-.04em;line-height:1.04}
+  .headline{font-family:var(--display);font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:400;letter-spacing:-.025em;line-height:1.12}
+  .title{font-size:1.08rem;font-weight:600;line-height:1.35}
+  .body{color:var(--qara-copy);font-size:1rem;line-height:1.7;max-width:60ch}
+  .label{color:var(--qara-taupe);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+  <h1>Tipografia</h1>
+  <p class="sub">Telegraf traz precisão contemporânea aos títulos; Roboto mantém leitura médica clara em textos longos.</p>
+
+  <div class="row"><div class="meta"><span>Display</span><small>Telegraf · 400<br>clamp(2.75–5.6rem)<br>1.04 · −0.04em</small></div><p class="s display">Precisão que acolhe</p></div>
+  <div class="row"><div class="meta"><span>Headline</span><small>Telegraf · 400<br>clamp(2–3.6rem)<br>1.12 · −0.025em</small></div><p class="s headline">Dermatologia com presença humana</p></div>
+  <div class="row"><div class="meta"><span>Title</span><small>Roboto · 600<br>1.08rem · 1.35</small></div><p class="s title">Como funciona a consulta</p></div>
+  <div class="row"><div class="meta"><span>Body</span><small>Roboto · 400<br>1rem · 1.7<br>65–75 caracteres</small></div><p class="s body">Precisão diagnóstica, atualização científica e atendimento individualizado, sem promessas de resultado nem comunicação alarmista.</p></div>
+  <div class="row"><div class="meta"><span>Label</span><small>Roboto · 600<br>0.8rem · 0.14em<br>uppercase</small></div><p class="s label">Corpo clínico</p></div>
+</body>
+</html>

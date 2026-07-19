@@ -40,3 +40,7 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+
+# Claude Code local settings (machine-specific hooks)
+.claude/settings.local.json
+tsconfig.tsbuildinfo

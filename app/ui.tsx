@@ -4,7 +4,7 @@ import Link from "next/link";
 export function Header() {
   const specialties = [
     ["Dermatologia clínica", "/dermatologia-clinica", "Acne, rosácea, manchas e pintas"],
-    ["Cirurgia dermatológica", "/cirurgiadermatologica", "Biópsias, lesões e reconstruções"],
+    ["Cirurgia dermatológica", "/cirurgia-dermatologica", "Biópsias, lesões e reconstruções"],
     ["Cabelos e couro cabeludo", "/cabelo", "Queda, alopecias e transplante"],
     ["Doenças das unhas", "/unhas", "Micose, inflamações e cirurgia ungueal"],
     ["Doenças inflamatórias", "/doencas-inflamatorias", "Psoríase, dermatite e hidradenite"],
@@ -21,13 +21,14 @@ export function Header() {
   const clinic = [["Corpo clínico", "/#especialistas"], ["A Clínica QARA", "/#clinica"], ["Como funciona a consulta", "/#jornada"], ["Localização e contato", "/#contato"], ["Conteúdo médico", "/blog"]] as const;
   return (
     <header className="site-header">
+      <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <div className="shell header-inner">
         <Link className="wordmark" href="/" aria-label="Clínica QARA — Início">QARA<span>clínica dermatológica</span></Link>
         <nav className="desktop-nav" aria-label="Navegação principal">
           <details className="mega-menu">
             <summary>Especialidades <span aria-hidden="true">⌄</span></summary>
             <div className="mega-panel">
-              <div className="mega-guide"><p>Comece pela sua necessidade.</p><span>Se ainda não sabe qual especialista procurar, nossa equipe pode orientar.</span><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">Pedir orientação →</a></div>
+              <div className="mega-guide"><p>Comece pela sua necessidade.</p><span>Se ainda não sabe qual especialista procurar, nossa equipe pode orientar.</span><a href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20ainda%20n%C3%A3o%20sei%20qual%20especialista%20procurar%20%E2%80%94%20podem%20me%20orientar%3F" target="_blank" rel="noopener noreferrer">Pedir orientação →</a></div>
               <div className="mega-group mega-specialties"><strong>Especialidades</strong>{specialties.map(([label,href,text])=><Link href={href} key={href}><span>{label}</span><small>{text}</small></Link>)}</div>
               <div className="mega-group"><strong>Queixas frequentes</strong>{needs.map(([label,href])=><Link href={href} key={label}>{label}<span aria-hidden="true">→</span></Link>)}</div>
               <div className="mega-group"><strong>Clínica e conteúdo</strong>{clinic.map(([label,href])=><Link href={href} key={label}>{label}<span aria-hidden="true">→</span></Link>)}</div>
@@ -35,14 +36,14 @@ export function Header() {
           </details>
           <Link href="/#especialistas">Equipe</Link><Link href="/#clinica">Clínica</Link><Link href="/blog">Conteúdo</Link>
         </nav>
-        <a className="header-cta" href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)">Agendar pelo WhatsApp</a>
+        <a className="header-cta" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)"><span className="cta-full">Agendar pelo WhatsApp</span><span className="cta-short">Agendar</span></a>
         <details className="mobile-menu">
           <summary aria-label="Abrir menu de navegação"><span>Menu</span><i aria-hidden="true" /></summary>
           <nav aria-label="Navegação móvel">
             <details className="mobile-menu-group"><summary>Especialidades</summary><div>{specialties.map(([label,href])=><Link href={href} key={href}>{label}</Link>)}</div></details>
             <details className="mobile-menu-group"><summary>Encontre seu cuidado</summary><div>{needs.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</div></details>
             {clinic.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}
-            <a className="mobile-menu-cta" href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)">Agendar pelo WhatsApp</a>
+            <a className="mobile-menu-cta" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)">Agendar pelo WhatsApp</a>
           </nav>
         </details>
       </div>
@@ -56,17 +57,17 @@ export function Footer() {
       <div className="shell footer-grid">
         <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p></div>
         <div><strong>Endereço</strong><p>Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</p></div>
-        <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br />Atendimento com hora marcada</p></div>
+        <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br /><a href="tel:+5521992189718">Ligar: (21) 99218-9718</a><br />Seg. a sex., horário comercial<br />Atendimento com hora marcada</p></div>
         <div><strong>Registro</strong><p>Clínica QARA · CRM-RJ 1285041<br />Direção técnica médica</p></div>
       </div>
     </footer>
   );
 }
 
-export function SectionHeading({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
+export function SectionHeading({ eyebrow, title, text }: { eyebrow?: string; title: string; text: string }) {
   return (
     <div className="section-heading">
-      <div><p className="eyebrow">{eyebrow}</p><h2>{title}</h2></div>
+      <div>{eyebrow && <p className="eyebrow">{eyebrow}</p>}<h2>{title}</h2></div>
       <p>{text}</p>
     </div>
   );
@@ -77,7 +78,7 @@ export function CtaBand() {
     <section className="cta-band" id="agendar">
       <div className="shell cta-inner">
         <div><p className="eyebrow">Agende sua avaliação</p><h2>Conte o que precisa. Nossa equipe indica o especialista adequado e apresenta os horários disponíveis.</h2></div>
-        <div className="actions"><a className="button button-light" href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div>
+        <div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div>
       </div>
     </section>
   );

@@ -1,0 +1,25 @@
+<!-- @dsCard group="Components" name="Section heading" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QARA · Section heading</title>
+<style>
+  :root{--qara-ink:#29292a;--qara-taupe:#a28a7f;--qara-muted:#6d6d6f;--qara-white:#fff;--display:"Telegraf",Arial,sans-serif;--body:"Roboto",Arial,Helvetica,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;padding:44px;background:#fff;color:var(--qara-ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .eyebrow{color:var(--qara-taupe);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+  .section-heading{display:grid;gap:50px;grid-template-columns:1.1fr .9fr;align-items:end}
+  .section-heading h2{font-family:var(--display);font-size:clamp(2rem,3.8vw,3.4rem);font-weight:400;letter-spacing:-.025em;line-height:1.12;margin:0;max-width:14ch}
+  .section-heading>p{color:#666668;line-height:1.7;margin:0 0 7px;max-width:44ch}
+  @media(max-width:640px){.section-heading{grid-template-columns:1fr;gap:24px}}
+</style>
+</head>
+<body>
+  <div class="section-heading">
+    <div><p class="eyebrow">Especialidades</p><h2>Cuidado dermatológico completo, por especialista.</h2></div>
+    <p>Cada área é conduzida por um médico dedicado, com atualização científica e conduta individualizada para o seu caso.</p>
+  </div>
+</body>
+</html>

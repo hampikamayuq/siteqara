@@ -5,6 +5,7 @@ colors:
   graphite: "#404041"
   ink: "#29292A"
   taupe: "#A28A7F"
+  taupe-deep: "#796960"
   blush: "#FDE6DC"
   blush-soft: "#FFF1EB"
   gray-050: "#F1F1F2"
@@ -101,7 +102,8 @@ A paleta combina neutralidade clínica com calor controlado; o taupe orienta e o
 
 ### Secondary
 
-- **Taupe humano** (`#A28A7F`): detalhes de marca, credenciais, links e divisores.
+- **Taupe humano** (`#A28A7F`): bordas, divisores, marcadores e detalhes decorativos. Não usar como cor de texto pequeno sobre fundo claro (contraste 3.2:1, abaixo de WCAG AA).
+- **Taupe profundo** (`#796960`): fundos de bandas com texto branco (doctor-band, clinic-story, CTA taupe) — branco sobre ele atinge ≥4.5:1.
 - **Blush de cuidado** (`#FDE6DC`): acento suave em áreas selecionadas.
 - **Blush ambiente** (`#FFF1EB`): fundos editoriais e seções de respiro.
 
@@ -112,7 +114,7 @@ A paleta combina neutralidade clínica com calor controlado; o taupe orienta e o
 - **Linha suave** (`#D0D2D3`): bordas e separadores.
 - **Texto corrente** (`#5F5F61`): parágrafos e descrições.
 - **Cinza auxiliar** (`#7A7A7A`): metadados não essenciais.
-- **Foco taupe profundo** (`#735F56`): foco visível e links de maior contraste.
+- **Foco taupe profundo** (`#735F56`): foco visível, eyebrows, kickers, credenciais e links — a cor de texto pequeno da marca (≈6:1 sobre branco).
 
 **Regra do calor contido.** Taupe e blush apoiam a experiência; não converter toda a interface em bege, rosado ou “estética de spa”.
 
