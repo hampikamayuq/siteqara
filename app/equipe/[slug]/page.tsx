@@ -40,7 +40,7 @@ const profiles: Record<string, Profile> = {
     credential: "CRM-RJ 52.1305301 · RQE 57357",
     lead: "Atuação dedicada às doenças dos cabelos e do couro cabeludo, da investigação da queda ao transplante capilar pela técnica FUE.",
     image: "/images/dra-diana.webp", imageW: 1200, imageH: 1423,
-    facts: ["Tricoscopia na avaliação capilar", "Transplante capilar pela técnica FUE"],
+    facts: ["Atendimento também em francês", "Tricoscopia na avaliação capilar", "Transplante capilar pela técnica FUE"],
     areas: [
       ["Cabelos e couro cabeludo", "Investigação da queda capilar, alopecias e doenças do couro cabeludo.", "/cabelo"],
       ["Transplante capilar", "Avaliação da área doadora, padrão de perda e restauração pela técnica FUE.", "/cabelo"],
@@ -51,6 +51,7 @@ const profiles: Record<string, Profile> = {
       ["Formação", "Dermatologia e fellow em Tricologia", "Instituto Professor Rubem David Azulay."],
       ["Atuação", "Clínica QARA", "Doenças dos cabelos e transplante capilar pela técnica FUE, em Copacabana."],
     ],
+    languages: ["pt-BR", "fr"],
   },
   "dr-miguel-ceccarelli": {
     name: "Dr. Miguel Ceccarelli", role: "Dermatologista · Unhas e dermatologia estética",
@@ -77,7 +78,7 @@ const profiles: Record<string, Profile> = {
     credential: "CRM-RJ 52-8115976-3 · RQE 53939",
     lead: "Atuação dedicada à psoríase, à dermatite atópica, à hidradenite e às doenças autoimunes, além da dermatologia de bebês, crianças e adolescentes.",
     image: "/images/dra-manuela.webp", imageW: 852, imageH: 1280,
-    facts: ["Residência em Dermatologia pela UERJ", "Acompanhamento de doenças crônicas da pele"],
+    facts: ["Atendimento também em alemão", "Residência em Dermatologia pela UERJ", "Acompanhamento de doenças crônicas da pele"],
     areas: [
       ["Doenças inflamatórias", "Psoríase, dermatite atópica, hidradenite e doenças autoimunes.", "/doencas-inflamatorias"],
       ["Dermatopediatria", "Avaliação dermatológica de bebês, crianças e adolescentes.", "/dermatopediatria"],
@@ -88,6 +89,7 @@ const profiles: Record<string, Profile> = {
       ["Formação", "Residência em Dermatologia", "Universidade do Estado do Rio de Janeiro (UERJ)."],
       ["Atuação", "Clínica QARA", "Doenças inflamatórias e dermatopediatria, acompanhando pacientes e famílias em Copacabana."],
     ],
+    languages: ["pt-BR", "de"],
   },
 };
 
