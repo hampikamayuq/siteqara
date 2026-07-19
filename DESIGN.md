@@ -135,6 +135,8 @@ A paleta combina neutralidade clínica com calor controlado; o taupe orienta e o
 
 **Regra da voz médica.** Títulos podem ser expressivos; parágrafos devem permanecer simples, objetivos e confortáveis em zoom ampliado.
 
+**Regra da ordem clínica.** Nas listas de especialidades, a dermatologia médica vem primeiro e a estética por último — decisão de posicionamento (clínica médica, não comercial), não acidente de ordenação.
+
 ## Elevation
 
 O sistema é plano por padrão. Profundidade vem de contraste tonal, fotografia, bordas finas e sobreposição funcional do cabeçalho. A sombra ambiente existente (`0 20px 55px rgba(64, 64, 65, .08)`) é reservada a estados interativos específicos e não deve ser combinada com bordas decorativas pesadas.

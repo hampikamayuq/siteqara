@@ -54,10 +54,10 @@ const profiles: Record<string, Profile> = {
   },
   "dr-miguel-ceccarelli": {
     name: "Dr. Miguel Ceccarelli", role: "Dermatologista · Unhas e dermatologia estética",
-    credential: "CRM-RJ 52-1092456 · RQE 34414",
+    credential: "CRM-RJ 52-0109245-6 · RQE 34414",
     lead: "Atuação dedicada às doenças das unhas e à dermatologia estética, com investigação diagnóstica e planejamento individualizado.",
     image: "/images/dr-miguel.webp", imageW: 415, imageH: 640,
-    facts: ["Procedimentos da unidade ungueal", "Planejamento estético individualizado"],
+    facts: ["Português, espanhol e inglês", "Doutorando em Ciências Médicas (UERJ)", "Coordenador do Departamento de Unhas da SBD-RJ"],
     areas: [
       ["Doenças das unhas", "Micose, unha encravada, psoríase ungueal, tumores e cirurgia da unha.", "/unhas"],
       ["Cirurgia ungueal", "Biópsias e procedimentos da unidade ungueal quando indicados.", "/unhas"],
@@ -65,9 +65,12 @@ const profiles: Record<string, Profile> = {
       ["Conteúdo sobre unhas", "Quando a alteração da unha não é micose.", "/blog/doencas-das-unhas"],
     ],
     timeline: [
-      ["Atuação", "Doenças das unhas", "Investigação diagnóstica e procedimentos da unidade ungueal na Clínica QARA."],
-      ["Atuação", "Dermatologia estética", "Indicações conduzidas a partir de planejamento individualizado."],
+      ["Formação", "Doutorado em andamento", "Doutorando do programa de Ciências Médicas da Universidade do Estado do Rio de Janeiro (UERJ)."],
+      ["Atuação acadêmica", "Ambulatório de Doenças das Unhas", "Coordenador no Serviço de Dermatologia do Hospital Universitário Pedro Ernesto (UERJ)."],
+      ["Atuação", "Clínica QARA", "Doenças das unhas, procedimentos da unidade ungueal e dermatologia estética, em Copacabana."],
     ],
+    memberOf: ["Sociedade Brasileira de Dermatologia", "European Academy of Dermatology and Venereology", "European Nail Society"],
+    languages: ["pt-BR", "es", "en"],
   },
   "dra-manuela-pedretti": {
     name: "Dra. Manuela Pedretti", role: "Dermatologista · Doenças inflamatórias e dermatopediatria",

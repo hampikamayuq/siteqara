@@ -91,7 +91,7 @@ export default function Home() {
           <div className="principles">
             <article><LineIcon type="skin" /><h3>Abordagem individualizada</h3><p>Cada pele, história e objetivo são únicos.</p></article>
             <article><LineIcon type="book" /><h3>Atualização científica</h3><p>Condutas baseadas em evidências e avaliação cuidadosa.</p></article>
-            <article><LineIcon type="heart" /><h3>Cuidado que acolhe</h3><p>Escuta ativa e presença em todas as etapas.</p></article>
+            <article><LineIcon type="heart" /><h3>Presença em todas as etapas</h3><p>O especialista que investiga seu caso é o mesmo que acompanha a evolução, com hora marcada e canal direto de resposta.</p></article>
             <article><LineIcon type="shield" /><h3>Segurança em primeiro lugar</h3><p>Estrutura e protocolos para consultas e procedimentos.</p></article>
           </div>
         </div>

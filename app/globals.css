@@ -151,6 +151,10 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .blog-index > nav a { color: var(--qara-copy); font-size: .86rem; white-space: nowrap; }
 .blog-index > nav a[aria-current] { border-bottom: 2px solid var(--qara-focus); color: var(--qara-focus); font-weight: 600; }
 .blog-grid { display: grid; gap: 60px 24px; grid-template-columns: repeat(3,1fr); padding-top: 55px; }
+.blog-section { padding-top: 65px; scroll-margin-top: 150px; }
+.blog-section-title { align-items: baseline; border-top: 1px solid var(--qara-gray-200); display: flex; font-size: clamp(1.35rem, 2vw, 1.8rem); gap: 14px; justify-content: space-between; margin: 0; padding-top: 26px; }
+.blog-section-title span { color: var(--qara-muted); font-family: Roboto, Arial, sans-serif; font-size: .8rem; }
+.blog-section .blog-grid { padding-top: 30px; }
 .blog-grid article { min-width: 0; scroll-margin-top: 110px; }
 .blog-grid article.featured { align-items: center; display: grid; gap: 55px; grid-column: 1/-1; grid-template-columns: 1.2fr .8fr; }
 .blog-image { aspect-ratio: 16/10; display: block; overflow: hidden; position: relative; }
