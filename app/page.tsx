@@ -120,6 +120,33 @@ export default function Home() {
       <section className="home-journal"><div className="shell journal-heading"><div><h2>Informação para entender sinais e decisões.</h2></div><p>Artigos escritos por dermatologistas da Clínica QARA, com autoria médica e referências específicas.</p></div><div className="shell journal-list">{articles.slice(0,3).map(article=><article key={article.slug}><Link className="journal-image" href={`/blog/${article.slug}`}><img src={article.image} alt={article.title} width={1400} height={788} loading="lazy" decoding="async"/></Link><div><span>{article.category} · {article.readTime}</span><h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3><p>{article.description}</p><Link href={`/blog/${article.slug}`}>Ler artigo →</Link></div></article>)}</div><div className="shell journal-all"><Link className="button button-secondary" href="/blog">Ver todos os artigos</Link></div></section>
 
       <section className="quote-section"><div className="shell"><blockquote><span>“</span><p>Uma boa indicação começa por entender os sintomas, o histórico e o que você espera do tratamento.</p><footer>Dr. Diego Gálvez · Fundador da Clínica QARA</footer></blockquote></div></section>
+
+      <section className="section specialty-soft" aria-label="Depoimentos de pacientes">
+        <div className="shell">
+          <div className="section-heading">
+            <div><h2>O que dizem os pacientes.</h2></div>
+            <p>Avaliações públicas de pacientes no Google e no Doctoralia. Experiências individuais não substituem avaliação médica.</p>
+          </div>
+          <div className="quotes-grid">
+            <blockquote><p>Dr Diego Galvez é um excelente profissional, minha cicatriz ficou imperceptível!</p><footer>Marcus Vinícius · Avaliação pública no Google</footer></blockquote>
+            <blockquote><p>Fui muito bem atendida. Dr. Miguel foi muito didático ao me explicar tudo sobre o que eu tinha e me deu toda orientação.</p><footer>Dalva Maria do Bomfim Lopes · Avaliação pública no Google</footer></blockquote>
+            <blockquote><p>Muito profissional, atenciosa e extremamente dedicada. Explica tudo nos mín detalhes, transmite segurança e passa uma tranquilidade que faz toda a diferença.</p><footer>Cristiane Taverna · Avaliação pública no Doctoralia</footer></blockquote>
+          </div>
+          <div className="rating-row">
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Nota 5,0 no Google, 141 avaliações (abre em nova aba)">
+              <span className="rating-stars" aria-hidden="true">★★★★★</span>
+              <b>5,0</b>
+              <span>141 avaliações no Google</span>
+            </a>
+            <a href="https://www.doctoralia.com.br/clinicas/clinica-qara-2" target="_blank" rel="noopener noreferrer" aria-label="Nota 5,0 no Doctoralia, 583 opiniões (abre em nova aba)">
+              <img src="/images/doctoralia.png" alt="Doctoralia" width={124} height={22} loading="lazy" decoding="async" />
+              <span className="rating-stars" aria-hidden="true">★★★★★</span>
+              <b>5,0</b>
+              <span>583 opiniões</span>
+            </a>
+          </div>
+        </div>
+      </section>
       <section className="practical-section shell"><div><h2>Informações práticas.</h2></div><div className="practical-list"><details><summary>Qual é o horário de atendimento?</summary><p>A clínica atende de segunda a sexta, das 8h às 21h, e aos sábados, das 8h às 13h, sempre com hora marcada.</p></details><details><summary>Como escolher o especialista?</summary><p>Conte brevemente sua queixa pelo WhatsApp. Nossa equipe indicará o profissional com a área de atuação mais adequada.</p></details><details><summary>A clínica atende planos de saúde?</summary><p>O atendimento é particular. Emitimos nota fiscal e documentos médicos para solicitação de reembolso, conforme as regras do seu plano.</p></details><details><summary>Há atendimento por telemedicina?</summary><p>Alguns casos podem ser avaliados por telemedicina em todo o Brasil. Procedimentos e exames físicos exigem atendimento presencial.</p></details><details><summary>Quais idiomas estão disponíveis?</summary><p>A equipe oferece atendimento em português, espanhol, inglês, francês e alemão, conforme disponibilidade do profissional.</p></details></div></section>
       <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana, Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href={mapsUrl} target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href={mapsUrl} target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a></div></section>
       <CtaBand />

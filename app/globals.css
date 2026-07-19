@@ -127,6 +127,13 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .quotes-grid blockquote { background: white; display: flex; flex-direction: column; gap: 18px; justify-content: space-between; padding: 30px; }
 .quotes-grid blockquote p { font-size: 1.05rem; margin: 0; }
 .quotes-grid footer { color: var(--qara-copy); font-size: .75rem; }
+.rating-row { border-top: 1px solid var(--qara-gray-200); display: flex; flex-wrap: wrap; gap: 24px 64px; margin-top: 48px; padding-top: 28px; }
+.rating-row a { align-items: center; display: inline-flex; flex-wrap: wrap; gap: 12px 14px; min-height: 48px; transition: color .2s ease-out; }
+.rating-row a:hover { color: var(--qara-focus); }
+.rating-stars { color: var(--qara-taupe); font-size: .95rem; letter-spacing: 4px; }
+.rating-row b { color: var(--qara-ink); font-family: "Telegraf", Arial, sans-serif; font-size: 1.5rem; font-weight: 400; line-height: 1; }
+.rating-row a > span:not(.rating-stars) { color: var(--qara-copy); font-size: .875rem; }
+.rating-row img { display: block; }
 
 .breadcrumb { color: var(--qara-muted); align-items: center; display: flex; gap: 9px; font-size: .75rem; padding-top: 28px; }
 .specialty-hero-dark .breadcrumb { color: rgba(255,255,255,.75); }
