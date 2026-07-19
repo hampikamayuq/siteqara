@@ -70,7 +70,7 @@ export default function Home() {
               <a className="quiet-link" href="#cuidados">Ver especialidades <span>↓</span></a>
             </div>
           </div>
-          <div className="hero-image"><img src="/images/qara-atendimento.webp" srcSet="/images/qara-atendimento-640.webp 640w, /images/qara-atendimento-1024.webp 1024w, /images/qara-atendimento.webp 1460w" sizes="(max-width: 900px) 100vw, 55vw" alt="Dermatologista da Clínica QARA examina paciente com dermatoscópio" width={1460} height={973} fetchPriority="high" /></div>
+          <div className="hero-image"><img src="/images/qara-hero-consulta.webp" srcSet="/images/qara-hero-consulta-640.webp 640w, /images/qara-hero-consulta-1024.webp 1024w, /images/qara-hero-consulta.webp 1672w" sizes="(max-width: 860px) 100vw, 55vw" alt="Dermatologista examina a pele facial de uma paciente com dermatoscópio" width={1672} height={941} fetchPriority="high" /></div>
           <svg className="contour" viewBox="0 0 240 520" aria-hidden="true"><path d="M168 0c-48 52-39 107-11 137 29 31 1 67-41 93-74 47-82 118-36 150 53 36 86 72 53 140" /></svg>
         </div>
       </section>

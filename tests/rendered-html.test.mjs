@@ -72,3 +72,21 @@ test("ships progressive, accessible motion enhancement", async () => {
   assert.match(controller, /IntersectionObserver/);
   assert.match(controller, /requestAnimationFrame/);
 });
+
+test("ships the responsive premium consultation hero", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("hero-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const html = await response.text();
+
+  assert.match(html, /qara-hero-consulta\.webp/);
+  assert.match(html, /qara-hero-consulta-640\.webp 640w/);
+  assert.match(html, /qara-hero-consulta-1024\.webp 1024w/);
+  assert.match(html, /fetchpriority="high"/i);
+  assert.match(html, /alt="Dermatologista examina a pele facial de uma paciente com dermatoscópio"/);
+});
