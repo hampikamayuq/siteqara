@@ -16,6 +16,7 @@ const STAGGER_GROUPS = [
   ".procedure-list",
   ".care-process ol",
   ".profile-grid",
+  ".quotes-grid",
   ".blog-grid",
   ".footer-grid",
 ];

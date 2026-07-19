@@ -12,6 +12,7 @@ type Profile = {
   timeline: [string, string, string][]; // tag, title, text
   memberOf?: string[];
   languages?: string[];
+  quotes?: [string, string][]; // text, author
 };
 
 const profiles: Record<string, Profile> = {
@@ -58,7 +59,7 @@ const profiles: Record<string, Profile> = {
     credential: "CRM-RJ 52-0109245-6 · RQE 34414",
     lead: "Atuação dedicada às doenças das unhas e à dermatologia estética, com investigação diagnóstica e planejamento individualizado.",
     image: "/images/dr-miguel.webp", imageW: 415, imageH: 640,
-    facts: ["Português, espanhol e inglês", "Doutorando em Ciências Médicas (UERJ)", "Coordenador do Departamento de Unhas da SBD-RJ"],
+    facts: ["Português, espanhol e inglês", "Fundador da Clínica QARA", "Doutorando em Ciências Médicas (UERJ)", "Coordenador do Departamento de Unhas da SBD-RJ"],
     areas: [
       ["Doenças das unhas", "Micose, unha encravada, psoríase ungueal, tumores e cirurgia da unha.", "/unhas"],
       ["Cirurgia ungueal", "Biópsias e procedimentos da unidade ungueal quando indicados.", "/unhas"],
@@ -66,12 +67,19 @@ const profiles: Record<string, Profile> = {
       ["Conteúdo sobre unhas", "Quando a alteração da unha não é micose.", "/blog/doencas-das-unhas"],
     ],
     timeline: [
-      ["Formação", "Doutorado em andamento", "Doutorando do programa de Ciências Médicas da Universidade do Estado do Rio de Janeiro (UERJ)."],
-      ["Atuação acadêmica", "Ambulatório de Doenças das Unhas", "Coordenador no Serviço de Dermatologia do Hospital Universitário Pedro Ernesto (UERJ)."],
-      ["Atuação", "Clínica QARA", "Doenças das unhas, procedimentos da unidade ungueal e dermatologia estética, em Copacabana."],
+      ["Formação", "Dermatologia", "Pós-graduação pelo Instituto de Dermatologia Professor Rubem David Azulay, no Hospital Geral da Santa Casa da Misericórdia do Rio de Janeiro."],
+      ["Doutorado", "Ciências Médicas em andamento", "Doutorando do programa de Ciências Médicas da Universidade do Estado do Rio de Janeiro (UERJ)."],
+      ["Atuação acadêmica", "Ambulatório de Doenças das Unhas", "Fundador e coordenador no Serviço de Dermatologia do Hospital Universitário Pedro Ernesto (UERJ), ambulatório do SUS especializado no estudo das unhas no Rio de Janeiro."],
+      ["Pesquisa", "Revisão científica internacional", "Pesquisa clínica e revisão de artigos para periódicos como o International Journal of Dermatology e o Journal of the European Academy of Dermatology and Venereology."],
+      ["Atuação", "Clínica QARA", "Fundador da Clínica QARA. Doenças das unhas, procedimentos da unidade ungueal e dermatologia estética, com atendimento presencial no Rio de Janeiro e em São Paulo e telemedicina em português, espanhol e inglês."],
     ],
     memberOf: ["Sociedade Brasileira de Dermatologia", "European Academy of Dermatology and Venereology", "European Nail Society"],
     languages: ["pt-BR", "es", "en"],
+    quotes: [
+      ["O atendimento foi excelente, Dr. Miguel é solícito e explicou tudo com calma e cuidado. Fiquei surpresa com a riqueza de informações sobre unhas que eu desconhecia, foi muito esclarecedor.", "Josie M."],
+      ["Fui muito bem atendida. Dr. Miguel foi muito didático ao me explicar tudo sobre o que eu tinha e me deu toda orientação.", "Dalva Maria do Bomfim Lopes"],
+      ["Dermatologista com especialidade difícil de encontrar, no meu caso doença de unha. Fui muito bem atendida logo na recepção, o que me deu segurança de estar no lugar certo para o meu problema.", "Consuelo Siqueira"],
+    ],
   },
   "dra-manuela-pedretti": {
     name: "Dra. Manuela Pedretti", role: "Dermatologista · Doenças inflamatórias e dermatopediatria",
@@ -160,6 +168,17 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
             {p.timeline.map(([tag, t, text]) => <article key={t + text}><span>{tag}</span><h3>{t}</h3><p>{text}</p></article>)}
           </div>
         </section>
+        {p.quotes && <section className="soft-section">
+          <div className="section shell">
+            <div className="section-heading">
+              <div><h2>O que dizem os pacientes.</h2></div>
+              <p>Depoimentos públicos de pacientes no Google. Experiências individuais não substituem avaliação médica.</p>
+            </div>
+            <div className="quotes-grid">
+              {p.quotes.map(([text, author]) => <blockquote key={author}><p>{text}</p><footer>{author} · Avaliação pública no Google</footer></blockquote>)}
+            </div>
+          </div>
+        </section>}
         <CtaBand />
       </main>
       <Footer />
