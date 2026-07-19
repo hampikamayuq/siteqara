@@ -4,6 +4,7 @@ import { CtaBand, Footer, Header } from "../ui";
 export const metadata: Metadata = {
   title: "Cirurgia Dermatológica em Copacabana | Clínica QARA",
   description: "Biópsias, remoção de lesões, cistos, lipomas e tratamento cirúrgico do câncer da pele com Dr. Diego Gálvez na Clínica QARA.",
+  alternates: { canonical: "/cirurgiadermatologica" },
 };
 
 const procedures = [

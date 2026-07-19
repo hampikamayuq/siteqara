@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { CtaBand, Footer, Header } from "../ui";
 
-export const metadata: Metadata = { title: "Queda de Cabelo e Tricologia no Rio de Janeiro | QARA", description: "Avaliação da queda capilar, alopecias, couro cabeludo e transplante capilar com Dra. Diana Stohmann em Copacabana." };
+export const metadata: Metadata = { title: "Queda de Cabelo e Tricologia no Rio de Janeiro | QARA", description: "Avaliação da queda capilar, alopecias, couro cabeludo e transplante capilar com Dra. Diana Stohmann em Copacabana.",alternates:{canonical:"/cabelo"} };
 
 const hairConditions = [["Alopecia androgenética","Afinamento progressivo e redução da densidade capilar em homens e mulheres."],["Eflúvio telógeno","Queda difusa que pode ocorrer após estresse, doenças, cirurgias, parto ou alterações nutricionais."],["Alopecia areata","Queda em áreas delimitadas associada a um processo autoimune."],["Alopecias cicatriciais","Inflamações que podem causar dano permanente ao folículo e exigem diagnóstico precoce."],["Doenças do couro cabeludo","Dermatite seborreica, psoríase, infecções, coceira e descamação persistente."],["Transplante capilar","Avaliação da área doadora, padrão de perda e possibilidade de restauração cirúrgica pela técnica FUE."]];
 

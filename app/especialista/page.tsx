@@ -1,10 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb, CtaBand, Footer, Header, SectionHeading } from "../ui";
+
+export const metadata: Metadata = {
+  title: "Dr. Diego Gálvez — Dermatologista e Cirurgião Dermatológico | Clínica QARA",
+  description: "Dermatologista e cirurgião dermatológico em Copacabana. Formação no Instituto Azulay, pós-graduação em Cirurgia Dermatológica. CRM-RJ 52-0112387-4 · RQE 57517.",
+  alternates: { canonical: "/especialista" },
+  openGraph: {
+    title: "Dr. Diego Gálvez — Dermatologista e Cirurgião Dermatológico",
+    description: "Dermatologia clínica e cirurgia dermatológica em Copacabana, Rio de Janeiro.",
+    images: [{ url: "/images/dr-diego.webp", width: 1351, height: 1672, alt: "Dr. Diego Gálvez" }],
+  },
+};
+
+const physicianSchema = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: "Dr. Diego Gálvez",
+  medicalSpecialty: ["Dermatology", "Dermatologic Surgery"],
+  identifier: ["CRM-RJ 52-0112387-4", "RQE 57517"],
+  url: "https://clinicaqara.com.br/especialista",
+  image: "https://clinicaqara.com.br/images/dr-diego.webp",
+  knowsLanguage: ["pt-BR", "es", "en"],
+  worksFor: {
+    "@type": "MedicalClinic",
+    name: "Clínica QARA",
+    url: "https://clinicaqara.com.br",
+  },
+};
 
 export default function SpecialistPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianSchema) }} />
       <Header />
       <main id="conteudo">
         <Breadcrumb>Equipe / Dr. Diego Gálvez</Breadcrumb>

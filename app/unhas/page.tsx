@@ -1,2 +1,2 @@
 import type {Metadata} from "next"; import {SpecialtyTemplate} from "../specialty-template"; import {specialties} from "../specialties-data";
-export const metadata:Metadata={title:"Dermatologista Especialista em Unhas no RJ | QARA",description:"Avaliação de micose, unha encravada, psoríase ungueal, tumores e cirurgia das unhas em Copacabana."}; export default function Page(){return <SpecialtyTemplate data={specialties.unhas}/>}
+export const metadata:Metadata={title:"Dermatologista Especialista em Unhas no RJ | QARA",description:"Avaliação de micose, unha encravada, psoríase ungueal, tumores e cirurgia das unhas em Copacabana.",alternates:{canonical:"/unhas"}}; export default function Page(){return <SpecialtyTemplate data={specialties.unhas}/>}

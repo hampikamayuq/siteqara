@@ -33,8 +33,30 @@ function LineIcon({ type }: { type: string }) {
   return <svg className="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d={paths[type]} /></svg>;
 }
 
+const clinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: "Clínica QARA",
+  description: "Clínica dermatológica em Copacabana: dermatologia clínica e cirúrgica, cabelos, unhas, doenças inflamatórias, dermatopediatria e dermatologia estética.",
+  url: "https://clinicaqara.com.br",
+  image: "https://clinicaqara.com.br/images/qara-atendimento.webp",
+  telephone: "+55-21-99218-9718",
+  medicalSpecialty: "Dermatology",
+  identifier: "CRM-RJ 1285041",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Rua Santa Clara, 50 — salas 521/522",
+    addressLocality: "Rio de Janeiro",
+    addressRegion: "RJ",
+    addressCountry: "BR",
+  },
+  areaServed: "Copacabana, Rio de Janeiro",
+  availableLanguage: ["pt-BR", "es", "en"],
+};
+
 export default function Home() {
   return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }} />
     <Header />
     <main id="conteudo">
       <section className="craft-hero">
