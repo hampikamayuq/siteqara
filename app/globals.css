@@ -114,7 +114,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .cta-inner { align-items: center; display: grid; gap: 60px; grid-template-columns: 1fr auto; padding-block: 75px; }
 .cta-inner h2 { color: white; font-size: clamp(1.8rem, 3vw, 3rem); margin: 0; max-width: 720px; }
 .cta-inner .eyebrow { color: var(--qara-blush); }
-.cta-note { color: rgba(255,255,255,.66); font-size: .8rem; margin: 14px 0 0; }
+.cta-note { color: rgba(255,255,255,.66); font-size: .8rem; margin: 14px 0 0; max-width: 52ch; }
 .site-footer { background: var(--qara-ink); color: rgba(255,255,255,.7); padding-block: 72px; }
 .footer-grid { display: grid; gap: 45px; grid-template-columns: 1.5fr repeat(3, 1fr); }
 .wordmark.inverse { color: white; }
