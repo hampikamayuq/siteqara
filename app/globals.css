@@ -235,7 +235,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .specialty-hero-dark .lead { color: rgba(255,255,255,.72); }
 .specialty-portrait { align-self: stretch; min-height: 690px; overflow: hidden; position: relative; }
 .specialty-portrait img { height: 100%; object-fit: cover; object-position: center 18%; width: 100%; }
-.specialty-portrait.portrait-manuela img, .specialty-portrait.portrait-miguel img { object-fit: contain; object-position: center bottom; }
+.specialty-portrait.portrait-manuela img { object-fit: contain; object-position: center bottom; }
 .hair-hero .specialty-portrait img { object-position: center 20%; }
 .intro-split { display: grid; gap: 100px; grid-template-columns: 1fr 1fr; }
 .intro-split > div:last-child { color: var(--qara-copy); font-size: 1.03rem; padding-top: 35px; }
@@ -261,7 +261,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .credential-light { color: white; font-weight: 600; }
 .doctor-band-photo { align-self: stretch; min-height: 580px; position: relative; }
 .doctor-band-photo img { height: 100%; object-fit: cover; object-position: center 18%; width: 100%; }
-.doctor-band-photo.portrait-manuela img, .doctor-band-photo.portrait-miguel img { object-fit: contain; object-position: center bottom; }
+.doctor-band-photo.portrait-manuela img { object-fit: contain; object-position: center bottom; }
 .hair-doctor-band .doctor-band-photo img { object-position: center 18%; }
 .specialty-faq { display: grid; gap: 95px; grid-template-columns: .75fr 1.25fr; }
 .treatment-feature { align-items: center; display: grid; gap: 90px; grid-template-columns: 1fr 1fr; }
@@ -301,7 +301,7 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .hero-image, .doctor-image, .clinic-main, .clinic-detail { align-items: center; background-color: #ead8ce; display: flex; justify-content: center; overflow: hidden; position: relative; }
 .hero-image { min-height: 710px; }
 .hero-image img, .doctor-image img, .clinic-main img { height: 100%; object-fit: cover; width: 100%; }
-.doctor-miguel img, .doctor-manuela img { object-fit: contain; object-position: center bottom; }
+.doctor-manuela img { object-fit: contain; object-position: center bottom; }
 .hero-image img { object-position: 55% center; }
 .hero-image span, .doctor-image span, .clinic-main span, .clinic-detail span { background: rgba(255,255,255,.8); color: var(--qara-focus); font-size: .68rem; opacity: 0; padding: 8px 12px; }
 .contour { bottom: -80px; height: 520px; left: 38%; position: absolute; width: 240px; z-index: 3; }

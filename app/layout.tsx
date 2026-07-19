@@ -23,7 +23,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="preload" href="/fonts/Telegraf-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script dangerouslySetInnerHTML={{ __html: `addEventListener("keydown",function(e){if(e.key!=="Escape")return;var d=e.target&&e.target.closest?e.target.closest("details[open]"):null;d=d||document.querySelector(".mega-menu[open],.mobile-menu[open]");if(d){d.removeAttribute("open");var s=d.querySelector("summary");s&&s.focus()}});addEventListener("click",function(e){document.querySelectorAll(".mega-menu[open],.mobile-menu[open]").forEach(function(d){d.contains(e.target)||d.removeAttribute("open")})});` }} />
+      </body>
     </html>
   );
 }

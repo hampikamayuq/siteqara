@@ -22,7 +22,7 @@ const careTopics = [
 ];
 
 const specialists = [
-  ["Dr. Miguel Ceccarelli", "Unhas e dermatologia estética", "miguel", "/images/qara-team.webp"],
+  ["Dr. Miguel Ceccarelli", "Unhas e dermatologia estética", "miguel", "/images/dr-miguel.webp"],
   ["Dr. Diego Gálvez", "Dermatologia e cirurgia dermatológica", "diego", "/images/dr-diego.webp"],
   ["Dra. Diana Stohmann", "Tricologia e transplante capilar", "diana", "/images/dra-diana.webp"],
   ["Dra. Manuela Pedretti", "Psoríase e doenças inflamatórias", "manuela", "/images/dra-manuela.webp"],
