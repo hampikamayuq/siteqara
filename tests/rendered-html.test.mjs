@@ -51,3 +51,24 @@ test("ships an accessible mobile menu without disabling browser zoom", async () 
   assert.match(css, /min-height:\s*44px/);
   assert.match(css, /@media \(pointer: coarse\)/);
 });
+
+test("ships progressive, accessible motion enhancement", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("motion-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const html = await response.text();
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const controller = await readFile(new URL("../app/motion-controller.tsx", import.meta.url), "utf8");
+
+  assert.match(html, /data-motion-root/);
+  assert.match(css, /\.motion-ready/);
+  assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(css, /--hero-shift:\s*0px/);
+  assert.match(controller, /IntersectionObserver/);
+  assert.match(controller, /requestAnimationFrame/);
+});
