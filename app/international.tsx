@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { Footer, Header, portraitSrcSet } from "./ui";
+import { clinicMapsUrl, Footer, Header, portraitSrcSet } from "./ui";
 
 export type IntlContent = {
   path: string; ogLocale: string;
@@ -43,7 +43,7 @@ export function InternationalPage({ c }: { c: IntlContent }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main id="conteudo">
+      <main id="conteudo" lang={c.ogLocale.split("_")[0]}>
         <section className="craft-hero">
           <div className="shell craft-hero-inner">
             <div className="craft-hero-copy">
@@ -116,10 +116,10 @@ export function InternationalPage({ c }: { c: IntlContent }) {
               <h2>{c.visitTitle}</h2>
               <p>{c.addressLines.map(l => <span key={l}>{l}<br /></span>)}</p>
               <p><strong>{c.hoursLabel}</strong><br />{c.hoursLines.map(l => <span key={l}>{l}<br /></span>)}</p>
-              <p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer">{c.mapsLabel} <span aria-hidden="true">→</span></a><br />
+              <p><a href={clinicMapsUrl} target="_blank" rel="noreferrer">{c.mapsLabel} <span aria-hidden="true">→</span></a><br />
               <a href="mailto:contato@clinicaqara.com.br">{c.emailLabel}: contato@clinicaqara.com.br</a></p>
             </div>
-            <a className="map-art" href="https://www.google.com/maps/search/?api=1&query=Rua+Santa+Clara+50+Copacabana+Rio+de+Janeiro" target="_blank" rel="noreferrer" aria-label={c.mapsLabel}><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a>
+            <a className="map-art" href={clinicMapsUrl} target="_blank" rel="noreferrer" aria-label={c.mapsLabel}><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a>
           </div>
         </section>
 
@@ -188,7 +188,7 @@ export const enContent: IntlContent = {
     ["Do the doctors speak English?", "Yes. Dr. Diego Gálvez, Dr. Miguel Ceccarelli and Dr. Fabrício de Andrade provide care in English. Dr. Diego and Dr. Miguel also attend in Spanish, Dra. Diana Stohmann in French and Dra. Manuela Pedretti in German. Tell us your language when booking and we will match you with the right specialist."],
     ["Can I use my travel insurance?", "The clinic provides private care and issues an itemized invoice (nota fiscal) and medical documentation you can submit to your travel-insurance provider for reimbursement, according to your policy's rules."],
     ["How do I book an appointment?", "Send us a WhatsApp message in English — the button on this page opens a conversation. Our team confirms the specialist, date and time with you."],
-    ["What are the opening hours?", "Monday to Friday from 8am to 9pm, and Saturdays from 8am to 1pm, always by appointment. Messages sent outside these hours are answered in the next service period."],
+    ["What are the opening hours?", "Monday to Friday from 8am to 9pm, and Saturdays from 8am to 1pm, always by appointment."],
     ["Is telemedicine available?", "Some cases and follow-ups can be handled by telemedicine when clinically appropriate. Procedures and physical examinations require an in-person visit."],
   ],
   visitTitle: "Visiting the clinic.",
@@ -196,7 +196,7 @@ export const enContent: IntlContent = {
   hoursLabel: "Opening hours", hoursLines: ["Mon–Fri: 8am–9pm", "Sat: 8am–1pm"],
   mapsLabel: "Open in Google Maps", emailLabel: "E-mail",
   ctaTitle: "Tell us what you need — in English.",
-  ctaBtn: "Chat on WhatsApp", ctaNote: "Mon–Fri 8am–9pm, Sat 8am–1pm. Messages outside these hours are answered in the next service period.",
+  ctaBtn: "Chat on WhatsApp", ctaNote: "Mon–Fri 8am–9pm, Sat 8am–1pm, always by appointment.",
 };
 
 export const esContent: IntlContent = {
@@ -246,7 +246,7 @@ export const esContent: IntlContent = {
     ["¿Los médicos hablan español?", "Sí. El Dr. Diego Gálvez y el Dr. Miguel Ceccarelli atienden en español e inglés. La Dra. Diana Stohmann también atiende en francés y la Dra. Manuela Pedretti en alemán. Indique su idioma al agendar y lo conectamos con el especialista adecuado."],
     ["¿Puedo usar mi seguro de viaje?", "La atención es particular y la clínica emite factura detallada (nota fiscal) y documentación médica que usted puede presentar a su seguro de viaje para reembolso, según las reglas de su póliza."],
     ["¿Cómo agendo una consulta?", "Envíe un mensaje de WhatsApp en español — el botón de esta página abre la conversación. Nuestro equipo confirma con usted el especialista, la fecha y la hora."],
-    ["¿Cuál es el horario de atención?", "De lunes a viernes de 8 a 21 h, y sábados de 8 a 13 h, siempre con cita previa. Los mensajes enviados fuera de ese horario se responden en el siguiente período de atención."],
+    ["¿Cuál es el horario de atención?", "De lunes a viernes de 8 a 21 h, y sábados de 8 a 13 h, siempre con cita previa."],
     ["¿Hay telemedicina?", "Algunos casos y seguimientos pueden atenderse por telemedicina cuando es clínicamente apropiado. Los procedimientos y el examen físico requieren visita presencial."],
   ],
   visitTitle: "Cómo llegar.",
@@ -254,5 +254,5 @@ export const esContent: IntlContent = {
   hoursLabel: "Horario", hoursLines: ["Lun–Vie: 8–21 h", "Sáb: 8–13 h"],
   mapsLabel: "Abrir en Google Maps", emailLabel: "Correo",
   ctaTitle: "Cuéntenos qué necesita — en español.",
-  ctaBtn: "Conversar por WhatsApp", ctaNote: "Lun–Vie 8–21 h, Sáb 8–13 h. Los mensajes fuera de ese horario se responden en el siguiente período.",
+  ctaBtn: "Conversar por WhatsApp", ctaNote: "Lun–Vie 8–21 h, Sáb 8–13 h, siempre con cita previa.",
 };

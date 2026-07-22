@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 const REVEAL_GROUPS = [
   ["main > section:not(.hero):not(.specialty-hero), .article-page > header, .article-cover, .article-layout, .breadcrumb", "motion-up"],
-  [".section-heading, .editorial-heading, .specialty-hero-grid > div:first-child, .article-header", "motion-up"],
+  [".section-heading, .editorial-heading, .specialty-hero-grid > div:first-child, .article-header, .blog-featured", "motion-up"],
   [".doctor-band-photo, .treatment-photo, .location-grid > div:first-child", "motion-left"],
   [".doctor-band-grid > div:last-child, .treatment-feature > div:first-child, .map-art", "motion-right"],
 ] as const;
@@ -17,7 +17,8 @@ const STAGGER_GROUPS = [
   ".care-process ol",
   ".profile-grid",
   ".quotes-grid",
-  ".blog-grid",
+  ".topic-list",
+  ".article-related > div:nth-child(2)",
   ".footer-grid",
 ];
 

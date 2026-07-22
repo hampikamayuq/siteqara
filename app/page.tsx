@@ -1,6 +1,7 @@
-import { CtaBand, Footer, Header, portraitSrcSet } from "./ui";
+import { clinicMapsUrl, CtaBand, Footer, Header, portraitSrcSet } from "./ui";
 import Link from "next/link";
 import { articles } from "./blog/articles";
+import { evidence } from "./blog/article-evidence";
 
 const services = [
   ["Dermatologia clínica", "Acne, rosácea, manchas, alergias e avaliação de pintas.", "/dermatologia-clinica"],
@@ -21,7 +22,9 @@ const specialists = [
 ];
 
 const slugs: Record<string, string> = { miguel: "dr-miguel-ceccarelli", diego: "dr-diego-galvez", diana: "dra-diana-stohmann", manuela: "dra-manuela-pedretti", fabricio: "dr-fabricio-de-andrade" };
-const mapsUrl = "https://www.google.com/maps/place/Cl%C3%ADnica+QARA/@-22.9717237,-43.1869868,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICp1ZzO9gE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAHRPTWk7XCEk_ldeGIZtGX3qU8zThjkRR2ad_TBZKBkw__YmLZFe_DtY4LgKFZeJDTGGjn9BY08aCcZ6unD4N0-P0OhzvwFHdET6ERnxEZLmE2IbXttr0APMBhGNGPpJM-_HxSN4u6AY%3Dw128-h86-k-no!7i3870!8i2583!4m7!3m6!1s0x9bd5c690781749:0xd8efa1efc0385245!8m2!3d-22.9716311!4d-43.1868668!10e5!16s%2Fg%2F11v6b1n885?entry=ttu&g_ep=EgoyMDI2MDcxNS4wIKXMDSoASAFQAw%3D%3D";
+const journalSlugs = ["cancer-da-pele-sinais-de-alerta", "queda-de-cabelo-causas", "dermatite-atopica-no-bebe"];
+const journalArticles = journalSlugs.map(slug => articles.find(article => article.slug === slug)).filter((article): article is (typeof articles)[number] => Boolean(article));
+const blogSrcSet = (src: string) => `${src.replace(/\.webp$/, "-640.webp")} 640w, ${src.replace(/\.webp$/, "-1024.webp")} 1024w, ${src} 1400w`;
 
 function LineIcon({ type }: { type: string }) {
   const paths: Record<string, string> = { skin: "M12 3c-4 2-6 6-5 10s5 7 5 7 4-3 5-7-3-7-9-7Z", book: "M12 6c-2-1.4-5-1.4-8 0v12c3-1.4 6-1.4 8 0 2-1.4 5-1.4 8 0V6c-3-1.4-6-1.4-8 0v12", heart: "M12 20c-5-3.5-8-6.5-8-10a4.5 4.5 0 0 1 8-2.6A4.5 4.5 0 0 1 20 10c0 3.5-3 6.5-8 10Z", shield: "M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6Z" };
@@ -121,7 +124,7 @@ export default function Home() {
       </section>
 
 
-      <section className="home-journal"><div className="shell journal-heading"><div><h2>Informação para entender sinais e decisões.</h2></div><p>Artigos escritos por dermatologistas da Clínica QARA, com autoria médica e referências específicas.</p></div><div className="shell journal-list">{articles.slice(0,3).map(article=><article key={article.slug}><Link className="journal-image" href={`/blog/${article.slug}`}><img src={article.image} alt={article.title} width={1400} height={788} loading="lazy" decoding="async"/></Link><div><span>{article.category} · {article.readTime}</span><h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3><p>{article.description}</p><Link href={`/blog/${article.slug}`}>Ler artigo →</Link></div></article>)}</div><div className="shell journal-all"><Link className="button button-secondary" href="/blog">Ver todos os artigos</Link></div></section>
+      <section className="home-journal"><div className="shell journal-heading"><div><h2>Informação para entender sinais e decisões.</h2></div><p>Uma seleção editorial de artigos escritos por dermatologistas da Clínica QARA, com autoria médica e referências específicas.</p></div><div className="shell journal-list">{journalArticles.map(article=><article key={article.slug}><Link className="journal-image" href={`/blog/${article.slug}`} aria-label={`Ler ${article.title}`}><img src={article.image} srcSet={blogSrcSet(article.image)} sizes="(max-width: 620px) 112px, 220px" alt="" width={1400} height={788} loading="lazy" decoding="async"/></Link><div><span>{article.category} · {article.readTime}<i> · {evidence[article.slug]?.author.name}</i></span><h3><Link href={`/blog/${article.slug}`}>{article.title}</Link></h3><p>{article.description}</p><Link href={`/blog/${article.slug}`}>Ler artigo →</Link></div></article>)}</div><div className="shell journal-all"><Link className="button button-secondary" href="/blog">Explorar todos os artigos</Link></div></section>
 
       <section className="quote-section"><div className="shell"><blockquote><span>“</span><p>Uma boa indicação começa por entender os sintomas, o histórico e o que você espera do tratamento.</p><footer>Dr. Diego Gálvez · Fundador da Clínica QARA</footer></blockquote></div></section>
 
@@ -137,7 +140,7 @@ export default function Home() {
             <blockquote><p>Muito profissional, atenciosa e extremamente dedicada. Explica tudo nos mín detalhes, transmite segurança e passa uma tranquilidade que faz toda a diferença.</p><footer>Cristiane Taverna · Avaliação pública no Doctoralia</footer></blockquote>
           </div>
           <div className="rating-row">
-            <a href={mapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Nota 5,0 no Google, 141 avaliações (abre em nova aba)">
+            <a href={clinicMapsUrl} target="_blank" rel="noopener noreferrer" aria-label="Nota 5,0 no Google, 141 avaliações (abre em nova aba)">
               <span className="rating-stars" aria-hidden="true">★★★★★</span>
               <b>5,0</b>
               <span>141 avaliações no Google</span>
@@ -152,7 +155,7 @@ export default function Home() {
         </div>
       </section>
       <section className="practical-section shell"><div><h2>Informações práticas.</h2></div><div className="practical-list"><details><summary>Qual é o horário de atendimento?</summary><p>A clínica atende de segunda a sexta, das 8h às 21h, e aos sábados, das 8h às 13h, sempre com hora marcada.</p></details><details><summary>Como escolher o especialista?</summary><p>Conte brevemente sua queixa pelo WhatsApp. Nossa equipe indicará o profissional com a área de atuação mais adequada.</p></details><details><summary>A clínica atende planos de saúde?</summary><p>O atendimento é particular. Emitimos nota fiscal e documentos médicos para solicitação de reembolso, conforme as regras do seu plano.</p></details><details><summary>Há atendimento por telemedicina?</summary><p>Alguns casos podem ser avaliados por telemedicina em todo o Brasil. Procedimentos e exames físicos exigem atendimento presencial.</p></details><details><summary>Quais idiomas estão disponíveis?</summary><p>A equipe oferece atendimento em português, espanhol, inglês, francês e alemão, conforme disponibilidade do profissional.</p></details></div></section>
-      <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana, Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href={mapsUrl} target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href={mapsUrl} target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a></div></section>
+      <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana, Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href={clinicMapsUrl} target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href={clinicMapsUrl} target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a></div></section>
       <CtaBand />
     </main>
     <Footer />

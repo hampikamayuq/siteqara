@@ -99,12 +99,11 @@ export const specialties: Record<string, Specialty> = {
       ["Hidradenite supurativa", "Doença inflamatória do folículo que provoca nódulos dolorosos, abscessos e cicatrizes em axilas, virilhas e outras áreas de dobra. O diagnóstico precoce ajuda a reduzir a progressão, e o tratamento é escalonado conforme a gravidade do quadro."],
       ["Doenças autoimunes", "Diversas doenças autoimunes apresentam manifestações na pele, que às vezes são o primeiro sinal do quadro. A investigação pode incluir exames laboratoriais e biópsia, com cuidado compartilhado com outras especialidades quando necessário."],
       ["Medicamentos imunobiológicos", "São medicamentos que atuam em alvos específicos da inflamação e podem ser indicados em quadros moderados a graves, conforme avaliação. O acompanhamento inclui triagem prévia, monitoramento da resposta e atenção contínua à segurança do tratamento."],
-      ["Dermatopediatria inflamatória", "Doenças inflamatórias também acontecem na infância e pedem abordagem adaptada à idade, à família e à rotina escolar. O plano considera a segurança dos tratamentos em cada faixa etária e traz orientações práticas para os cuidadores."],
     ],
     process,
     doctor: "Dra. Manuela Pedretti",
     credential: "CRM-RJ 52-8115976-3 · RQE 53939",
-    doctorText: "Dermatologista pela UERJ, a Dra. Manuela dedica sua atuação à psoríase, às doenças autoimunes, à dermatite atópica e à dermatopediatria.",
+    doctorText: "Dermatologista pela UERJ, a Dra. Manuela dedica sua atuação à psoríase, às doenças autoimunes, à dermatite atópica e à hidradenite supurativa.",
     doctorImage: "/images/dra-manuela.webp",
     faq: [
       ["Psoríase é contagiosa?", "Não. A psoríase é uma doença inflamatória imunomediada — resulta de uma resposta alterada do sistema imunológico — e não passa de uma pessoa para outra por contato, roupas ou objetos compartilhados."],

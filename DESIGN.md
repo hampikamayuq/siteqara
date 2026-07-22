@@ -183,6 +183,10 @@ O sistema é plano por padrão. Profundidade vem de contraste tonal, fotografia,
 - Autoria médica, CRM, RQE e atualização próximos do título.
 - Corpo com introdução, pontos principais, seções clínicas, alertas, nota médica e referências numeradas.
 - Imagens internas em WebP, carregamento tardio e texto alternativo contextual.
+- Índice editorial: uma matéria em destaque, uma matéria visual principal por tema e links secundários em lista tipográfica; não repetir grades de cartões idênticos.
+- Capas do blog usam variantes 640/1024/1400 WebP, sem texto rasterizado, com fotografia clínica realista, respeitosa e não gráfica.
+- No artigo, o sumário permanece lateral no desktop e vira `details` navegável com alvos de 44 px em tablet e celular.
+- O encerramento conecta três artigos relacionados, a especialidade correspondente e a página do autor, sem duplicar a autoria no início do corpo.
 
 ### Specialty Page Pattern
 

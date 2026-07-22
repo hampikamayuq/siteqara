@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 test("renders local SEO schema and social cards on the homepage", async () => {
@@ -145,4 +145,52 @@ test("lists Dr. Fabrício as the pediatric dermatology specialist", async () => 
   assert.match(html, /CRM-RJ 92\.788-0/);
   assert.match(html, /terças-feiras, das 14h às 20h/i);
   assert.match(html, /dr-fabricio-de-andrade\.webp/);
+});
+
+test("renders the complete editorial library without duplicating the featured story", async () => {
+  const source = await readFile(new URL("../app/blog/articles.ts", import.meta.url), "utf8");
+  const slugs = [...source.matchAll(/\{slug:"([^"]+)"/g)].map(match => match[1]);
+  assert.equal(slugs.length, 28);
+  assert.equal(new Set(slugs).size, 28);
+
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("blog-index-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+  const response = await worker.fetch(new Request("http://localhost/blog", { headers: { accept: "text/html" } }), env, ctx);
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  const groupedSections = html.split('<section class="blog-section"')[1] ?? "";
+  assert.doesNotMatch(groupedSections, /\/blog\/cancer-da-pele-sinais-de-alerta/, "featured story must not reappear in a topic section");
+  assert.match(html, /Continue a leitura|Não sabe por onde começar/);
+
+  for (const slug of slugs) {
+    const articleResponse = await worker.fetch(new Request(`http://localhost/blog/${slug}`, { headers: { accept: "text/html" } }), env, ctx);
+    assert.equal(articleResponse.status, 200, slug);
+    const articleHtml = await articleResponse.text();
+    assert.match(articleHtml, new RegExp(`<link rel="canonical" href="https://clinicaqara\\.com\\.br/blog/${slug}"`));
+    assert.match(articleHtml, /"MedicalWebPage"/);
+    assert.match(articleHtml, /Continue a leitura/);
+  }
+});
+
+test("ships responsive variants for every blog cover", async () => {
+  const source = await readFile(new URL("../app/blog/articles.ts", import.meta.url), "utf8");
+  const images = [...source.matchAll(/image:"(\/images\/blog\/[^\"]+\.webp)"/g)].map(match => match[1]);
+  assert.equal(images.length, 28);
+  for (const image of images) {
+    const base = image.replace(/\.webp$/, "");
+    const full = new URL(`../public${base}.webp`, import.meta.url);
+    await access(full);
+    assert.ok((await stat(full)).size > 15_000, `${image} should be a photographic cover, not a lightweight title-card placeholder`);
+    await access(new URL(`../public${base}-640.webp`, import.meta.url));
+    await access(new URL(`../public${base}-1024.webp`, import.meta.url));
+  }
+});
+
+test("does not present a medical specialty as Dr. Fabrício's RQE", async () => {
+  const source = await readFile(new URL("../app/blog/article-evidence.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(source, /rqe:"Dermatologista e pediatra"/);
+  assert.match(source, /qualification:"Dermatologista e pediatra"/);
 });

@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 
+export const clinicMapsUrl = "https://www.google.com/maps/place/Cl%C3%ADnica+QARA/@-22.9717237,-43.1869868,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICp1ZzO9gE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAHRPTWk7XCEk_ldeGIZtGX3qU8zThjkRR2ad_TBZKBkw__YmLZFe_DtY4LgKFZeJDTGGjn9BY08aCcZ6unD4N0-P0OhzvwFHdET6ERnxEZLmE2IbXttr0APMBhGNGPpJM-_HxSN4u6AY%3Dw128-h86-k-no!7i3870!8i2583!4m7!3m6!1s0x9bd5c690781749:0xd8efa1efc0385245!8m2!3d-22.9716311!4d-43.1868668!10e5!16s%2Fg%2F11v6b1n885?entry=ttu";
+
 export function Header({ current }: { current?: string } = {}) {
   const cur = (href: string) => { const h = href.split("#")[0]; return h && h !== "/" && h === current ? "page" as const : undefined; };
   const specialties = [
@@ -61,9 +63,9 @@ export function Footer() {
       <div className="shell footer-grid">
         <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p><p><Link href="/blog">Blog de dermatologia</Link><br /><Link href="/equipe">Equipe médica</Link></p><p><Link href="/en" lang="en">English</Link> · <Link href="/es" lang="es">Español</Link></p></div>
         <div><strong>Especialidades</strong><p><Link href="/dermatologia-clinica">Dermatologia clínica</Link><br /><Link href="/cirurgia-dermatologica">Cirurgia dermatológica</Link><br /><Link href="/cabelo">Cabelos e couro cabeludo</Link><br /><Link href="/unhas">Doenças das unhas</Link><br /><Link href="/doencas-inflamatorias">Doenças inflamatórias</Link><br /><Link href="/dermatopediatria">Dermatopediatria</Link><br /><Link href="/dermatologia-estetica">Dermatologia estética</Link></p></div>
-        <div><strong>Endereço</strong><p>Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</p></div>
+        <div><strong>Endereço</strong><p><a href={clinicMapsUrl} target="_blank" rel="noopener noreferrer">Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</a></p></div>
         <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br /><a href="tel:+5521992189718">Ligar: (21) 99218-9718</a><br /><a href="mailto:contato@clinicaqara.com.br">contato@clinicaqara.com.br</a><br />Seg. a sex., 8h–21h · Sáb., 8h–13h<br />Atendimento com hora marcada</p></div>
-        <div><strong>Registro</strong><p>Clínica QARA · CRM-RJ 1285041<br />Direção técnica médica</p></div>
+        <div><strong>Registro</strong><p>Clínica QARA<br />CRM-RJ 1285041</p></div>
       </div>
     </footer>
   );
@@ -83,7 +85,7 @@ export function CtaBand() {
     <section className="cta-band" id="agendar">
       <div className="shell cta-inner">
         <div><p className="eyebrow">Agende sua avaliação</p><h2>Conte o que precisa. Nossa equipe indica o especialista adequado e apresenta os horários disponíveis.</h2></div>
-        <div><div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Atendimento de seg. a sex., 8h–21h, e sáb., 8h–13h. Mensagens fora desse horário são respondidas no próximo período.</p></div>
+        <div><div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Atendimento de seg. a sex., 8h–21h, e sáb., 8h–13h, sempre com hora marcada.</p></div>
       </div>
     </section>
   );
