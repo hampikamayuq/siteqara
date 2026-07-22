@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function LegacySpecialistRoute() {
-  redirect("/equipe/dr-diego-galvez");
+  permanentRedirect("/equipe/dr-diego-galvez");
 }

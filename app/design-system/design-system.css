@@ -1,0 +1,82 @@
+/* Living design system reference */
+.ds-hero { background: var(--qara-blush-soft); padding-block: clamp(80px, 10vw, 128px); }
+.ds-hero h1 { max-width: 780px; }
+.ds-hero .lead { margin-top: var(--space-md); max-width: 640px; }
+.ds-meta { color: var(--qara-muted); display: flex; flex-wrap: wrap; font-size: .8rem; gap: 10px 20px; margin-top: var(--space-lg); }
+.ds-meta span::before { color: var(--qara-taupe); content: "•"; margin-right: 8px; }
+.ds-meta span:first-child::before { content: none; margin: 0; }
+
+.ds-section { border-top: 1px solid var(--qara-gray-200); padding-block: clamp(64px, 8vw, 104px); scroll-margin-top: 100px; }
+.ds-section-head { display: grid; gap: 40px; grid-template-columns: .8fr 1.2fr; margin-bottom: var(--space-lg); }
+.ds-section-head h2 { font-size: clamp(1.8rem, 3.2vw, 2.9rem); margin: 0; }
+.ds-section-head > p { color: var(--qara-copy); margin: 0; max-width: 56ch; }
+.ds-index { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--space-lg); }
+.ds-index a { border: 1px solid var(--qara-gray-200); border-radius: 999px; color: var(--qara-ink); font-size: .8rem; font-weight: 600; min-height: 40px; padding: 9px 18px; align-items: center; display: inline-flex; }
+.ds-index a:hover { border-color: var(--qara-taupe); color: var(--qara-focus); }
+
+.ds-swatches { display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); }
+.ds-swatch { border: 1px solid var(--qara-gray-200); border-radius: 12px; overflow: hidden; }
+.ds-chip { height: 118px; }
+.ds-swatch dl { display: grid; gap: 3px; margin: 0; padding: 15px 16px 17px; }
+.ds-swatch dt { color: var(--qara-ink); font-size: .88rem; font-weight: 600; }
+.ds-swatch dd { color: var(--qara-muted); font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: .74rem; margin: 0; text-transform: uppercase; }
+.ds-swatch dd.ds-role { color: var(--qara-copy); font-family: Roboto, Arial, sans-serif; font-size: .78rem; text-transform: none; }
+
+.ds-type-row { align-items: baseline; border-top: 1px solid var(--qara-gray-200); display: grid; gap: 30px; grid-template-columns: 150px 1fr; padding-block: var(--space-md); }
+.ds-type-row:last-child { border-bottom: 1px solid var(--qara-gray-200); }
+.ds-type-meta span { color: var(--qara-focus); display: block; font-size: .72rem; font-weight: 600; letter-spacing: .12em; margin-bottom: 8px; text-transform: uppercase; }
+.ds-type-meta small { color: var(--qara-muted); display: block; font-family: ui-monospace, Menlo, monospace; font-size: .72rem; line-height: 1.5; }
+.ds-type-sample { color: var(--qara-ink); margin: 0; }
+.ds-type-sample.display { font-family: "Telegraf", Arial, sans-serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.04; }
+.ds-type-sample.headline { font-family: "Telegraf", Arial, sans-serif; font-size: clamp(1.8rem, 3.6vw, 3rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.12; }
+.ds-type-sample.title { font-size: 1.08rem; font-weight: 600; line-height: 1.35; }
+.ds-type-sample.body { color: var(--qara-copy); font-size: 1rem; line-height: 1.7; max-width: 62ch; }
+.ds-type-sample.label { color: var(--qara-focus); font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+
+.ds-scale { display: grid; gap: 14px; }
+.ds-scale-row { align-items: center; display: grid; gap: 20px; grid-template-columns: 80px 90px 1fr; }
+.ds-scale-row code { color: var(--qara-ink); font-family: ui-monospace, Menlo, monospace; font-size: .78rem; }
+.ds-scale-row span { color: var(--qara-muted); font-size: .78rem; }
+.ds-scale-bar { background: var(--qara-taupe); border-radius: 3px; height: 16px; }
+.ds-radii { display: flex; flex-wrap: wrap; gap: 24px; }
+.ds-radius { text-align: center; }
+.ds-radius div { background: var(--qara-blush-soft); border: 1px solid var(--qara-gray-200); height: 96px; width: 128px; }
+.ds-radius p { color: var(--qara-ink); font-size: .82rem; font-weight: 600; margin: 12px 0 2px; }
+.ds-radius small { color: var(--qara-muted); font-family: ui-monospace, Menlo, monospace; font-size: .74rem; }
+
+.ds-grid { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); }
+.ds-example { border: 1px solid var(--qara-gray-200); border-radius: 16px; overflow: hidden; }
+.ds-example-stage { align-items: center; display: flex; flex-wrap: wrap; gap: 16px; padding: 36px; }
+.ds-example-stage.dark { background: var(--qara-graphite); }
+.ds-example-stage.soft { background: var(--qara-blush-soft); }
+.ds-example-stage.neutral { background: var(--qara-gray-050); }
+.ds-example figcaption { border-top: 1px solid var(--qara-gray-200); color: var(--qara-muted); font-family: ui-monospace, Menlo, monospace; font-size: .74rem; padding: 13px 18px; }
+.ds-example .card { background: white; border: 1px solid var(--qara-gray-200); border-radius: var(--radius); padding: 27px; width: 100%; }
+.ds-example .card .card-number { margin-bottom: 24px; }
+.ds-example .card h3 { margin: 0 0 8px; }
+.ds-example .card p { color: var(--qara-copy); font-size: .9rem; margin: 0; }
+
+.ds-shadow-demo { background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 30px; width: 100%; }
+.ds-shadow-demo strong { color: var(--qara-ink); }
+.ds-shadow-demo small { color: var(--qara-muted); display: block; font-family: ui-monospace, Menlo, monospace; font-size: .72rem; margin-top: 8px; }
+
+.ds-rules { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; }
+.ds-rules h3 { align-items: center; display: flex; font-family: "Telegraf", Arial, sans-serif; font-size: 1.1rem; font-weight: 400; gap: 10px; margin-bottom: 18px; }
+.ds-rules ul { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.ds-rules li { color: var(--qara-copy); font-size: .9rem; line-height: 1.55; padding-left: 26px; position: relative; }
+.ds-do h3 { color: #3f6b52; }
+.ds-do li::before { color: #3f6b52; content: "✓"; font-weight: 700; left: 0; position: absolute; }
+.ds-dont h3 { color: #8a4b46; }
+.ds-dont li::before { color: #8a4b46; content: "✕"; font-weight: 700; left: 0; position: absolute; }
+
+@media (max-width: 900px) {
+  .ds-swatches { grid-template-columns: repeat(2, 1fr); }
+  .ds-section-head, .ds-grid, .ds-rules { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 620px) {
+  .ds-swatches { grid-template-columns: 1fr; }
+  .ds-type-row { grid-template-columns: 1fr; gap: 14px; }
+  .ds-scale-row { grid-template-columns: 64px 74px 1fr; gap: 12px; }
+  .ds-radius div { width: 100%; }
+}

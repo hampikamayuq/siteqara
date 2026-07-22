@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type {Metadata} from "next"; import Link from "next/link"; import {Breadcrumb,Footer,Header} from "../ui"; import {articles} from "./articles"; import {BlogNavSpy} from "./nav-spy";
-export const metadata:Metadata={title:"Blog de Dermatologia | Clínica QARA",description:"Informação médica revisada sobre pele, cabelos, unhas, câncer da pele e doenças inflamatórias.",alternates:{canonical:"/blog"}};
+export const metadata:Metadata={title:"Blog de Dermatologia | Clínica QARA",description:"Informação médica revisada sobre pele, cabelos, unhas, câncer da pele e doenças inflamatórias.",alternates:{canonical:"/blog"},openGraph:{title:"Blog de Dermatologia | Clínica QARA",description:"Informação médica revisada sobre pele, cabelos, unhas, câncer da pele e doenças inflamatórias.",images:[{url:"/images/qara-atendimento.webp",width:1460,height:973,alt:"Atendimento na Clínica QARA"}]}};
 const slugify=(c:string)=>c.toLowerCase().replaceAll(" ","-");
 function Card({a,featured=false,eager=false}:{a:(typeof articles)[number];featured?:boolean;eager?:boolean}){
   return <article className={featured?"featured":""}><Link className="blog-image" href={`/blog/${a.slug}`}><img src={a.image} alt={a.title} width={1400} height={788} decoding="async" fetchPriority={eager?"high":"auto"} loading={eager?"eager":"lazy"}/></Link><div><span>{a.category} · {a.readTime}</span><h2><Link href={`/blog/${a.slug}`}>{a.title}</Link></h2><p>{a.description}</p><Link href={`/blog/${a.slug}`}>Ler o artigo completo →</Link></div></article>;
@@ -8,7 +8,7 @@ function Card({a,featured=false,eager=false}:{a:(typeof articles)[number];featur
 export default function Blog(){
   const cats=[...new Set(articles.map(a=>a.category))];
   const [featured,...rest]=articles;
-  return <><Header current="/blog"/><main id="conteudo"><Breadcrumb>Conteúdo médico</Breadcrumb>
+  return <><Header current="/blog"/><main id="conteudo"><Breadcrumb trail={[["Conteúdo médico", ""]]}>Conteúdo médico</Breadcrumb>
     <section className="blog-hero"><div className="shell"><p className="kicker">Orientação baseada em evidências</p><h1>Entenda os sinais, os exames e as opções de tratamento.</h1><p className="lead">Artigos escritos por dermatologistas da Clínica QARA, com autoria, referências e linguagem clara para pacientes.</p></div></section>
     <section className="shell blog-index">
       <nav aria-label="Navegar pelos temas do blog"><a href="#artigos" aria-current="true">Todos os artigos</a>{cats.map(c=><a href={`#${slugify(c)}`} key={c}>{c}</a>)}</nav>

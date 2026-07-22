@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { Footer, Header } from "./ui";
+import { Footer, Header, portraitSrcSet } from "./ui";
 
 export type IntlContent = {
   path: string; ogLocale: string;
@@ -26,7 +26,8 @@ export function InternationalPage({ c }: { c: IntlContent }) {
     name: "Clínica QARA", url: `https://clinicaqara.com.br${c.path}`,
     telephone: "+55-21-99218-9718", email: "contato@clinicaqara.com.br",
     medicalSpecialty: "Dermatology",
-    address: { "@type": "PostalAddress", streetAddress: "Rua Santa Clara, 50 — salas 521/522", addressLocality: "Rio de Janeiro", addressRegion: "RJ", addressCountry: "BR" },
+    address: { "@type": "PostalAddress", streetAddress: "Rua Santa Clara, 50 — salas 521/522", addressLocality: "Rio de Janeiro", addressRegion: "RJ", postalCode: "22041-012", addressCountry: "BR" },
+    geo: { "@type": "GeoCoordinates", latitude: -22.9716311, longitude: -43.1868668 },
     availableLanguage: ["pt-BR", "en", "es", "de", "fr"],
     openingHoursSpecification: [
       { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "21:00" },
@@ -83,7 +84,7 @@ export function InternationalPage({ c }: { c: IntlContent }) {
           <div className="craft-specialists">
             {c.team.map(([name, area, langs, img, slug]) => (
               <article key={slug}>
-                <div className="doctor-image"><img src={img} alt={name} width={1000} height={1300} loading="lazy" decoding="async" /></div>
+                <div className="doctor-image"><img src={img} srcSet={portraitSrcSet[img]} sizes={portraitSrcSet[img] && "(max-width: 620px) 90vw, (max-width: 900px) 45vw, 240px"} alt={name} width={1000} height={1300} loading="lazy" decoding="async" /></div>
                 <h3>{name}</h3>
                 <div className="lang-tags">{langs.map(l => <span key={l}>{l}</span>)}</div>
                 <p>{area}</p>

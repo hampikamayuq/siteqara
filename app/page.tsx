@@ -1,4 +1,4 @@
-import { CtaBand, Footer, Header } from "./ui";
+import { CtaBand, Footer, Header, portraitSrcSet } from "./ui";
 import Link from "next/link";
 import { articles } from "./blog/articles";
 
@@ -43,8 +43,11 @@ const clinicSchema = {
     streetAddress: "Rua Santa Clara, 50 — salas 521/522",
     addressLocality: "Rio de Janeiro",
     addressRegion: "RJ",
+    postalCode: "22041-012",
     addressCountry: "BR",
   },
+  geo: { "@type": "GeoCoordinates", latitude: -22.9716311, longitude: -43.1868668 },
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: 141 },
   email: "contato@clinicaqara.com.br",
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "21:00" },
@@ -103,7 +106,7 @@ export default function Home() {
         <div className="specialist-lead"><div><p className="kicker">Corpo clínico</p><h2>Nossos especialistas</h2><p>Conheça a formação e a principal área de atuação de cada dermatologista.</p></div>
         <div className="craft-specialists">
           {specialists.map(([name,area,key,src]) => <article key={name}>
-            <div className={`doctor-image doctor-${key}`}><img src={src} alt={`Retrato profissional de ${name}`} width={1000} height={1300} loading="lazy" decoding="async" /></div>
+            <div className={`doctor-image doctor-${key}`}><img src={src} srcSet={portraitSrcSet[src]} sizes={portraitSrcSet[src] && "(max-width: 620px) 90vw, (max-width: 900px) 45vw, 240px"} alt={`Retrato profissional de ${name}`} width={1000} height={1300} loading="lazy" decoding="async" /></div>
             <h3>{name}</h3><p>{area}</p><a href={`/equipe/${slugs[key]}`}>Conheça o especialista <span>→</span></a>
           </article>)}
         </div></div>
@@ -140,7 +143,7 @@ export default function Home() {
               <span>141 avaliações no Google</span>
             </a>
             <a href="https://www.doctoralia.com.br/clinicas/clinica-qara-2" target="_blank" rel="noopener noreferrer" aria-label="Nota 5,0 no Doctoralia, 583 opiniões (abre em nova aba)">
-              <img src="/images/doctoralia.png" alt="Doctoralia" width={124} height={22} loading="lazy" decoding="async" />
+              <img src="/images/doctoralia.webp" alt="Doctoralia" width={124} height={22} loading="lazy" decoding="async" />
               <span className="rating-stars" aria-hidden="true">★★★★★</span>
               <b>5,0</b>
               <span>583 opiniões</span>

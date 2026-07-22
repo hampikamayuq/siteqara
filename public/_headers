@@ -1,0 +1,7 @@
+# Overrides the vinext-generated _headers — keep the /assets/* rule in sync
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

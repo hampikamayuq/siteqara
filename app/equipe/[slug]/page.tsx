@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Breadcrumb, CtaBand, Footer, Header } from "../../ui";
+import { Breadcrumb, CtaBand, Footer, Header, portraitSrcSet } from "../../ui";
 
 type Profile = {
   name: string; role: string; credential: string; lead: string;
@@ -134,7 +134,7 @@ const profiles: Record<string, Profile> = {
       ["Formação", "Pediatria e Terapia Intensiva Pediátrica", "Hospital Prontobaby."],
       ["Atuação acadêmica", "Preceptor em Dermatologia", "Preceptor do Ambulatório Geral da Pós-Graduação do Instituto de Dermatologia Professor Rubem David Azulay."],
       ["Agenda", "Horários de atendimento", "Terças-feiras, das 14h às 20h; quartas-feiras, das 10h às 20h; e quintas-feiras, das 10h às 14h."],
-      ["Local", "Clínica QARA — Copacabana", "Rua Santa Clara, 50, salas 521/522, Edifício Golden Point."],
+      ["Local", "Clínica QARA — Copacabana", "Rua Santa Clara, 50, salas 521/522, Copacabana, Rio de Janeiro."],
     ],
     languages: ["pt-BR", "en"],
     quotes: [
@@ -164,7 +164,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   if (!p) notFound();
   const schema = {
     "@context": "https://schema.org", "@type": "Physician",
-    name: p.name, medicalSpecialty: "Dermatology",
+    name: p.name, medicalSpecialty: slug === "dr-fabricio-de-andrade" ? ["Dermatology", "Pediatrics"] : "Dermatology",
     identifier: p.credential.split(" · "),
     url: `https://clinicaqara.com.br/equipe/${slug}`,
     image: `https://clinicaqara.com.br${p.image}`,
@@ -178,9 +178,9 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <Header />
       <main id="conteudo">
-        <Breadcrumb><Link href="/equipe">Equipe</Link><span>/</span>{p.name}</Breadcrumb>
+        <Breadcrumb trail={[["Equipe", "/equipe"], [p.name, ""]]}><Link href="/equipe">Equipe</Link><span>/</span>{p.name}</Breadcrumb>
         <section className="profile-hero shell">
-          <div className="profile-photo"><img src={p.image} width={p.imageW} height={p.imageH} fetchPriority="high" alt={`${p.name}, ${p.role.toLowerCase()}`} /></div>
+          <div className="profile-photo"><img src={p.image} srcSet={portraitSrcSet[p.image]} sizes={portraitSrcSet[p.image] && "(max-width: 900px) 100vw, 480px"} width={p.imageW} height={p.imageH} fetchPriority="high" alt={`${p.name}, ${p.role.toLowerCase()}`} /></div>
           <div>
             <p className="eyebrow">{p.role}</p>
             <h1>{p.name}</h1>

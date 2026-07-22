@@ -59,7 +59,8 @@ export function Footer() {
   return (
     <footer className="site-footer" id="contato">
       <div className="shell footer-grid">
-        <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p><p><Link href="/en" lang="en">English</Link> · <Link href="/es" lang="es">Español</Link></p></div>
+        <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p><p><Link href="/blog">Blog de dermatologia</Link><br /><Link href="/equipe">Equipe médica</Link></p><p><Link href="/en" lang="en">English</Link> · <Link href="/es" lang="es">Español</Link></p></div>
+        <div><strong>Especialidades</strong><p><Link href="/dermatologia-clinica">Dermatologia clínica</Link><br /><Link href="/cirurgia-dermatologica">Cirurgia dermatológica</Link><br /><Link href="/cabelo">Cabelos e couro cabeludo</Link><br /><Link href="/unhas">Doenças das unhas</Link><br /><Link href="/doencas-inflamatorias">Doenças inflamatórias</Link><br /><Link href="/dermatopediatria">Dermatopediatria</Link><br /><Link href="/dermatologia-estetica">Dermatologia estética</Link></p></div>
         <div><strong>Endereço</strong><p>Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</p></div>
         <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br /><a href="tel:+5521992189718">Ligar: (21) 99218-9718</a><br /><a href="mailto:contato@clinicaqara.com.br">contato@clinicaqara.com.br</a><br />Seg. a sex., 8h–21h · Sáb., 8h–13h<br />Atendimento com hora marcada</p></div>
         <div><strong>Registro</strong><p>Clínica QARA · CRM-RJ 1285041<br />Direção técnica médica</p></div>
@@ -88,6 +89,17 @@ export function CtaBand() {
   );
 }
 
-export function Breadcrumb({ children }: { children: ReactNode }) {
-  return <div className="breadcrumb shell"><Link href="/">Início</Link><span>/</span>{children}</div>;
+export function Breadcrumb({ children, trail }: { children: ReactNode; trail?: [string, string][] }) {
+  const ld = trail && {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: [["Início", "/"] as [string, string], ...trail].map(([name, url], i) => ({ "@type": "ListItem", position: i + 1, name, ...(url ? { item: `https://clinicaqara.com.br${url}` } : {}) })),
+  };
+  return <div className="breadcrumb shell">{ld && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />}<Link href="/">Início</Link><span>/</span>{children}</div>;
 }
+
+export const portraitSrcSet: Record<string, string> = {
+  "/images/dr-diego.webp": "/images/dr-diego-640.webp 640w, /images/dr-diego-1024.webp 1024w, /images/dr-diego.webp 1351w",
+  "/images/dra-diana.webp": "/images/dra-diana-640.webp 640w, /images/dra-diana-1024.webp 1024w, /images/dra-diana.webp 1200w",
+  "/images/dra-manuela.webp": "/images/dra-manuela-640.webp 640w, /images/dra-manuela.webp 852w",
+  "/images/dr-fabricio-de-andrade.webp": "/images/dr-fabricio-de-andrade-640.webp 640w, /images/dr-fabricio-de-andrade.webp 1023w",
+};

@@ -1,12 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumb, CtaBand, Footer, Header } from "../ui";
+import { Breadcrumb, CtaBand, Footer, Header, portraitSrcSet } from "../ui";
 
 export const metadata: Metadata = {
   title: "Equipe médica | Clínica QARA",
   description: "Conheça os dermatologistas da Clínica QARA em Copacabana: formação, áreas de atuação e credenciais CRM/RQE de cada especialista.",
   alternates: { canonical: "/equipe" },
+  openGraph: {
+    title: "Equipe médica | Clínica QARA",
+    description: "Conheça os dermatologistas da Clínica QARA em Copacabana: formação, áreas de atuação e credenciais CRM/RQE de cada especialista.",
+    images: [{ url: "/images/qara-team.webp", width: 768, height: 889, alt: "Equipe médica da Clínica QARA" }],
+  },
 };
 
 const team = [
@@ -22,7 +27,7 @@ export default function TeamPage() {
     <>
       <Header />
       <main id="conteudo">
-        <Breadcrumb>Equipe</Breadcrumb>
+        <Breadcrumb trail={[["Equipe", ""]]}>Equipe</Breadcrumb>
         <section className="section shell">
           <div className="section-heading">
             <div><p className="eyebrow">Corpo clínico</p><h2>Equipe médica da Clínica QARA.</h2></div>
@@ -31,7 +36,7 @@ export default function TeamPage() {
           <div className="craft-specialists">
             {team.map(([name, area, src, slug]) => (
               <article key={slug}>
-                <div className="doctor-image"><img src={src} alt={`Retrato profissional de ${name}`} width={1000} height={1300} loading="lazy" decoding="async" /></div>
+                <div className="doctor-image"><img src={src} srcSet={portraitSrcSet[src]} sizes={portraitSrcSet[src] && "(max-width: 620px) 90vw, (max-width: 900px) 45vw, 240px"} alt={`Retrato profissional de ${name}`} width={1000} height={1300} loading="lazy" decoding="async" /></div>
                 <h3>{name}</h3><p>{area}</p><Link href={`/equipe/${slug}`}>Conheça o especialista <span>→</span></Link>
               </article>
             ))}

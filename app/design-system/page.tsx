@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { Header, Footer } from "../ui";
+import "./design-system.css";
 
 export const metadata: Metadata = {
   title: "Design System | Clínica QARA",

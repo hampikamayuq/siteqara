@@ -2,10 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-
-test("renders development preview metadata", async () => {
+test("renders local SEO schema and social cards on the homepage", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -30,7 +27,13 @@ test("renders development preview metadata", async () => {
     response.headers.get("content-type") ?? "",
     /^text\/html\b/i,
   );
-  assert.match(await response.text(), developmentPreviewMeta);
+  const html = await response.text();
+  assert.doesNotMatch(html, /codex-preview/);
+  assert.match(html, /"aggregateRating":\{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":141\}/);
+  assert.match(html, /"geo":\{"@type":"GeoCoordinates"/);
+  assert.match(html, /"postalCode":"22041-012"/);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image"\/>/);
+  assert.match(html, /roboto-400-latin\.woff2/);
 });
 
 test("ships an accessible mobile menu without disabling browser zoom", async () => {

@@ -39,8 +39,11 @@ export const specialties: Record<string, Specialty> = {
       ["Quais sinais em uma pinta merecem avaliação mais rápida?", "Pintas que mudam de cor, tamanho ou formato, têm bordas irregulares, coçam, sangram ou se destacam das demais devem ser avaliadas sem demora. Feridas que não cicatrizam em algumas semanas também merecem exame dermatológico."],
     ],
     related: [
+      ["Acne: além da adolescência", "/blog/acne-tratamento-por-fases"],
+      ["Rosácea ou acne?", "/blog/rosacea-diferenca-da-acne"],
+      ["Melasma: por que as manchas voltam", "/blog/melasma-por-que-as-manchas-voltam"],
       ["Câncer da pele: sinais de alerta", "/blog/cancer-da-pele-sinais-de-alerta"],
-      ["Quando a biópsia é indicada", "/blog/biopsia-de-pele-quando-e-indicada"],
+      ["Mapeamento de pintas", "/blog/mapeamento-de-pintas-dermatoscopia-digital"],
     ],
   },
   "unhas": {
@@ -75,6 +78,8 @@ export const specialties: Record<string, Specialty> = {
     ],
     related: [
       ["Doenças das unhas", "/blog/doencas-das-unhas"],
+      ["Unha encravada: tratamento e cirurgia", "/blog/unha-encravada-tratamento-e-cirurgia"],
+      ["Micose de unha", "/blog/micose-de-unha-tratamento"],
       ["Psoríase", "/blog/psoriase-guia-para-pacientes"],
     ],
   },
@@ -112,6 +117,7 @@ export const specialties: Record<string, Specialty> = {
       ["Psoríase", "/blog/psoriase-guia-para-pacientes"],
       ["Dermatite atópica", "/blog/dermatite-atopica"],
       ["Hidradenite supurativa", "/blog/hidradenite-supurativa"],
+      ["Vitiligo: causas e tratamento", "/blog/vitiligo-causas-e-tratamento"],
     ],
   },
   "dermatopediatria": {
@@ -145,8 +151,9 @@ export const specialties: Record<string, Specialty> = {
       ["Preciso levar algo para a consulta do meu filho?", "Leve a caderneta ou os registros de saúde, a lista de produtos e medicamentos já utilizados e, se possível, fotos das lesões nos momentos de crise. Essas informações ajudam quando o quadro varia e nem sempre está visível no dia da consulta."],
     ],
     related: [
-      ["Dermatite atópica", "/blog/dermatite-atopica"],
-      ["Psoríase", "/blog/psoriase-guia-para-pacientes"],
+      ["Dermatite atópica no bebê", "/blog/dermatite-atopica-no-bebe"],
+      ["Acne na adolescência", "/blog/acne-na-adolescencia"],
+      ["Marcas de nascimento", "/blog/marcas-de-nascimento-quando-avaliar"],
     ],
   },
   "dermatologia-estetica": {
@@ -180,8 +187,10 @@ export const specialties: Record<string, Specialty> = {
       ["Quem tem melasma ou pele sensível pode fazer procedimentos?", "Muitas vezes sim, mas a escolha da técnica e dos parâmetros precisa considerar o risco de manchas e de irritação. Em alguns casos, a pele é preparada antes, e o tratamento avança de forma mais gradual, conforme avaliação."],
     ],
     related: [
-      ["Cuidados com a pele", "/blog"],
-      ["Biópsia de pele", "/blog/biopsia-de-pele-quando-e-indicada"],
+      ["Melasma: por que as manchas voltam", "/blog/melasma-por-que-as-manchas-voltam"],
+      ["Toxina botulínica: o que avaliar antes", "/blog/toxina-botulinica-antes-de-aplicar"],
+      ["Preenchimento facial: o planejamento", "/blog/preenchimento-facial-planejamento"],
+      ["Cicatrizes de acne", "/blog/cicatrizes-de-acne-tratamento"],
     ],
   },
 };
