@@ -13,6 +13,7 @@ type Profile = {
   memberOf?: string[];
   languages?: string[];
   quotes?: [string, string][]; // text, author
+  externalProfile?: string;
 };
 
 const profiles: Record<string, Profile> = {
@@ -94,20 +95,20 @@ const profiles: Record<string, Profile> = {
     ],
   },
   "dra-manuela-pedretti": {
-    name: "Dra. Manuela Pedretti", role: "Dermatologista · Doenças inflamatórias e dermatopediatria",
+    name: "Dra. Manuela Pedretti", role: "Dermatologista · Psoríase e doenças inflamatórias",
     credential: "CRM-RJ 52-8115976-3 · RQE 53939",
-    lead: "Atuação dedicada à psoríase, à dermatite atópica, à hidradenite e às doenças autoimunes, além da dermatologia de bebês, crianças e adolescentes.",
+    lead: "Atuação dedicada à psoríase, à dermatite atópica, à hidradenite e às doenças autoimunes, com acompanhamento individualizado das doenças crônicas da pele.",
     image: "/images/dra-manuela.webp", imageW: 852, imageH: 1280,
     facts: ["Atendimento também em alemão", "Residência em Dermatologia pela UERJ", "Acompanhamento de doenças crônicas da pele"],
     areas: [
       ["Doenças inflamatórias", "Psoríase, dermatite atópica, hidradenite e doenças autoimunes.", "/doencas-inflamatorias"],
-      ["Dermatopediatria", "Avaliação dermatológica de bebês, crianças e adolescentes.", "/dermatopediatria"],
       ["Psoríase", "Guia para pacientes: além das lesões na pele.", "/blog/psoriase-guia-para-pacientes"],
       ["Dermatite atópica", "Por que a coceira volta e como cuidar da pele no dia a dia.", "/blog/dermatite-atopica"],
+      ["Hidradenite supurativa", "Inflamação recorrente, diagnóstico e acompanhamento de longo prazo.", "/blog/hidradenite-supurativa"],
     ],
     timeline: [
       ["Formação", "Residência em Dermatologia", "Universidade do Estado do Rio de Janeiro (UERJ)."],
-      ["Atuação", "Clínica QARA", "Doenças inflamatórias e dermatopediatria, acompanhando pacientes e famílias em Copacabana."],
+      ["Atuação", "Clínica QARA", "Psoríase, dermatite atópica, hidradenite e doenças autoimunes, em Copacabana."],
     ],
     languages: ["pt-BR", "de"],
     quotes: [
@@ -115,6 +116,31 @@ const profiles: Record<string, Profile> = {
       ["A Dra. Manuela tem sido incrível no tratamento da minha dermatite atópica. Ela é muito atenciosa e sabe exatamente como cuidar da minha pele. Com suas orientações, consegui controlar melhor as crises e melhorar a qualidade da minha pele. Recomendo demais!", "Luzia dos Reis Silva"],
       ["Impressionante o nível de cuidado e atenção que recebi! A equipe é extremamente profissional e dedicada, tornando toda a experiência muito positiva. Minha pele nunca esteve tão bem, e o acompanhamento contínuo tem sido fantástico. Recomendo fortemente para quem busca um atendimento dermatológico de alto padrão.", "Maria Gonçalves de Melo"],
     ],
+  },
+  "dr-fabricio-de-andrade": {
+    name: "Dr. Fabrício de Andrade", role: "Dermatologista e pediatra · Dermatopediatria",
+    credential: "CRM-RJ 92.788-0",
+    lead: "Formado em Dermatologia e Pediatria, atua no cuidado da pele de bebês, crianças e adolescentes, integrando o olhar das duas especialidades.",
+    image: "/images/dr-fabricio-de-andrade.webp", imageW: 1023, imageH: 1537,
+    facts: ["Português e inglês", "Dermatologista, pediatra e intensivista pediátrico", "Consultas às terças, quartas e quintas-feiras"],
+    areas: [
+      ["Dermatopediatria", "Avaliação dermatológica de bebês, crianças e adolescentes.", "/dermatopediatria"],
+      ["Dermatite atópica", "Diagnóstico, orientação familiar e acompanhamento das crises na infância.", "/blog/dermatite-atopica"],
+      ["Pintas e marcas de nascimento", "Avaliação de manchas, nevos e lesões vasculares desde os primeiros meses de vida.", "/dermatopediatria"],
+      ["Acne na adolescência", "Tratamento adequado à idade para controlar a inflamação e prevenir cicatrizes.", "/dermatopediatria"],
+    ],
+    timeline: [
+      ["Formação", "Dermatologia", "Instituto de Dermatologia Professor Rubem David Azulay, Hospital Geral da Santa Casa da Misericórdia do Rio de Janeiro."],
+      ["Formação", "Pediatria e Terapia Intensiva Pediátrica", "Hospital Prontobaby."],
+      ["Atuação acadêmica", "Preceptor em Dermatologia", "Preceptor do Ambulatório Geral da Pós-Graduação do Instituto de Dermatologia Professor Rubem David Azulay."],
+      ["Agenda", "Horários de atendimento", "Terças-feiras, das 14h às 20h; quartas-feiras, das 10h às 20h; e quintas-feiras, das 10h às 14h."],
+      ["Local", "Clínica QARA — Copacabana", "Rua Santa Clara, 50, salas 521/522, Edifício Golden Point."],
+    ],
+    languages: ["pt-BR", "en"],
+    quotes: [
+      ["Ele foi ótimo, muito detalhado e profissional. Recomendo!", "Andrew L. · Consulta verificada no Doctoralia"],
+    ],
+    externalProfile: "https://www.doctoralia.com.br/fabricio-de-andrade/dermatologista/rio-de-janeiro",
   },
 };
 
@@ -142,6 +168,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
     identifier: p.credential.split(" · "),
     url: `https://clinicaqara.com.br/equipe/${slug}`,
     image: `https://clinicaqara.com.br${p.image}`,
+    ...(p.externalProfile ? { sameAs: [p.externalProfile] } : {}),
     ...(p.languages ? { knowsLanguage: p.languages } : {}),
     ...(p.memberOf ? { memberOf: p.memberOf.map(name => ({ "@type": "Organization", name })) } : {}),
     worksFor: { "@type": "MedicalClinic", name: "Clínica QARA", url: "https://clinicaqara.com.br" },
@@ -162,6 +189,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
             <div className="actions">
               <a className="button button-primary" href={`https://wa.me/5521992189718?text=${encodeURIComponent(`Olá, gostaria de consultar horários com ${p.name.split(" ").slice(0, 2).join(" ")}.`)}`} target="_blank" rel="noopener noreferrer">Consultar horários</a>
               <a className="button button-secondary" href="#atuacao">Ver áreas de atuação</a>
+              {p.externalProfile && <a className="button button-secondary" href={p.externalProfile} target="_blank" rel="noopener noreferrer">Ver perfil no Doctoralia</a>}
             </div>
             {p.facts.length > 0 && <ul className="profile-facts">{p.facts.map(f => <li key={f}>{f}</li>)}</ul>}
           </div>

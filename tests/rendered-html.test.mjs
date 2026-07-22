@@ -108,3 +108,20 @@ test("lists all five available clinic languages", async () => {
   assert.match(html, /Alemão e francês conforme o especialista/);
   assert.match(html, /"availableLanguage":\["pt-BR","en","es","de","fr"\]/);
 });
+
+test("lists Dr. Fabrício as the pediatric dermatology specialist", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("fabricio-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/dermatopediatria", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const html = await response.text();
+
+  assert.match(html, /Dr\. Fabrício de Andrade/);
+  assert.match(html, /CRM-RJ 92\.788-0/);
+  assert.match(html, /terças-feiras, das 14h às 20h/i);
+  assert.match(html, /dr-fabricio-de-andrade\.webp/);
+});

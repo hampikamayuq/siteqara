@@ -13,7 +13,8 @@ const team = [
   ["Dr. Diego Gálvez", "Dermatologia e cirurgia dermatológica", "/images/dr-diego.webp", "dr-diego-galvez"],
   ["Dr. Miguel Ceccarelli", "Unhas e dermatologia estética", "/images/dr-miguel.webp", "dr-miguel-ceccarelli"],
   ["Dra. Diana Stohmann", "Tricologia e transplante capilar", "/images/dra-diana.webp", "dra-diana-stohmann"],
-  ["Dra. Manuela Pedretti", "Doenças inflamatórias e dermatopediatria", "/images/dra-manuela.webp", "dra-manuela-pedretti"],
+  ["Dra. Manuela Pedretti", "Psoríase e doenças inflamatórias", "/images/dra-manuela.webp", "dra-manuela-pedretti"],
+  ["Dr. Fabrício de Andrade", "Dermatopediatria", "/images/dr-fabricio-de-andrade.webp", "dr-fabricio-de-andrade"],
 ] as const;
 
 export default function TeamPage() {

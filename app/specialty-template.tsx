@@ -10,7 +10,7 @@ export function SpecialtyTemplate({data, path, children}:{data:Specialty; path?:
     name:data.title,description:data.lead,inLanguage:"pt-BR",
     url:`https://clinicaqara.com.br${path}`,mainEntityOfPage:`https://clinicaqara.com.br${path}`,
     about:{"@type":"MedicalSpecialty",name:data.eyebrow},
-    author:{"@type":"Physician",name:data.doctor,medicalSpecialty:"Dermatology",identifier:data.credential.split(" · "),worksFor:{"@type":"MedicalClinic",name:"Clínica QARA",url:"https://clinicaqara.com.br"}},
+    author:{"@type":"Physician",name:data.doctor,medicalSpecialty:data.doctor==="Dr. Fabrício de Andrade"?["Dermatology","Pediatrics"]:"Dermatology",identifier:data.credential.split(" · "),worksFor:{"@type":"MedicalClinic",name:"Clínica QARA",url:"https://clinicaqara.com.br"}},
   } : null;
   const faqSchema = path ? {
     "@context":"https://schema.org","@type":"FAQPage",

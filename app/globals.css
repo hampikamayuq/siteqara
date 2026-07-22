@@ -300,12 +300,15 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .specialist-lead { display: grid; gap: 60px; grid-template-columns: .72fr 2.28fr; }
 .specialist-lead > div:first-child { padding-top: 15px; }
 .specialist-lead > div:first-child p:not(.kicker) { color: var(--qara-copy); font-size: .9rem; max-width: 250px; }
-.craft-specialists { display: grid; gap: 18px; grid-template-columns: repeat(4,1fr); }
+.craft-specialists { display: grid; gap: 18px; grid-template-columns: repeat(5,1fr); }
 .doctor-image { aspect-ratio: 4/5; background-color: #eee8e5; }
 .doctor-miguel img { object-position: center 18%; }
 .doctor-diego img { object-position: center 18%; }
 .doctor-diana img { object-position: center 20%; }
 .doctor-manuela img { object-fit: contain; object-position: center bottom; }
+.doctor-fabricio img { object-position: center 12%; }
+.specialty-portrait.portrait-fabricio img,
+.doctor-band-photo.portrait-fabricio img { object-position: center 12%; }
 .craft-specialists h3 { font-family: "Telegraf", Arial, sans-serif; font-weight: 400; margin: 20px 0 5px; }
 .craft-specialists p { color: var(--qara-muted); font-size: .875rem; min-height: 45px; }
 .lang-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 2px; }
