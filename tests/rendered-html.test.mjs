@@ -109,6 +109,24 @@ test("lists all five available clinic languages", async () => {
   assert.match(html, /"availableLanguage":\["pt-BR","en","es","de","fr"\]/);
 });
 
+test("renders the balanced premium desktop header", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("header-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const html = await response.text();
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(html, /class="language-switcher" aria-label="Idiomas"/);
+  assert.match(css, /\.desktop-nav\s*\{[^}]*font-size:\s*\.96rem/s);
+  assert.match(css, /\.header-cta\s*\{[^}]*background:\s*var\(--qara-graphite\)/s);
+  assert.match(css, /\.language-switcher\s*\{[^}]*display:\s*inline-flex/s);
+});
+
 test("lists Dr. Fabrício as the pediatric dermatology specialist", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("fabricio-test", `${process.pid}-${Date.now()}`);

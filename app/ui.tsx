@@ -35,7 +35,8 @@ export function Header({ current }: { current?: string } = {}) {
               <div className="mega-group"><strong>Clínica e conteúdo</strong>{clinic.map(([label,href])=><Link href={href} key={label}>{label}<span aria-hidden="true">→</span></Link>)}</div>
             </div>
           </details>
-          <Link href="/#especialistas">Equipe</Link><Link href="/#clinica">Clínica</Link><Link href="/blog" aria-current={cur("/blog")}>Conteúdo</Link><Link className="lang-link" href="/en" aria-current={cur("/en")} lang="en">EN</Link><Link className="lang-link" href="/es" aria-current={cur("/es")} lang="es">ES</Link>
+          <Link href="/#especialistas">Equipe</Link><Link href="/#clinica">Clínica</Link><Link href="/blog" aria-current={cur("/blog")}>Conteúdo</Link>
+          <div className="language-switcher" aria-label="Idiomas" role="group"><Link className="lang-link" href="/en" aria-current={cur("/en")} lang="en">EN</Link><Link className="lang-link" href="/es" aria-current={cur("/es")} lang="es">ES</Link></div>
         </nav>
         <a className="header-cta" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)"><span className="cta-full">Agendar pelo WhatsApp</span><span className="cta-short">Agendar</span></a>
         <details className="mobile-menu">
