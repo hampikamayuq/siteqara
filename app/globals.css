@@ -148,10 +148,10 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .footer-registration p { line-height: 1.6; margin: 0 0 16px; }
 .footer-registration b { color: white; font-weight: 600; }
 
-.whatsapp-float { align-items: center; background: #25d366; border: 2px solid white; border-radius: 50%; bottom: max(22px, env(safe-area-inset-bottom)); box-shadow: 0 7px 18px rgba(25, 80, 52, .28); color: white; display: inline-flex; height: 58px; justify-content: center; padding: 0; position: fixed; right: max(22px, env(safe-area-inset-right)); transition: background-color .2s ease-out, transform .2s ease-out, box-shadow .2s ease-out; width: 58px; z-index: 8; }
-.whatsapp-float:hover { background: #1ebe5d; box-shadow: 0 10px 22px rgba(25, 80, 52, .34); color: white; transform: translateY(-2px); }
+.whatsapp-float { align-items: center; background: transparent; border: 0; border-radius: 50%; bottom: max(22px, env(safe-area-inset-bottom)); box-shadow: none; color: white; display: inline-flex; height: 58px; justify-content: center; padding: 0; position: fixed; right: max(22px, env(safe-area-inset-right)); transition: transform .2s ease-out; width: 58px; z-index: 8; }
+.whatsapp-float:hover { background: transparent; box-shadow: none; color: white; transform: translateY(-2px) scale(1.04); }
 .whatsapp-float:focus-visible { outline: 3px solid var(--qara-ink); outline-offset: 3px; }
-.whatsapp-float svg { fill: currentColor; height: 31px; width: 31px; }
+.whatsapp-float img { display: block; height: 100%; object-fit: cover; width: 100%; }
 
 .quotes-grid { display: grid; gap: 24px; grid-template-columns: repeat(3, 1fr); }
 .quotes-grid blockquote { background: white; display: flex; flex-direction: column; gap: 18px; justify-content: space-between; padding: 30px; }
@@ -389,10 +389,8 @@ blockquote footer { color: var(--qara-copy); font-size: .75rem; }
 .location-grid > div:first-child { align-self: center; padding: 60px 60px 60px 0; }
 .location-grid > div:first-child p:not(.kicker) { color: var(--qara-copy); }
 .location-grid a { color: var(--qara-focus); font-size: .9rem; font-weight: 600; }
-.map-art { align-items: center; background-color: #dedbd8; background-image: linear-gradient(35deg,transparent 49%,rgba(255,255,255,.8) 50%,transparent 52%),linear-gradient(120deg,transparent 48%,rgba(162,138,127,.25) 49%,transparent 51%); background-size: 90px 90px,130px 130px; display: flex; flex-direction: column; justify-content: center; }
-.map-art span { align-items: center; background: var(--qara-taupe); border-radius: 50% 50% 50% 0; color: white; display: flex; font-family: "Telegraf", Arial, sans-serif; height: 68px; justify-content: center; transform: rotate(-45deg); width: 68px; }
-.map-art span em { font-style: normal; transform: rotate(45deg); }
-.map-art b { background: rgba(255,255,255,.85); font-size: .72rem; margin-top: 18px; padding: 8px 12px; }
+.map-art { min-height: 390px; overflow: hidden; }
+.map-art iframe { border: 0; display: block; height: 100%; min-height: 390px; width: 100%; }
 .practical-section { display: grid; gap: 90px; grid-template-columns: .75fr 1.25fr; padding-block: 105px; }
 .practical-list details { border-top: 1px solid var(--qara-gray-200); padding-block: 23px; }
 .practical-list details:last-child { border-bottom: 1px solid var(--qara-gray-200); }

@@ -121,7 +121,7 @@ export function InternationalPage({ c }: { c: IntlContent }) {
               <p><a href={clinicMapsUrl} target="_blank" rel="noreferrer" data-conversion-event="maps_click" data-conversion-placement="contact" data-conversion-variant="maps" data-conversion-context="international" data-conversion-locale={locale}>{c.mapsLabel} <span aria-hidden="true">→</span></a><br />
               <a href={clinicContact.emailHref}>{c.emailLabel}: {clinicContact.email}</a></p>
             </div>
-            <a className="map-art" href={clinicMapsUrl} target="_blank" rel="noreferrer" aria-label={c.mapsLabel} data-conversion-event="maps_click" data-conversion-placement="contact" data-conversion-variant="maps" data-conversion-context="international" data-conversion-locale={locale}><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a>
+            <div className="map-art"><iframe src={clinicContact.mapsEmbedUrl} title={c.mapsLabel} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
           </div>
         </section>
 

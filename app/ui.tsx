@@ -79,7 +79,7 @@ export function Footer() {
 }
 
 export function WhatsAppFloatingButton() {
-  return <a className="whatsapp-float" href={clinicContact.whatsappFloatingUrl} target="_blank" rel="noopener noreferrer" aria-label="Agendar uma consulta pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="floating" data-conversion-variant="schedule"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.7 4.3A10.6 10.6 0 0 0 3.2 17.1L2 22l5.1-1.3A10.7 10.7 0 1 0 19.7 4.3Zm-7.6 16a8.5 8.5 0 0 1-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.5 8.5 0 1 1 12.1 20.3Zm4.7-6.4c-.3-.2-1.6-.8-1.9-.9s-.5-.2-.7.2-.8.9-.9 1.1-.3.2-.6.1a7 7 0 0 1-2.1-1.3A7.8 7.8 0 0 1 9 11.2c-.2-.3 0-.5.1-.6l.4-.5.2-.5c.1-.2 0-.4 0-.5L8.8 7c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.3 1 2.6 1.2 2.8a10 10 0 0 0 3.8 3.5c.5.3.9.5 1.2.6.5.2 1 .2 1.4.1.4-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3s-.2-.2-.5-.3Z" /></svg></a>;
+  return <a className="whatsapp-float" href={clinicContact.whatsappFloatingUrl} target="_blank" rel="noopener noreferrer" aria-label="Agendar uma consulta pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="floating" data-conversion-variant="schedule"><img src="/images/whatsapp-icon.png" width="64" height="64" alt="" aria-hidden="true" /></a>;
 }
 
 export function SectionHeading({ eyebrow, title, text }: { eyebrow?: string; title: string; text: string }) {

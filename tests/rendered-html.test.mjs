@@ -379,6 +379,7 @@ test("credits aesthetic publications to Dr. Diego and ships the complete contact
   assert.match(html, /@qaraclinica/);
   assert.match(html, /whatsapp-float/);
   assert.match(html, /aria-label="Agendar uma consulta pelo WhatsApp \(abre em nova aba\)"/);
+  assert.match(html, /<img[^>]+src="\/images\/whatsapp-icon\.png"[^>]+alt=""[^>]*>/);
   assert.doesNotMatch(html, /Agendar no WhatsApp/);
   assert.match(html, /conheci\+o\+trabalho\+da\+Clinica/);
 });
