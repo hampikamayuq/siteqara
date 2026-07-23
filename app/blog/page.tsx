@@ -5,6 +5,7 @@ import { Breadcrumb, Footer, Header } from "../ui";
 import { articles } from "./articles";
 import { evidence } from "./article-evidence";
 import { BlogNavSpy } from "./nav-spy";
+import { whatsappHref } from "../clinic-links";
 
 export const metadata: Metadata = {
   title: "Blog de Dermatologia | Clínica QARA",
@@ -69,7 +70,7 @@ export default function Blog() {
           </section>;
         })}
       </section>
-      <section className="blog-guidance"><div className="shell"><div><h2>Não sabe por onde começar?</h2><p>Conte brevemente sua necessidade. A equipe orienta a especialidade mais adequada antes do agendamento.</p></div><div className="actions"><Link className="button button-secondary" href="/#cuidados">Ver especialidades</Link><a className="button button-primary" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20orienta%C3%A7%C3%A3o%20para%20escolher%20o%20especialista%20adequado." target="_blank" rel="noopener noreferrer">Pedir orientação no WhatsApp</a></div></div></section>
+      <section className="blog-guidance"><div className="shell"><div><h2>Não sabe por onde começar?</h2><p>Conte brevemente sua necessidade. A equipe orienta a especialidade mais adequada antes do agendamento.</p></div><div className="actions"><Link className="button button-secondary" href="/#cuidados">Ver especialidades</Link><a className="button button-primary" href={whatsappHref("Olá, gostaria de orientação para escolher o especialista adequado.")} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="blog_guidance" data-conversion-variant="guidance" data-conversion-context="blog">Pedir orientação no WhatsApp</a></div></div></section>
     </main>
     <BlogNavSpy />
     <Footer />

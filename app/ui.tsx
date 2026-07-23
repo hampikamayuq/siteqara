@@ -1,10 +1,16 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { clinicContact, whatsappHref } from "./clinic-links";
 
-export const clinicMapsUrl = "https://www.google.com/maps/place/Cl%C3%ADnica+QARA/@-22.9717237,-43.1869868,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgICp1ZzO9gE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAHRPTWk7XCEk_ldeGIZtGX3qU8zThjkRR2ad_TBZKBkw__YmLZFe_DtY4LgKFZeJDTGGjn9BY08aCcZ6unD4N0-P0OhzvwFHdET6ERnxEZLmE2IbXttr0APMBhGNGPpJM-_HxSN4u6AY%3Dw128-h86-k-no!7i3870!8i2583!4m7!3m6!1s0x9bd5c690781749:0xd8efa1efc0385245!8m2!3d-22.9716311!4d-43.1868668!10e5!16s%2Fg%2F11v6b1n885?entry=ttu";
+export const clinicMapsUrl = clinicContact.mapsUrl;
 
-export function Header({ current }: { current?: string } = {}) {
+type HeaderConversionContext = "home" | "specialty" | "profile" | "blog" | "article" | "international" | "not_found";
+
+export function Header({ current, conversionContext }: { current?: string; conversionContext?: HeaderConversionContext } = {}) {
   const cur = (href: string) => { const h = href.split("#")[0]; return h && h !== "/" && h === current ? "page" as const : undefined; };
+  const locale = current === "/en" ? "en" : current === "/es" ? "es" : "pt-BR";
+  const context = conversionContext ?? (current === "/en" || current === "/es" ? "international" : current === "/blog" ? "blog" : current && current !== "/" ? "specialty" : "home");
+  const language = (target: "pt-BR" | "en" | "es", placement: "header" | "mobile_menu") => target === locale ? { "aria-current": "page" as const } : { "data-conversion-event": "language_change", "data-conversion-placement": placement, "data-conversion-context": context, "data-conversion-locale": locale, "data-conversion-to-locale": target };
   const specialties = [
     ["Dermatologia clínica", "/dermatologia-clinica", "Acne, rosácea, manchas e pintas"],
     ["Cirurgia dermatológica", "/cirurgia-dermatologica", "Biópsias, lesões e reconstruções"],
@@ -31,25 +37,26 @@ export function Header({ current }: { current?: string } = {}) {
           <details className="mega-menu">
             <summary>Especialidades <span aria-hidden="true">⌄</span></summary>
             <div className="mega-panel">
-              <div className="mega-guide"><p>Comece pela sua necessidade.</p><span>Se ainda não sabe qual especialista procurar, nossa equipe pode orientar.</span><a href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20ainda%20n%C3%A3o%20sei%20qual%20especialista%20procurar%20%E2%80%94%20podem%20me%20orientar%3F" target="_blank" rel="noopener noreferrer">Pedir orientação →</a></div>
+              <div className="mega-guide"><p>Comece pela sua necessidade.</p><span>Se ainda não sabe qual especialista procurar, nossa equipe pode orientar.</span><a href={whatsappHref("Olá, ainda não sei qual especialista procurar — podem me orientar?")} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="header" data-conversion-variant="guidance">Pedir orientação →</a></div>
               <div className="mega-group mega-specialties"><strong>Especialidades</strong>{specialties.map(([label,href,text])=><Link href={href} aria-current={cur(href)} key={href}><span>{label}</span><small>{text}</small></Link>)}</div>
               <div className="mega-group"><strong>Queixas frequentes</strong>{needs.map(([label,href])=><Link href={href} key={label}>{label}<span aria-hidden="true">→</span></Link>)}</div>
               <div className="mega-group"><strong>Clínica e conteúdo</strong>{clinic.map(([label,href])=><Link href={href} key={label}>{label}<span aria-hidden="true">→</span></Link>)}</div>
             </div>
           </details>
           <Link href="/#especialistas">Equipe</Link><Link href="/#clinica">Clínica</Link><Link href="/blog" aria-current={cur("/blog")}>Conteúdo</Link>
-          <div className="language-switcher" aria-label="Idiomas" role="group"><Link className="lang-link" href="/en" aria-current={cur("/en")} lang="en">EN</Link><Link className="lang-link" href="/es" aria-current={cur("/es")} lang="es">ES</Link></div>
+          <div className="language-switcher" aria-label="Idiomas" role="group"><Link className="lang-link" href="/" lang="pt-BR" {...language("pt-BR", "header")}>PT</Link><Link className="lang-link" href="/en" lang="en" {...language("en", "header")}>EN</Link><Link className="lang-link" href="/es" lang="es" {...language("es", "header")}>ES</Link></div>
         </nav>
-        <a className="header-cta" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)"><span className="cta-full">Agendar pelo WhatsApp</span><span className="cta-short">Agendar</span></a>
+        <a className="header-cta" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="header" data-conversion-variant="schedule"><span className="cta-full">Agendar pelo WhatsApp</span><span className="cta-short">Agendar</span></a>
         <details className="mobile-menu">
           <summary aria-label="Abrir menu de navegação"><span>Menu</span><i aria-hidden="true" /></summary>
           <nav aria-label="Navegação móvel">
             <details className="mobile-menu-group"><summary>Especialidades</summary><div>{specialties.map(([label,href])=><Link href={href} aria-current={cur(href)} key={href}>{label}</Link>)}</div></details>
             <details className="mobile-menu-group"><summary>Encontre seu cuidado</summary><div>{needs.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}</div></details>
             {clinic.map(([label,href])=><Link href={href} key={label}>{label}</Link>)}
-            <Link href="/en" lang="en">English</Link>
-            <Link href="/es" lang="es">Español</Link>
-            <a className="mobile-menu-cta" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)">Agendar pelo WhatsApp</a>
+            <Link href="/" lang="pt-BR" {...language("pt-BR", "mobile_menu")}>PT</Link>
+            <Link href="/en" lang="en" {...language("en", "mobile_menu")}>English</Link>
+            <Link href="/es" lang="es" {...language("es", "mobile_menu")}>Español</Link>
+            <a className="mobile-menu-cta" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="mobile_menu" data-conversion-variant="schedule">Agendar pelo WhatsApp</a>
           </nav>
         </details>
       </div>
@@ -63,8 +70,8 @@ export function Footer() {
       <div className="shell footer-grid">
         <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p><p><Link href="/blog">Blog de dermatologia</Link><br /><Link href="/equipe">Equipe médica</Link></p><p><Link href="/en" lang="en">English</Link> · <Link href="/es" lang="es">Español</Link></p></div>
         <div><strong>Especialidades</strong><p><Link href="/dermatologia-clinica">Dermatologia clínica</Link><br /><Link href="/cirurgia-dermatologica">Cirurgia dermatológica</Link><br /><Link href="/cabelo">Cabelos e couro cabeludo</Link><br /><Link href="/unhas">Doenças das unhas</Link><br /><Link href="/doencas-inflamatorias">Doenças inflamatórias</Link><br /><Link href="/dermatopediatria">Dermatopediatria</Link><br /><Link href="/dermatologia-estetica">Dermatologia estética</Link></p></div>
-        <div><strong>Endereço</strong><p><a href={clinicMapsUrl} target="_blank" rel="noopener noreferrer">Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</a></p></div>
-        <div><strong>Contato</strong><p><a href="https://wa.me/5521992189718" target="_blank" rel="noopener noreferrer">WhatsApp: (21) 99218-9718</a><br /><a href="tel:+5521992189718">Ligar: (21) 99218-9718</a><br /><a href="mailto:contato@clinicaqara.com.br">contato@clinicaqara.com.br</a><br />Seg. a sex., 8h–21h · Sáb., 8h–13h<br />Atendimento com hora marcada</p></div>
+        <div><strong>Endereço</strong><p><a href={clinicContact.mapsUrl} target="_blank" rel="noopener noreferrer" data-conversion-event="maps_click" data-conversion-placement="footer" data-conversion-variant="maps">Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</a></p></div>
+        <div><strong>Contato</strong><p><a href={clinicContact.whatsappUrl} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="footer" data-conversion-variant="whatsapp">WhatsApp: (21) 99218-9718</a><br /><a href={clinicContact.telephoneHref} data-conversion-event="phone_click" data-conversion-placement="footer" data-conversion-variant="phone">Ligar: (21) 99218-9718</a><br /><a href={clinicContact.emailHref}>{clinicContact.email}</a><br />Seg. a sex., 8h–21h · Sáb., 8h–13h<br />Atendimento com hora marcada</p></div>
         <div><strong>Registro</strong><p>Clínica QARA<br />CRM-RJ 1285041</p></div>
       </div>
     </footer>
@@ -85,7 +92,7 @@ export function CtaBand() {
     <section className="cta-band" id="agendar">
       <div className="shell cta-inner">
         <div><p className="eyebrow">Agende sua avaliação</p><h2>Conte o que precisa. Nossa equipe indica o especialista adequado e apresenta os horários disponíveis.</h2></div>
-        <div><div className="actions"><a className="button button-light" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA." target="_blank" rel="noopener noreferrer">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Atendimento de seg. a sex., 8h–21h, e sáb., 8h–13h, sempre com hora marcada.</p></div>
+        <div><div className="actions"><a className="button button-light" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="cta_band" data-conversion-variant="schedule">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Atendimento de seg. a sex., 8h–21h, e sáb., 8h–13h, sempre com hora marcada.</p></div>
       </div>
     </section>
   );

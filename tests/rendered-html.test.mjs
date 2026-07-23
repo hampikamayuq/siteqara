@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
+import { createConversionEvent } from "../app/conversion-events.mjs";
 
 test("renders local SEO schema and social cards on the homepage", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -34,6 +35,38 @@ test("renders local SEO schema and social cards on the homepage", async () => {
   assert.match(html, /"postalCode":"22041-012"/);
   assert.match(html, /<meta name="twitter:card" content="summary_large_image"\/>/);
   assert.match(html, /roboto-400-latin\.woff2/);
+});
+
+test("sets the complete security policy on rendered Worker responses", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("security-headers-test", `${process.pid}-${Date.now()}`);
+  const { default: worker, withSecurityHeaders } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+
+  const response = await worker.fetch(new Request("http://localhost/", { headers: { accept: "text/html" } }), env, ctx);
+
+  assert.equal(response.status, 200);
+  assert.equal(response.statusText, "");
+  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
+  assert.equal(response.headers.get("strict-transport-security"), "max-age=63072000; includeSubDomains");
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.equal(response.headers.get("permissions-policy"), "camera=(), microphone=(), geolocation=(), payment=()");
+  assert.equal(response.headers.get("content-security-policy"), null);
+  assert.match(await response.text(), /<html lang="pt-BR">/);
+
+  const noContent = withSecurityHeaders(new Response(null, {
+    status: 204,
+    statusText: "No Content",
+    headers: { "x-existing": "preserved" },
+  }));
+  assert.equal(noContent.status, 204);
+  assert.equal(noContent.statusText, "No Content");
+  assert.equal(noContent.headers.get("x-existing"), "preserved");
+  assert.equal(noContent.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(noContent.body, null);
 });
 
 test("ships an accessible mobile menu without disabling browser zoom", async () => {
@@ -110,6 +143,21 @@ test("lists all five available clinic languages", async () => {
   assert.match(html, /Português, inglês e espanhol/);
   assert.match(html, /Alemão e francês conforme o especialista/);
   assert.match(html, /"availableLanguage":\["pt-BR","en","es","de","fr"\]/);
+});
+
+test("keeps international main content labelled in its rendered language", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("document-language-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+
+  for (const [route, language] of [["/en", "en"], ["/es", "es"]]) {
+    const response = await worker.fetch(new Request(`http://localhost${route}`, { headers: { accept: "text/html" } }), env, ctx);
+    const html = await response.text();
+    assert.match(html, /<html lang="pt-BR">/, `${route}: Portuguese remains the SSR document fallback`);
+    assert.match(html, new RegExp(`<main[^>]+lang="${language}"`), `${route}: international content must retain its rendered language`);
+  }
 });
 
 test("renders the balanced premium desktop header", async () => {
@@ -193,4 +241,116 @@ test("does not present a medical specialty as Dr. Fabrício's RQE", async () => 
   const source = await readFile(new URL("../app/blog/article-evidence.ts", import.meta.url), "utf8");
   assert.doesNotMatch(source, /rqe:"Dermatologista e pediatra"/);
   assert.match(source, /qualification:"Dermatologista e pediatra"/);
+});
+
+test("renders only the approved conversion contract across public conversion routes", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("conversion-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+  const source = await readFile(new URL("../app/blog/articles.ts", import.meta.url), "utf8");
+  const articleSlugs = [...source.matchAll(/\{slug:"([^"]+)"/g)].map(match => match[1]);
+  const specialties = ["dermatologia-clinica", "cirurgia-dermatologica", "cabelo", "unhas", "doencas-inflamatorias", "dermatopediatria", "dermatologia-estetica"];
+  const doctors = ["dr-miguel-ceccarelli", "dr-diego-galvez", "dra-diana-stohmann", "dra-manuela-pedretti", "dr-fabricio-de-andrade"];
+  const routes = ["/", ...specialties.map(slug => `/${slug}`), ...doctors.map(slug => `/equipe/${slug}`), "/en", "/es", "/blog", ...articleSlugs.map(slug => `/blog/${slug}`)];
+  const approvedAttributes = new Set(["event", "placement", "variant", "context", "doctor", "specialty", "article", "category", "locale", "to-locale"]);
+
+  for (const route of routes) {
+    const response = await worker.fetch(new Request(`http://localhost${route}`, { headers: { accept: "text/html" } }), env, ctx);
+    assert.equal(response.status, 200, route);
+    const html = await response.text();
+    const instrumentedTags = html.match(/<[^>]+\bdata-conversion-event="[^"]+"[^>]*>/g) ?? [];
+    assert.ok(instrumentedTags.length > 0, `${route} should render conversion metadata`);
+
+    for (const tag of instrumentedTags) {
+      const attributes = Object.fromEntries([...tag.matchAll(/\bdata-conversion-([a-z-]+)="([^"]*)"/g)].map(match => [match[1], match[2]]));
+      for (const key of Object.keys(attributes)) assert.ok(approvedAttributes.has(key), `${route}: ${key}`);
+      const input = Object.fromEntries(Object.entries(attributes).map(([key, value]) => [key.replaceAll("-", "_"), value]));
+      assert.doesNotThrow(() => createConversionEvent({ event_name: input.event, ...input, event: undefined }, new URL(`http://localhost${route}`)), `${route}: ${tag}`);
+    }
+    assert.doesNotMatch(html, /data-conversion-(?:href|text|message|symptom|diagnosis|search|hash|referrer|cookie|ip|user-agent|email|phone)=/i, route);
+  }
+
+  for (const slug of specialties) {
+    const response = await worker.fetch(new Request(`http://localhost/${slug}`, { headers: { accept: "text/html" } }), env, ctx);
+    const html = await response.text();
+    assert.match(html, new RegExp(`data-conversion-event="specialty_view"[^>]+data-conversion-specialty="${slug}"`), slug);
+  }
+  for (const slug of doctors) {
+    const response = await worker.fetch(new Request(`http://localhost/equipe/${slug}`, { headers: { accept: "text/html" } }), env, ctx);
+    const html = await response.text();
+    assert.match(html, new RegExp(`data-conversion-event="doctor_profile_view"[^>]+data-conversion-doctor="${slug}"`), slug);
+  }
+  for (const slug of articleSlugs) {
+    const response = await worker.fetch(new Request(`http://localhost/blog/${slug}`, { headers: { accept: "text/html" } }), env, ctx);
+    const html = await response.text();
+    assert.match(html, new RegExp(`data-conversion-event="article_to_specialty_click"[^>]+data-conversion-article="${slug}"`), slug);
+  }
+});
+
+test("renders PT, EN, and ES switchers with only other locales instrumented", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("locale-conversion-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+
+  for (const [route, locale] of [["/", "pt-BR"], ["/en", "en"], ["/es", "es"]]) {
+    const response = await worker.fetch(new Request(`http://localhost${route}`, { headers: { accept: "text/html" } }), env, ctx);
+    const html = await response.text();
+    for (const [href, label] of [["/", "PT"], ["/en", "EN"], ["/es", "ES"]]) assert.match(html, new RegExp(`<a[^>]+href="${href}"[^>]*>${label}</a>`), `${route}: ${label}`);
+    const currentHref = locale === "pt-BR" ? "/" : `/${locale}`;
+    assert.match(html, new RegExp(`<a[^>]+href="${currentHref}"[^>]+aria-current="page"[^>]*>`), route);
+    assert.doesNotMatch(html, new RegExp(`<a[^>]+href="${currentHref}"[^>]+data-conversion-event="language_change"[^>]*>`), route);
+    for (const target of ["pt-BR", "en", "es"].filter(target => target !== locale)) {
+      assert.match(html, new RegExp(`data-conversion-event="language_change"[^>]+data-conversion-locale="${locale}"[^>]+data-conversion-to-locale="${target}"`), `${route}: ${target}`);
+    }
+  }
+});
+
+test("labels Portuguese language changes with the rendered route context", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("language-context-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+  const routes = [
+    ["/blog/cancer-da-pele-sinais-de-alerta", "article"],
+    ["/equipe/dr-diego-galvez", "profile"],
+    ["/dermatologia-clinica", "specialty"],
+  ];
+
+  for (const [route, context] of routes) {
+    const response = await worker.fetch(new Request(`http://localhost${route}`, { headers: { accept: "text/html" } }), env, ctx);
+    assert.equal(response.status, 200, route);
+    const html = await response.text();
+    const changes = html.match(/<a[^>]+data-conversion-event="language_change"[^>]*>/g) ?? [];
+    assert.equal(changes.length, 4, `${route}: desktop and mobile links to EN and ES`);
+    for (const tag of changes) {
+      assert.match(tag, new RegExp(`data-conversion-context="${context}"`), `${route}: ${tag}`);
+    }
+  }
+});
+
+test("centralizes clinic contact destinations", async () => {
+  const central = await readFile(new URL("../app/clinic-links.ts", import.meta.url), "utf8");
+  assert.match(central, /5521992189718/);
+  assert.match(central, /contato@clinicaqara\.com\.br/);
+  assert.match(central, /google\.com\/maps/);
+  assert.match(central, /doctoralia\.com\.br\/clinicas\/clinica-qara-2/);
+
+  const files = ["ui.tsx", "page.tsx", "specialty-template.tsx", "cabelo/page.tsx", "cirurgia-dermatologica/page.tsx", "equipe/[slug]/page.tsx", "blog/page.tsx", "international.tsx", "not-found.tsx"];
+  for (const file of files) {
+    const source = await readFile(new URL(`../app/${file}`, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /5521992189718|contato@clinicaqara\.com\.br|google\.com\/maps\/place\/|doctoralia\.com\.br\/clinicas\/clinica-qara-2/, file);
+  }
+});
+
+test("does not treat the Google review evidence link as a location conversion", async () => {
+  const source = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const reviewAnchor = source.match(/<a href=\{clinicMapsUrl\}[^>]+aria-label="Nota 5,0 no Google[^>]+>/)?.[0];
+  assert.ok(reviewAnchor, "Google review evidence link should remain present");
+  assert.doesNotMatch(reviewAnchor, /data-conversion-event=/);
+  assert.match(source, /Abrir no Google Maps[\s\S]+data-conversion-event="maps_click"|data-conversion-event="maps_click"[^>]+>Abrir no Google Maps/);
 });

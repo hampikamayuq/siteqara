@@ -20,6 +20,12 @@ const SPECIALTY: Record<string, [string, string]> = {
   "Dermatologia clínica": ["Dermatologia clínica", "/dermatologia-clinica"],
 };
 
+const CATEGORY_SLUG: Record<string, string> = {
+  "Câncer da pele": "cancer-da-pele", Cirurgia: "cirurgia", Cabelos: "cabelos", Unhas: "unhas",
+  "Doenças inflamatórias": "doencas-inflamatorias", "Dermatologia estética": "dermatologia-estetica",
+  Dermatopediatria: "dermatopediatria", "Dermatologia clínica": "dermatologia-clinica",
+};
+
 const PREPARATION: Record<string, string> = {
   "Câncer da pele": "Se possível, observe há quanto tempo a lesão existe e leve fotografias que mostrem sua evolução. Informe histórico pessoal e familiar de câncer da pele e procedimentos prévios na região.",
   "Cirurgia": "Leve a lista de medicamentos, alergias e laudos anteriores. Não suspenda anticoagulantes ou outros remédios por conta própria; o preparo depende do procedimento e das suas condições clínicas.",
@@ -90,7 +96,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const toc = <>{sections.map(([title]) => <a href={`#${sectionId(title)}`} key={title}>{title}</a>)}<a href="#consulta">Como se preparar</a><a href="#fontes">Referências</a></>;
 
   return <>
-    <Header current="/blog" />
+    <Header current="/blog" conversionContext="article" />
     <main id="conteudo">
       <Breadcrumb trail={[["Conteúdo", "/blog"], [article.title, ""]]}><Link href="/blog">Conteúdo</Link><span>/</span>{article.category}</Breadcrumb>
       <article className="article-page">
@@ -129,7 +135,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        <section className="article-related shell"><div className="article-related-heading"><div><h2>Continue a leitura.</h2><p>Conteúdo relacionado, com autoria médica e referências.</p></div>{specialty && <Link href={specialty[1]}>Conhecer {specialty[0].toLowerCase()} <span aria-hidden="true">→</span></Link>}</div><div>{related.map(item => <article key={item.slug}><Link className="related-image" href={`/blog/${item.slug}`} aria-label={`Ler ${item.title}`}><img src={item.image} srcSet={responsiveCover(item.image)} sizes="(max-width: 700px) 100vw, 33vw" width={1400} height={788} alt="" loading="lazy" decoding="async" /></Link><span>{item.category} · {item.readTime}</span><h3><Link href={`/blog/${item.slug}`}>{item.title}</Link></h3></article>)}</div><Link className="back-blog" href="/blog">← Ver todos os artigos</Link></section>
+        <section className="article-related shell"><div className="article-related-heading"><div><h2>Continue a leitura.</h2><p>Conteúdo relacionado, com autoria médica e referências.</p></div>{specialty && <Link href={specialty[1]} data-conversion-event="article_to_specialty_click" data-conversion-placement="article_related" data-conversion-context="article" data-conversion-article={article.slug} data-conversion-category={CATEGORY_SLUG[article.category]} data-conversion-specialty={specialty[1].slice(1)}>Conhecer {specialty[0].toLowerCase()} <span aria-hidden="true">→</span></Link>}</div><div>{related.map(item => <article key={item.slug}><Link className="related-image" href={`/blog/${item.slug}`} aria-label={`Ler ${item.title}`}><img src={item.image} srcSet={responsiveCover(item.image)} sizes="(max-width: 700px) 100vw, 33vw" width={1400} height={788} alt="" loading="lazy" decoding="async" /></Link><span>{item.category} · {item.readTime}</span><h3><Link href={`/blog/${item.slug}`}>{item.title}</Link></h3></article>)}</div><Link className="back-blog" href="/blog">← Ver todos os artigos</Link></section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </article>
       <CtaBand />

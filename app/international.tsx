@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { clinicMapsUrl, Footer, Header, portraitSrcSet } from "./ui";
+import { clinicContact, whatsappHref } from "./clinic-links";
 
 export type IntlContent = {
   path: string; ogLocale: string;
@@ -21,10 +22,11 @@ export type IntlContent = {
 };
 
 export function InternationalPage({ c }: { c: IntlContent }) {
+  const locale = c.path === "/en" ? "en" : "es";
   const clinicSchema = {
     "@context": "https://schema.org", "@type": "MedicalClinic",
     name: "Clínica QARA", url: `https://clinicaqara.com.br${c.path}`,
-    telephone: "+55-21-99218-9718", email: "contato@clinicaqara.com.br",
+    telephone: clinicContact.telephone, email: clinicContact.email,
     medicalSpecialty: "Dermatology",
     address: { "@type": "PostalAddress", streetAddress: "Rua Santa Clara, 50 — salas 521/522", addressLocality: "Rio de Janeiro", addressRegion: "RJ", postalCode: "22041-012", addressCountry: "BR" },
     geo: { "@type": "GeoCoordinates", latitude: -22.9716311, longitude: -43.1868668 },
@@ -42,7 +44,7 @@ export function InternationalPage({ c }: { c: IntlContent }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Header />
+      <Header current={c.path} />
       <main id="conteudo" lang={c.ogLocale.split("_")[0]}>
         <section className="craft-hero">
           <div className="shell craft-hero-inner">
@@ -52,7 +54,7 @@ export function InternationalPage({ c }: { c: IntlContent }) {
               <span className="hero-rule" aria-hidden="true" />
               <p className="lead">{c.hero.lead}</p>
               <div className="actions">
-                <a className="button craft-primary" href={c.hero.ctaHref} target="_blank" rel="noopener noreferrer">{c.hero.cta}</a>
+                <a className="button craft-primary" href={c.hero.ctaHref} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="hero" data-conversion-variant="schedule" data-conversion-context="international" data-conversion-locale={locale}>{c.hero.cta}</a>
                 <a className="quiet-link" href="#services">{c.hero.quiet} <span aria-hidden="true">↓</span></a>
               </div>
               <p className="intl-note">{c.siteNote}</p>
@@ -116,10 +118,10 @@ export function InternationalPage({ c }: { c: IntlContent }) {
               <h2>{c.visitTitle}</h2>
               <p>{c.addressLines.map(l => <span key={l}>{l}<br /></span>)}</p>
               <p><strong>{c.hoursLabel}</strong><br />{c.hoursLines.map(l => <span key={l}>{l}<br /></span>)}</p>
-              <p><a href={clinicMapsUrl} target="_blank" rel="noreferrer">{c.mapsLabel} <span aria-hidden="true">→</span></a><br />
-              <a href="mailto:contato@clinicaqara.com.br">{c.emailLabel}: contato@clinicaqara.com.br</a></p>
+              <p><a href={clinicMapsUrl} target="_blank" rel="noreferrer" data-conversion-event="maps_click" data-conversion-placement="contact" data-conversion-variant="maps" data-conversion-context="international" data-conversion-locale={locale}>{c.mapsLabel} <span aria-hidden="true">→</span></a><br />
+              <a href={clinicContact.emailHref}>{c.emailLabel}: {clinicContact.email}</a></p>
             </div>
-            <a className="map-art" href={clinicMapsUrl} target="_blank" rel="noreferrer" aria-label={c.mapsLabel}><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a>
+            <a className="map-art" href={clinicMapsUrl} target="_blank" rel="noreferrer" aria-label={c.mapsLabel} data-conversion-event="maps_click" data-conversion-placement="contact" data-conversion-variant="maps" data-conversion-context="international" data-conversion-locale={locale}><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a>
           </div>
         </section>
 
@@ -127,7 +129,7 @@ export function InternationalPage({ c }: { c: IntlContent }) {
           <div className="shell cta-inner">
             <div><h2>{c.ctaTitle}</h2></div>
             <div>
-              <div className="actions"><a className="button button-light" href={c.hero.ctaHref} target="_blank" rel="noopener noreferrer">{c.ctaBtn}</a></div>
+              <div className="actions"><a className="button button-light" href={c.hero.ctaHref} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="cta_band" data-conversion-variant="schedule" data-conversion-context="international" data-conversion-locale={locale}>{c.ctaBtn}</a></div>
               <p className="cta-note">{c.ctaNote}</p>
             </div>
           </div>
@@ -138,8 +140,8 @@ export function InternationalPage({ c }: { c: IntlContent }) {
   );
 }
 
-const WA_EN = "https://wa.me/5521992189718?text=" + encodeURIComponent("Hello! I'd like to book an appointment at Clínica QARA.");
-const WA_ES = "https://wa.me/5521992189718?text=" + encodeURIComponent("¡Hola! Me gustaría agendar una consulta en la Clínica QARA.");
+const WA_EN = whatsappHref("Hello! I'd like to book an appointment at Clínica QARA.");
+const WA_ES = whatsappHref("¡Hola! Me gustaría agendar una consulta en la Clínica QARA.");
 
 export const enContent: IntlContent = {
   path: "/en", ogLocale: "en_US",

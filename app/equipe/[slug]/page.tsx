@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, CtaBand, Footer, Header, portraitSrcSet } from "../../ui";
+import { whatsappHref } from "../../clinic-links";
 
 type Profile = {
   name: string; role: string; credential: string; lead: string;
@@ -176,10 +177,10 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <Header />
+      <Header conversionContext="profile" />
       <main id="conteudo">
         <Breadcrumb trail={[["Equipe", "/equipe"], [p.name, ""]]}><Link href="/equipe">Equipe</Link><span>/</span>{p.name}</Breadcrumb>
-        <section className="profile-hero shell">
+        <section className="profile-hero shell" data-conversion-event="doctor_profile_view" data-conversion-placement="hero" data-conversion-context="profile" data-conversion-doctor={slug}>
           <div className="profile-photo"><img src={p.image} srcSet={portraitSrcSet[p.image]} sizes={portraitSrcSet[p.image] && "(max-width: 900px) 100vw, 480px"} width={p.imageW} height={p.imageH} fetchPriority="high" alt={`${p.name}, ${p.role.toLowerCase()}`} /></div>
           <div>
             <p className="eyebrow">{p.role}</p>
@@ -187,7 +188,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
             <p className="credential">{p.credential}</p>
             <p className="lead">{p.lead}</p>
             <div className="actions">
-              <a className="button button-primary" href={`https://wa.me/5521992189718?text=${encodeURIComponent(`Olá, gostaria de consultar horários com ${p.name.split(" ").slice(0, 2).join(" ")}.`)}`} target="_blank" rel="noopener noreferrer">Consultar horários</a>
+              <a className="button button-primary" href={whatsappHref(`Olá, gostaria de consultar horários com ${p.name.split(" ").slice(0, 2).join(" ")}.`)} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="hero" data-conversion-variant="schedule" data-conversion-context="profile" data-conversion-doctor={slug}>Consultar horários</a>
               <a className="button button-secondary" href="#atuacao">Ver áreas de atuação</a>
               {p.externalProfile && <a className="button button-secondary" href={p.externalProfile} target="_blank" rel="noopener noreferrer">Ver perfil no Doctoralia</a>}
             </div>

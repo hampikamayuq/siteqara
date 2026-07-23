@@ -25,7 +25,7 @@ const team = [
 export default function TeamPage() {
   return (
     <>
-      <Header />
+      <Header conversionContext="profile" />
       <main id="conteudo">
         <Breadcrumb trail={[["Equipe", ""]]}>Equipe</Breadcrumb>
         <section className="section shell">

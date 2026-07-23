@@ -2,6 +2,7 @@ import { clinicMapsUrl, CtaBand, Footer, Header, portraitSrcSet } from "./ui";
 import Link from "next/link";
 import { articles } from "./blog/articles";
 import { evidence } from "./blog/article-evidence";
+import { clinicContact, whatsappHref } from "./clinic-links";
 
 const services = [
   ["Dermatologia clínica", "Acne, rosácea, manchas, alergias e avaliação de pintas.", "/dermatologia-clinica"],
@@ -38,7 +39,7 @@ const clinicSchema = {
   description: "Clínica dermatológica em Copacabana: dermatologia clínica e cirúrgica, cabelos, unhas, doenças inflamatórias, dermatopediatria e dermatologia estética.",
   url: "https://clinicaqara.com.br",
   image: "https://clinicaqara.com.br/images/qara-atendimento.webp",
-  telephone: "+55-21-99218-9718",
+  telephone: clinicContact.telephone,
   medicalSpecialty: "Dermatology",
   identifier: "CRM-RJ 1285041",
   address: {
@@ -51,7 +52,7 @@ const clinicSchema = {
   },
   geo: { "@type": "GeoCoordinates", latitude: -22.9716311, longitude: -43.1868668 },
   aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: 141 },
-  email: "contato@clinicaqara.com.br",
+  email: clinicContact.email,
   openingHoursSpecification: [
     { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:00", closes: "21:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:00", closes: "13:00" },
@@ -63,7 +64,7 @@ const clinicSchema = {
 export default function Home() {
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(clinicSchema) }} />
-    <Header />
+    <Header current="/" />
     <main id="conteudo">
       <section className="craft-hero">
         <div className="hero-image" aria-hidden="true"><img src="/images/qara-hero-consulta.webp" srcSet="/images/qara-hero-consulta-640.webp 640w, /images/qara-hero-consulta-1024.webp 1024w, /images/qara-hero-consulta.webp 1672w" sizes="100vw" alt="" width={1672} height={941} fetchPriority="high" /></div>
@@ -74,7 +75,7 @@ export default function Home() {
             <span className="hero-rule" aria-hidden="true" />
             <p className="lead">Dermatologia clínica e cirúrgica com precisão técnica e sensibilidade humana para cuidar do que há de mais autêntico em você.</p>
             <div className="actions">
-              <a className="button craft-primary" href="https://wa.me/5521992189718?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Cl%C3%ADnica%20QARA.">Agendar pelo WhatsApp</a>
+              <a className="button craft-primary" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} data-conversion-event="whatsapp_click" data-conversion-placement="hero" data-conversion-variant="schedule" data-conversion-context="home">Agendar pelo WhatsApp</a>
               <a className="quiet-link" href="#cuidados">Ver especialidades <span>↓</span></a>
             </div>
           </div>
@@ -145,7 +146,7 @@ export default function Home() {
               <b>5,0</b>
               <span>141 avaliações no Google</span>
             </a>
-            <a href="https://www.doctoralia.com.br/clinicas/clinica-qara-2" target="_blank" rel="noopener noreferrer" aria-label="Nota 5,0 no Doctoralia, 583 opiniões (abre em nova aba)">
+            <a href={clinicContact.doctoraliaUrl} target="_blank" rel="noopener noreferrer" aria-label="Nota 5,0 no Doctoralia, 583 opiniões (abre em nova aba)">
               <img src="/images/doctoralia.webp" alt="Doctoralia" width={124} height={22} loading="lazy" decoding="async" />
               <span className="rating-stars" aria-hidden="true">★★★★★</span>
               <b>5,0</b>
@@ -155,7 +156,7 @@ export default function Home() {
         </div>
       </section>
       <section className="practical-section shell"><div><h2>Informações práticas.</h2></div><div className="practical-list"><details><summary>Qual é o horário de atendimento?</summary><p>A clínica atende de segunda a sexta, das 8h às 21h, e aos sábados, das 8h às 13h, sempre com hora marcada.</p></details><details><summary>Como escolher o especialista?</summary><p>Conte brevemente sua queixa pelo WhatsApp. Nossa equipe indicará o profissional com a área de atuação mais adequada.</p></details><details><summary>A clínica atende planos de saúde?</summary><p>O atendimento é particular. Emitimos nota fiscal e documentos médicos para solicitação de reembolso, conforme as regras do seu plano.</p></details><details><summary>Há atendimento por telemedicina?</summary><p>Alguns casos podem ser avaliados por telemedicina em todo o Brasil. Procedimentos e exames físicos exigem atendimento presencial.</p></details><details><summary>Quais idiomas estão disponíveis?</summary><p>A equipe oferece atendimento em português, espanhol, inglês, francês e alemão, conforme disponibilidade do profissional.</p></details></div></section>
-      <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana, Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href={clinicMapsUrl} target="_blank" rel="noreferrer">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href={clinicMapsUrl} target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps"><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a></div></section>
+      <section className="location-section"><div className="shell location-grid"><div><h2>Copacabana, Rio de Janeiro.</h2><p>Rua Santa Clara, 50 · salas 521/522<br />Próximo ao metrô Siqueira Campos.</p><a href={clinicMapsUrl} target="_blank" rel="noreferrer" data-conversion-event="maps_click" data-conversion-placement="contact" data-conversion-variant="maps" data-conversion-context="home">Abrir no Google Maps <span>→</span></a></div><a className="map-art" href={clinicMapsUrl} target="_blank" rel="noreferrer" aria-label="Abrir a localização da Clínica QARA no Google Maps" data-conversion-event="maps_click" data-conversion-placement="contact" data-conversion-variant="maps" data-conversion-context="home"><span><em>QARA</em></span><b>Rua Santa Clara, 50</b></a></div></section>
       <CtaBand />
     </main>
     <Footer />
