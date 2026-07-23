@@ -27,6 +27,11 @@ typography:
     fontWeight: 400
     lineHeight: 1.12
     letterSpacing: "-0.025em"
+  title:
+    fontFamily: "Roboto, Arial, Helvetica, sans-serif"
+    fontSize: "1.08rem"
+    fontWeight: 600
+    lineHeight: 1.35
   body:
     fontFamily: "Roboto, Arial, Helvetica, sans-serif"
     fontSize: "1rem"
@@ -38,6 +43,47 @@ typography:
     fontWeight: 600
     lineHeight: 1.35
     letterSpacing: "0.14em"
+  # Degraus utilitários sancionados (ver "Typography" no corpo do documento).
+  # Enumerados aqui para serem legíveis por máquina; a prosa descreve as faixas.
+  scale:
+    meta-66: "0.66rem"
+    meta-68: "0.68rem"
+    meta-70: "0.7rem"
+    meta-75: "0.75rem"
+    meta-76: "0.76rem"
+    meta-78: "0.78rem"
+    apoio-86: "0.86rem"
+    apoio-875: "0.875rem"
+    apoio-88: "0.88rem"
+    apoio-90: "0.9rem"
+    apoio-9375: "0.9375rem"
+    # Nav do desktop: ajuste deliberado do "cabeçalho premium", fixado por teste.
+    nav-desktop: "0.96rem"
+    lead-105: "1.05rem"
+    lead-110: "1.1rem"
+    lead-115: "1.15rem"
+    lead-120: "1.2rem"
+    lead-125: "1.25rem"
+    lead-138: "1.38rem"
+    lead-140: "1.4rem"
+    lead-145: "1.45rem"
+    editorial-165: "1.65rem"
+    editorial-170: "1.7rem"
+    editorial-172: "1.72rem"
+    editorial-180: "1.8rem"
+    editorial-215: "2.15rem"
+    clamp-235: "2.35rem"
+    clamp-240: "2.4rem"
+    clamp-260: "2.6rem"
+    clamp-265: "2.65rem"
+    clamp-270: "2.7rem"
+    citacao-glifo: "4rem"
+    # Endpoints da escala responsiva de títulos (clamp): 2 · 2.75 · 3 · 3.6 · 5 · 5.6rem
+    lead-150: "1.5rem"
+    titulo-300: "3rem"
+    titulo-500: "5rem"
+    # Assinatura da marca: subtítulo do wordmark, tamanho fixo por decisão de identidade.
+    wordmark-tag: "0.5rem"
 rounded:
   surface: "24px"
   compact: "12px"

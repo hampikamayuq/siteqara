@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-19T12:30:00-03:00",
+  "generatedAt": "2026-07-23T05:17:44+00:00",
   "title": "Design System: Clínica QARA",
   "extensions": {
     "colorMeta": {
@@ -78,6 +78,41 @@
           "#3D312C",
           "#2A211D"
         ]
+      },
+      "taupe-claro": {
+        "role": "derived-tint",
+        "displayName": "Taupe claro sobre fundos escuros",
+        "canonical": "#D7BCB0"
+      },
+      "blush-imagem": {
+        "role": "derived-tint",
+        "displayName": "Fundo de imagem",
+        "canonical": "#EAD8CE"
+      },
+      "blush-imagem-alt": {
+        "role": "derived-tint",
+        "displayName": "Fundo de imagem",
+        "canonical": "#EEE8E5"
+      },
+      "placeholder-quente": {
+        "role": "derived-tint",
+        "displayName": "Gradiente de placeholder e mapa",
+        "canonical": "#E9DAD2"
+      },
+      "placeholder-medio": {
+        "role": "derived-tint",
+        "displayName": "Gradiente de placeholder e mapa",
+        "canonical": "#BBA69A"
+      },
+      "placeholder-frio": {
+        "role": "derived-tint",
+        "displayName": "Gradiente de placeholder e mapa",
+        "canonical": "#DEDBD8"
+      },
+      "link-sobre-ink": {
+        "role": "derived-tint",
+        "displayName": "Link sobre fundo ink",
+        "canonical": "#E7C9BC"
       }
     },
     "typographyMeta": {
