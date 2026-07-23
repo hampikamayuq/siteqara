@@ -10,7 +10,7 @@ export const conversionAllowlists = Object.freeze({
     "article_to_specialty_click",
     "language_change",
   ]),
-  placement: freeze(["header", "mobile_menu", "hero", "cta_band", "footer", "blog_guidance", "not_found", "article_related", "contact"]),
+  placement: freeze(["header", "mobile_menu", "hero", "cta_band", "footer", "blog_guidance", "not_found", "article_related", "contact", "floating"]),
   variant: freeze(["schedule", "guidance", "whatsapp", "phone", "maps"]),
   context: freeze(["home", "specialty", "profile", "blog", "article", "international", "not_found"]),
   doctor: freeze(["dr-miguel-ceccarelli", "dr-diego-galvez", "dra-diana-stohmann", "dra-manuela-pedretti", "dr-fabricio-de-andrade"]),

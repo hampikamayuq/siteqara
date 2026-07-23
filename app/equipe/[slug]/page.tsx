@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb, CtaBand, Footer, Header, portraitSrcSet } from "../../ui";
-import { whatsappHref } from "../../clinic-links";
+import { appointmentLinks, whatsappHref } from "../../clinic-links";
 
 type Profile = {
   name: string; role: string; credential: string; lead: string;
@@ -163,6 +163,12 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const p = profiles[slug];
   if (!p) notFound();
+  const appointmentHref = slug === "dr-diego-galvez" ? appointmentLinks.diego
+    : slug === "dr-miguel-ceccarelli" ? appointmentLinks.miguel
+    : slug === "dra-diana-stohmann" ? appointmentLinks.cabeloDiana
+    : slug === "dra-manuela-pedretti" ? appointmentLinks.manuelaPsoriase
+    : slug === "dr-fabricio-de-andrade" ? appointmentLinks.dermatopediatria
+    : whatsappHref(`Olá, gostaria de consultar horários com ${p.name.split(" ").slice(0, 2).join(" ")}.`);
   const schema = {
     "@context": "https://schema.org", "@type": "Physician",
     name: p.name, medicalSpecialty: slug === "dr-fabricio-de-andrade" ? ["Dermatology", "Pediatrics"] : "Dermatology",
@@ -188,7 +194,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
             <p className="credential">{p.credential}</p>
             <p className="lead">{p.lead}</p>
             <div className="actions">
-              <a className="button button-primary" href={whatsappHref(`Olá, gostaria de consultar horários com ${p.name.split(" ").slice(0, 2).join(" ")}.`)} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="hero" data-conversion-variant="schedule" data-conversion-context="profile" data-conversion-doctor={slug}>Consultar horários</a>
+              <a className="button button-primary" href={appointmentHref} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="hero" data-conversion-variant="schedule" data-conversion-context="profile" data-conversion-doctor={slug}>Consultar horários</a>
               <a className="button button-secondary" href="#atuacao">Ver áreas de atuação</a>
               {p.externalProfile && <a className="button button-secondary" href={p.externalProfile} target="_blank" rel="noopener noreferrer">Ver perfil no Doctoralia</a>}
             </div>
@@ -225,7 +231,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>}
-        <CtaBand />
+        <CtaBand whatsappUrl={appointmentHref} />
       </main>
       <Footer />
     </>

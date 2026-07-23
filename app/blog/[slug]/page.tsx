@@ -6,6 +6,7 @@ import { Breadcrumb, CtaBand, Footer, Header, portraitSrcSet } from "../../ui";
 import { articles, getArticle, isoDate } from "../articles";
 import { articleContent } from "../article-content";
 import { evidence } from "../article-evidence";
+import { appointmentLinks } from "../../clinic-links";
 
 export function generateStaticParams() { return articles.map(article => ({ slug: article.slug })); }
 
@@ -48,6 +49,16 @@ const AUTHOR_IMAGES: Record<string, [string, number, number]> = {
 const sectionId = (title: string) => title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 const responsiveCover = (src: string) => src.replace(/\.webp$/, "-640.webp") + " 640w, " + src.replace(/\.webp$/, "-1024.webp") + " 1024w, " + src + " 1400w";
 const credentials = (author: (typeof evidence)[string]["author"]) => [author.crm, author.rqe, author.qualification].filter(Boolean).join(" · ");
+const articleAppointmentHref = (slug: string, category: string) => {
+  if (slug === "dermatite-atopica") return appointmentLinks.manuelaDermatiteAtopica;
+  if (slug === "psoriase-guia-para-pacientes") return appointmentLinks.manuelaPsoriase;
+  if (slug === "hidradenite-supurativa") return appointmentLinks.manuelaHidrosadenite;
+  if (category === "Cabelos") return appointmentLinks.cabeloDiana;
+  if (category === "Unhas") return appointmentLinks.miguel;
+  if (category === "Dermatopediatria") return appointmentLinks.dermatopediatria;
+  if (category === "Doenças inflamatórias") return appointmentLinks.manuelaPsoriase;
+  return appointmentLinks.diego;
+};
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -138,7 +149,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <section className="article-related shell"><div className="article-related-heading"><div><h2>Continue a leitura.</h2><p>Conteúdo relacionado, com autoria médica e referências.</p></div>{specialty && <Link href={specialty[1]} data-conversion-event="article_to_specialty_click" data-conversion-placement="article_related" data-conversion-context="article" data-conversion-article={article.slug} data-conversion-category={CATEGORY_SLUG[article.category]} data-conversion-specialty={specialty[1].slice(1)}>Conhecer {specialty[0].toLowerCase()} <span aria-hidden="true">→</span></Link>}</div><div>{related.map(item => <article key={item.slug}><Link className="related-image" href={`/blog/${item.slug}`} aria-label={`Ler ${item.title}`}><img src={item.image} srcSet={responsiveCover(item.image)} sizes="(max-width: 700px) 100vw, 33vw" width={1400} height={788} alt="" loading="lazy" decoding="async" /></Link><span>{item.category} · {item.readTime}</span><h3><Link href={`/blog/${item.slug}`}>{item.title}</Link></h3></article>)}</div><Link className="back-blog" href="/blog">← Ver todos os artigos</Link></section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </article>
-      <CtaBand />
+      <CtaBand whatsappUrl={articleAppointmentHref(article.slug, article.category)} />
     </main>
     <Footer />
   </>;

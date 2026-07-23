@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { clinicContact, whatsappHref } from "./clinic-links";
+import { appointmentLinks, clinicContact, whatsappHref } from "./clinic-links";
 
 export const clinicMapsUrl = clinicContact.mapsUrl;
 
@@ -46,7 +46,7 @@ export function Header({ current, conversionContext }: { current?: string; conve
           <Link href="/#especialistas">Equipe</Link><Link href="/#clinica">Clínica</Link><Link href="/blog" aria-current={cur("/blog")}>Conteúdo</Link>
           <div className="language-switcher" aria-label="Idiomas" role="group"><Link className="lang-link" href="/" lang="pt-BR" {...language("pt-BR", "header")}>PT</Link><Link className="lang-link" href="/en" lang="en" {...language("en", "header")}>EN</Link><Link className="lang-link" href="/es" lang="es" {...language("es", "header")}>ES</Link></div>
         </nav>
-        <a className="header-cta" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="header" data-conversion-variant="schedule"><span className="cta-full">Agendar pelo WhatsApp</span><span className="cta-short">Agendar</span></a>
+        <a className="header-cta" href={current === "/" ? appointmentLinks.home : whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="header" data-conversion-variant="schedule"><span className="cta-full">Agendar pelo WhatsApp</span><span className="cta-short">Agendar</span></a>
         <details className="mobile-menu">
           <summary aria-label="Abrir menu de navegação"><span>Menu</span><i aria-hidden="true" /></summary>
           <nav aria-label="Navegação móvel">
@@ -56,7 +56,7 @@ export function Header({ current, conversionContext }: { current?: string; conve
             <Link href="/" lang="pt-BR" {...language("pt-BR", "mobile_menu")}>PT</Link>
             <Link href="/en" lang="en" {...language("en", "mobile_menu")}>English</Link>
             <Link href="/es" lang="es" {...language("es", "mobile_menu")}>Español</Link>
-            <a className="mobile-menu-cta" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="mobile_menu" data-conversion-variant="schedule">Agendar pelo WhatsApp</a>
+            <a className="mobile-menu-cta" href={current === "/" ? appointmentLinks.home : whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="mobile_menu" data-conversion-variant="schedule">Agendar pelo WhatsApp</a>
           </nav>
         </details>
       </div>
@@ -68,14 +68,18 @@ export function Footer() {
   return (
     <footer className="site-footer" id="contato">
       <div className="shell footer-grid">
-        <div><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano.</p><p><Link href="/blog">Blog de dermatologia</Link><br /><Link href="/equipe">Equipe médica</Link></p><p><Link href="/en" lang="en">English</Link> · <Link href="/es" lang="es">Español</Link></p></div>
-        <div><strong>Especialidades</strong><p><Link href="/dermatologia-clinica">Dermatologia clínica</Link><br /><Link href="/cirurgia-dermatologica">Cirurgia dermatológica</Link><br /><Link href="/cabelo">Cabelos e couro cabeludo</Link><br /><Link href="/unhas">Doenças das unhas</Link><br /><Link href="/doencas-inflamatorias">Doenças inflamatórias</Link><br /><Link href="/dermatopediatria">Dermatopediatria</Link><br /><Link href="/dermatologia-estetica">Dermatologia estética</Link></p></div>
-        <div><strong>Endereço</strong><p><a href={clinicContact.mapsUrl} target="_blank" rel="noopener noreferrer" data-conversion-event="maps_click" data-conversion-placement="footer" data-conversion-variant="maps">Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</a></p></div>
-        <div><strong>Contato</strong><p><a href={clinicContact.whatsappUrl} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="footer" data-conversion-variant="whatsapp">WhatsApp: (21) 99218-9718</a><br /><a href={clinicContact.telephoneHref} data-conversion-event="phone_click" data-conversion-placement="footer" data-conversion-variant="phone">Ligar: (21) 99218-9718</a><br /><a href={clinicContact.emailHref}>{clinicContact.email}</a><br />Seg. a sex., 8h–21h · Sáb., 8h–13h<br />Atendimento com hora marcada</p></div>
-        <div><strong>Registro</strong><p>Clínica QARA<br />CRM-RJ 1285041</p></div>
+        <div className="footer-brand"><div className="wordmark inverse">QARA<span>clínica dermatológica</span></div><p>Ciência, precisão e cuidado humano em cada etapa do cuidado dermatológico.</p><nav aria-label="Links institucionais"><Link href="/blog">Conteúdo médico</Link><Link href="/equipe">Equipe médica</Link><Link href="/en" lang="en">English</Link><Link href="/es" lang="es">Español</Link></nav></div>
+        <div className="footer-column"><strong>Especialidades</strong><nav aria-label="Especialidades"><Link href="/dermatologia-clinica">Dermatologia clínica</Link><Link href="/cirurgia-dermatologica">Cirurgia dermatológica</Link><Link href="/cabelo">Cabelos e couro cabeludo</Link><Link href="/unhas">Doenças das unhas</Link><Link href="/doencas-inflamatorias">Doenças inflamatórias</Link><Link href="/dermatopediatria">Dermatopediatria</Link><Link href="/dermatologia-estetica">Dermatologia estética</Link></nav></div>
+        <div className="footer-column footer-hours"><strong>Horário de atendimento</strong><dl><div><dt>Segunda-feira</dt><dd>08:00–21:00</dd></div><div><dt>Terça-feira</dt><dd>08:00–21:00</dd></div><div><dt>Quarta-feira</dt><dd>08:00–21:00</dd></div><div><dt>Quinta-feira</dt><dd>08:00–21:00</dd></div><div><dt>Sexta-feira</dt><dd>08:00–21:00</dd></div><div><dt>Sábado</dt><dd>08:00–13:00</dd></div></dl><p>Atendimento com hora marcada.</p></div>
+        <div className="footer-column"><strong>Contato</strong><address><a href={clinicContact.mapsUrl} target="_blank" rel="noopener noreferrer" data-conversion-event="maps_click" data-conversion-placement="footer" data-conversion-variant="maps">Rua Santa Clara, 50 · salas 521/522<br />Copacabana · Rio de Janeiro</a><a href={clinicContact.whatsappUrl} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="footer" data-conversion-variant="whatsapp">WhatsApp: (21) 99218-9718</a><a href={clinicContact.telephoneHref} data-conversion-event="phone_click" data-conversion-placement="footer" data-conversion-variant="phone">Ligar: (21) 99218-9718</a><a href={clinicContact.emailHref}>{clinicContact.email}</a></address><a className="footer-social" href="https://instagram.com/qaraclinica" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Clínica QARA: @qaraclinica"><span aria-hidden="true">◎</span>@qaraclinica</a></div>
+        <div className="footer-column footer-registration"><strong>Registro</strong><p>Clínica QARA<br />CRM 1285041-RJ</p><p><b>Diretor técnico</b><br />Dr. Miguel Ceccarelli<br />CRM-RJ 1092456<br />RQE 34414 · Dermatologia</p></div>
       </div>
     </footer>
   );
+}
+
+export function WhatsAppFloatingButton() {
+  return <a className="whatsapp-float" href={clinicContact.whatsappFloatingUrl} target="_blank" rel="noopener noreferrer" aria-label="Agendar uma consulta pelo WhatsApp (abre em nova aba)" data-conversion-event="whatsapp_click" data-conversion-placement="floating" data-conversion-variant="schedule"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.7 4.3A10.6 10.6 0 0 0 3.2 17.1L2 22l5.1-1.3A10.7 10.7 0 1 0 19.7 4.3Zm-7.6 16a8.5 8.5 0 0 1-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.5 8.5 0 1 1 12.1 20.3Zm4.7-6.4c-.3-.2-1.6-.8-1.9-.9s-.5-.2-.7.2-.8.9-.9 1.1-.3.2-.6.1a7 7 0 0 1-2.1-1.3A7.8 7.8 0 0 1 9 11.2c-.2-.3 0-.5.1-.6l.4-.5.2-.5c.1-.2 0-.4 0-.5L8.8 7c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.3 1 2.6 1.2 2.8a10 10 0 0 0 3.8 3.5c.5.3.9.5 1.2.6.5.2 1 .2 1.4.1.4-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3s-.2-.2-.5-.3Z" /></svg><span>Agendar no WhatsApp</span></a>;
 }
 
 export function SectionHeading({ eyebrow, title, text }: { eyebrow?: string; title: string; text: string }) {
@@ -87,12 +91,12 @@ export function SectionHeading({ eyebrow, title, text }: { eyebrow?: string; tit
   );
 }
 
-export function CtaBand() {
+export function CtaBand({ whatsappUrl = appointmentLinks.home }: { whatsappUrl?: string } = {}) {
   return (
     <section className="cta-band" id="agendar">
       <div className="shell cta-inner">
         <div><p className="eyebrow">Agende sua avaliação</p><h2>Conte o que precisa. Nossa equipe indica o especialista adequado e apresenta os horários disponíveis.</h2></div>
-        <div><div className="actions"><a className="button button-light" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="cta_band" data-conversion-variant="schedule">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Atendimento de seg. a sex., 8h–21h, e sáb., 8h–13h, sempre com hora marcada.</p></div>
+        <div><div className="actions"><a className="button button-light" href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-conversion-event="whatsapp_click" data-conversion-placement="cta_band" data-conversion-variant="schedule">Consultar horários no WhatsApp</a><a className="button button-outline-light" href="#contato">Ver endereço da clínica</a></div><p className="cta-note">Atendimento de seg. a sex., 8h–21h, e sáb., 8h–13h, sempre com hora marcada.</p></div>
       </div>
     </section>
   );

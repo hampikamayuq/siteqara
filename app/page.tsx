@@ -2,7 +2,7 @@ import { clinicMapsUrl, CtaBand, Footer, Header, portraitSrcSet } from "./ui";
 import Link from "next/link";
 import { articles } from "./blog/articles";
 import { evidence } from "./blog/article-evidence";
-import { clinicContact, whatsappHref } from "./clinic-links";
+import { appointmentLinks, clinicContact } from "./clinic-links";
 
 const services = [
   ["Dermatologia clínica", "Acne, rosácea, manchas, alergias e avaliação de pintas.", "/dermatologia-clinica"],
@@ -75,7 +75,7 @@ export default function Home() {
             <span className="hero-rule" aria-hidden="true" />
             <p className="lead">Dermatologia clínica e cirúrgica com precisão técnica e sensibilidade humana para cuidar do que há de mais autêntico em você.</p>
             <div className="actions">
-              <a className="button craft-primary" href={whatsappHref("Olá, gostaria de agendar uma avaliação na Clínica QARA.")} data-conversion-event="whatsapp_click" data-conversion-placement="hero" data-conversion-variant="schedule" data-conversion-context="home">Agendar pelo WhatsApp</a>
+              <a className="button craft-primary" href={appointmentLinks.home} data-conversion-event="whatsapp_click" data-conversion-placement="hero" data-conversion-variant="schedule" data-conversion-context="home">Agendar pelo WhatsApp</a>
               <a className="quiet-link" href="#cuidados">Ver especialidades <span>↓</span></a>
             </div>
           </div>

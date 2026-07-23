@@ -26,6 +26,7 @@ const placements = [
   "not_found",
   "article_related",
   "contact",
+  "floating",
 ];
 
 const variants = ["schedule", "guidance", "whatsapp", "phone", "maps"];

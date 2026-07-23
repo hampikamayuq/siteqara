@@ -354,3 +354,55 @@ test("does not treat the Google review evidence link as a location conversion", 
   assert.doesNotMatch(reviewAnchor, /data-conversion-event=/);
   assert.match(source, /Abrir no Google Maps[\s\S]+data-conversion-event="maps_click"|data-conversion-event="maps_click"[^>]+>Abrir no Google Maps/);
 });
+
+test("credits aesthetic publications to Dr. Diego and ships the complete contact footer", async () => {
+  const evidenceSource = await readFile(new URL("../app/blog/article-evidence.ts", import.meta.url), "utf8");
+  for (const slug of ["melasma-por-que-as-manchas-voltam", "toxina-botulinica-antes-de-aplicar", "preenchimento-facial-planejamento", "cicatrizes-de-acne-tratamento", "blefaroplastia-o-que-avaliar"]) {
+    const entry = evidenceSource.match(new RegExp(`"${slug}":\\{author:\\{([^}]+)\\}`));
+    assert.ok(entry, `missing evidence entry for ${slug}`);
+    assert.match(entry[1], /name:"Dr\. Diego Gálvez"/);
+    assert.match(entry[1], /rqe:"RQE 57517"/);
+  }
+
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("footer-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  const html = await response.text();
+  assert.match(html, /Horário de atendimento/);
+  assert.match(html, /CRM 1285041-RJ/);
+  assert.match(html, /RQE 34414 · Dermatologia/);
+  assert.match(html, /@qaraclinica/);
+  assert.match(html, /whatsapp-float/);
+  assert.match(html, /conheci\+o\+trabalho\+da\+Clinica/);
+});
+
+test("uses the approved WhatsApp booking links by page and specialty", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("booking-links-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+  const cases = [
+    ["/", "https://wa.me/5521992189718?text=Ol%C3%A1+conheci+o+trabalho+da+Clinica+pela+p%C3%A1gina+e+gostaria+de+agendar+uma+consulta."],
+    ["/equipe/dr-diego-galvez", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Diego%20Galvez"],
+    ["/cirurgia-dermatologica", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Diego%20Galvez"],
+    ["/cabelo", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20de%20cabelo%20com%20a%20Dra.%20Diana%20Stohmann"],
+    ["/equipe/dr-miguel-ceccarelli", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Miguel%20Ceccarelli"],
+    ["/dermatopediatria", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20de%20dermatopediatria"],
+    ["/blog/dermatite-atopica", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20de%20dermatite%20at%C3%B3pica%20com%20a%20Dra.%20Manuela%20Pedretti%20Cabral"],
+    ["/blog/psoriase-guia-para-pacientes", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psor%C3%ADase%20com%20a%20Dra.%20Manuela%20Pedretti%20Cabral"],
+    ["/blog/hidradenite-supurativa", "https://api.whatsapp.com/send?phone=5521992189718&amp;text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20agendar%20uma%20consulta%20de%20hidrosadenite%20com%20a%20Dra.%20Manuela%20Pedretti%20Cabral"],
+  ];
+
+  for (const [route, expected] of cases) {
+    const response = await worker.fetch(new Request(`http://localhost${route}`, { headers: { accept: "text/html" } }), env, ctx);
+    assert.equal(response.status, 200, route);
+    const html = await response.text();
+    assert.match(html, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), route);
+  }
+});
