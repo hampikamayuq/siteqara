@@ -1,0 +1,4 @@
+Clínica QARA — deployment marker
+Updated: 2026-07-23
+Source branch: main
+Source commit before deployment: 3503eb5f7dfb88d301d47b4a9316ca1e2d8f8e2c
