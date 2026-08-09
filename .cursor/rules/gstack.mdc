@@ -1,0 +1,15 @@
+---
+description: Use gstack for AI-assisted engineering in this repository
+alwaysApply: true
+---
+
+Use gstack for substantial work in this repository. Install/update Cursor skills from a gstack checkout with `./setup --host cursor`.
+
+Preferred routing:
+- feature: office-hours when needed -> plan-ceo-review -> plan-eng-review -> review -> qa
+- design: plan-design-review -> design-shotgun/design-html when useful -> design-review
+- bug: investigate before fixing
+- security-sensitive changes: cso
+- performance-sensitive changes: benchmark
+
+Read `README.md` before changing build, dependencies, runtime, auth, bindings, D1/Drizzle or deploy. Preserve the repository lifecycle. Never work directly on `main`. Do not automate land-and-deploy; merge/deploy requires human approval.
